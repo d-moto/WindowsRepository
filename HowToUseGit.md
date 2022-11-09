@@ -134,4 +134,16 @@ $ git statsu
 ```
 $ git commit
 ```
+3. atom is opend
+4. write commit message
+5. check status
+```
+$ git status
+```
+
+```
+$ git status
+On branch master
+nothing to commit, working tree clean
+```
 
