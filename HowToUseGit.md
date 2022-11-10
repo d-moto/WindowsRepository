@@ -203,3 +203,59 @@ $ cat GitCheckOut.txt
 It should be back to a blank slate.
 Strictly speaking, the "git checkout" command reverts to the staging area state, not the last committed state.
 
+<details>
+<summary>
+Open Example
+</summary>
+
+```shell
+
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ touch GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git add GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git commit -m "File to check git checkout command"
+[master 15c2ddc] File to check git checkout command
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ cat GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ echo "this is sample script" >> GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   GitCheckOut.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ cat GitCheckOut.txt
+this is sample script
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git checkout -- GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ cat GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+```
+</details>
