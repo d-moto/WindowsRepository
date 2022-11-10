@@ -147,3 +147,59 @@ On branch master
 nothing to commit, working tree clean
 ```
 
+## ローカルリポジトリでの操作を取り消す
+ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について
+
+ワークツリーへの変更の取り消しは、ファイルの状態が直前のコミット（または直前のステージングエリアへの登録）に戻る。  
+ステージングエリアへの変更の取り消しは、ファイルの状態はそのままでステージングエリアへの登録だけを取り消します。
+
+***
+[Work Tree]  --"git add"-->  [Staging area]  --"git commit"-->  [Git Directory]  
+[Work Tree]  <--"git reset"--  [Staging area]  
+[Work Tree]  <-----------------"git checkout"----------------- [Git Directory]
+***
+
+ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、"git checkout"コマンドで、ワークツリーの変更を取り消せる。
+### **Work Treeの変更を取り消すコマンド（git checkout）**
+```
+$ git checkout -- sample.txt
+```
+
+[Work Tree (added something)] [staging area (something added is not resistered)] [Git Derectory (newest)]  
+At this time,  
+[Work Tree]!=[Git Directory]  
+-->git checkout  
+[Work Tree (same as GIt Directory)] [Staging Area (something added is not resistered)] [Git Directory (newest)]  
+At this time,  
+[Work Tree]=[Git Directory]
+
+### **An example is shown below.**
+1. Create a new file, and commit.
+```
+$ touch GitCheckOut.txt
+$ git add GitCheckOut.txt
+$ git commit -m "File to check git checkout command"
+```
+
+2. Write to the file you just created.
+```
+$ echo "this is sample script" >> GitCheckOut.txt
+```
+
+3. Check the status of the work tree.
+```
+$ git status
+```
+
+4. Cancel changes to the work tree.
+```
+$ git checkout -- GitCheckOut.txt
+```
+
+5. Check the status of the GitCheckOut.txt
+```
+$ cat GitCheckOut.txt
+```
+It should be back to a blank slate.
+Strictly speaking, the "git checkout" command reverts to the staging area state, not the last committed state.
+
