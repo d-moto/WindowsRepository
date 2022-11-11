@@ -1,12 +1,12 @@
 
-# How To Use Git 
+# **How To Use Git**
 
-## Set Up Git
-1. set up user name 
+## **Set Up Git**
+1. set up user name
 ```
 $ git config --global user.name motoi
 ```
-2. set up email 
+2. set up email
 ```
 $ git config --global user.email goodddd6@gmail.com
 ```
@@ -22,15 +22,15 @@ $ git config --global core.editor "code --wait"
 ```
 $ git config core.editor
 ```
-> When you execute this command "git config --global", the file "/c/Users/mokos/.gitconfig" is created and the configuration is written.
+※When you execute this command "git config --global", the file "/c/Users/mokos/.gitconfig" is created and the configuration is written.
 
-## Set up and create local repository
+## **Set up and create local repository**
 1. careate directory
 ```
 $ cd ~
 $ mkdir git-ichiyasa
 ```
-2. create something 
+2. create something
 ```
 $ touch HowToUseGit.md
 ```
@@ -55,8 +55,15 @@ $ git add HowToUseGit.md
 ```
 $ git status
 ```
-**Files that are not registered under git management are treated as "Untracked files" by the git status command.**
-```
+※Files that are not registered under git management are treated as "Untracked files" by the git status command.
+
+<details>
+<summary>
+example
+</summary>
+
+```shell
+
 $ git status
 On branch master
 
@@ -85,8 +92,10 @@ Changes to be committed:
 mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
 $
 ```
+</details>
 
-## check differences of git files
+
+## **Check differences of git files**
 1. Check the difference between the work tree and the staging area
 ```
 $ git diff
@@ -95,37 +104,36 @@ $ git diff
 ```
 $ git diff --cached
 ```
-
 ```
 $ git diff
 diff --git a/HowToUseGit.md b/HowToUseGit.md
 index 0a161d4..d0fd93c 100644
---- a/HowToUseGit.md
-+++ b/HowToUseGit.md
+#--- a/HowToUseGit.md
+#+++ b/HowToUseGit.md
 @@ -95,4 +95,4 @@ $ git diff
- ```
+ #```
  $ git diff --cached
- ```
--
-+3.
-
-mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+ #```
+#-
+#+3.
+#
+#mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
 $ git diff --cached
 diff --git a/HowToUseGit.md b/HowToUseGit.md
 new file mode 100644
 index 0000000..0a161d4
---- /dev/null
-+++ b/HowToUseGit.md
+#--- /dev/null
+#+++ b/HowToUseGit.md
 @@ -0,0 +1,98 @@
-+
-+# How To Use Git
-+
-+## Set Up Git
-+1. set up user name
+#+
+#+# How To Use Git
+#+
+#+## Set Up Git
+#+1. set up user name
 ................................
 ```
 
-## commit the files
+## **Commit the files**
 1. check status of local repository
 ```
 $ git statsu
@@ -140,14 +148,13 @@ $ git commit
 ```
 $ git status
 ```
-
 ```
 $ git status
 On branch master
 nothing to commit, working tree clean
 ```
 
-## ローカルリポジトリでの操作を取り消す
+## **ローカルリポジトリでの操作を取り消す（checkout, reset）**
 ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について
 
 ワークツリーへの変更の取り消しは、ファイルの状態が直前のコミット（または直前のステージングエリアへの登録）に戻る。  
@@ -160,21 +167,27 @@ nothing to commit, working tree clean
 ***
 
 ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、"git checkout"コマンドで、ワークツリーの変更を取り消せる。
-### **Work Treeの変更を取り消すコマンド（git checkout）**
+
+- **Work Treeの変更を取り消すコマンド（git checkout）**
 ```
 $ git checkout -- sample.txt
 ```
+```
+#[Work Tree (added something)] [staging area (something added is not resistered)] [Git Derectory (newest)]  
+#At this time,  
+#[Work Tree]!=[Git Directory]  
+#-->git checkout  
+#[Work Tree (same as GIt Directory)] [Staging Area (something added is not resistered)] [Git Directory (newest)]  
+#At this time,  
+#[Work Tree]=[Git Directory]
+```
 
-[Work Tree (added something)] [staging area (something added is not resistered)] [Git Derectory (newest)]  
-At this time,  
-[Work Tree]!=[Git Directory]  
--->git checkout  
-[Work Tree (same as GIt Directory)] [Staging Area (something added is not resistered)] [Git Directory (newest)]  
-At this time,  
-[Work Tree]=[Git Directory]
+<details>
+<summary>
+Example
+</summary>
 
-### **An example is shown below.**
-1. Create a new file, and commit.
+1. Create a new file, and commit  
 ```
 $ touch GitCheckOut.txt
 $ git add GitCheckOut.txt
@@ -200,12 +213,16 @@ $ git checkout -- GitCheckOut.txt
 ```
 $ cat GitCheckOut.txt
 ```
+
 It should be back to a blank slate.
 Strictly speaking, the "git checkout" command reverts to the staging area state, not the last committed state.
 
+</details>
+
+
 <details>
 <summary>
-Open Example
+Execution example
 </summary>
 
 ```shell
@@ -258,4 +275,79 @@ $ cat GitCheckOut.txt
 mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
 $
 ```
+</details>
+
+<br>
+
+- **ステージングエリアへの登録を取り消すコマンド（git reset）**<br><br>
+間違ってファイルの状態をステージングエリアに登録してしまった時は、  
+git resetコマンドで取り消せる。<br>
+git checkoutコマンドとは異なり、ワークツリーの状態は変更されない。<br>
+```shell
+$ git reset HEAD GitCheckOut.txt
+```
+resetコマンドの後ろにHEADと指定している。<br>
+HEADはこのローカルレポジトリで**最後にコミットした状態**を意味している。<br>
+ステージングエリアの状態を最後のコミットと同じ状態にリセットするという意味になる。<br><br>
+
+<details>
+<summary>
+Example
+</summary>
+
+1. Change file contents
+```
+[root@localhost63 Git]# pwd
+/home/alma1/Git
+[root@localhost63 Git]# ls
+readme.md  test
+[root@localhost63 Git]# cat test
+[root@localhost63 Git]# echo "`date`" >> test
+[root@localhost63 Git]# cat test
+2022年 11月 11日 金曜日 23:50:52 JST
+[root@localhost63 Git]#
+```
+
+2. Register the files to staging Area
+```
+[root@localhost63 Git]# git add test
+```
+
+3. Check the status of the local repository
+```
+# [root@localhost63 Git]# git status
+# On branch master
+# Changes to be committed:
+#   (use "git restore --staged <file>..." to unstage)
+        modified:   test
+# [root@localhost63 Git]#
+```
+
+4. Reset the registration to staging area
+```
+[root@localhost63 Git]# git reset HEAD test
+Unstaged changes after reset:
+M       test
+```
+
+5. Check the status of the local repository
+```
+[root@localhost63 Git]# git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   test
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@localhost63 Git]#
+```
+
+6. Check the contents of test file
+```
+[root@localhost63 Git]# cat test
+2022年 11月 11日 金曜日 23:50:52 JST
+[root@localhost63 Git]#
+```
+ワークツリーのファイルの内容は変更されていない。<br>
+ファイルの内容も変更したければ、git checkoutを使う。
 </details>
