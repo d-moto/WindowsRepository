@@ -352,4 +352,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ファイルの内容も変更したければ、git checkoutを使う。
 </details>
 
-aiu
+## **Check the commit history**
+- Check the commit history
+```
+$ git log
+```
+- Check the commit history with diffs
+```
+$ git log -p
