@@ -351,3 +351,5 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ワークツリーのファイルの内容は変更されていない。<br>
 ファイルの内容も変更したければ、git checkoutを使う。
 </details>
+
+aiu
