@@ -360,3 +360,114 @@ $ git log
 - Check the commit history with diffs
 ```
 $ git log -p
+```
+
+## **Preparing to use git hub**
+
+- Set up a public key in git hub
+1. Generate the SSH key
+```
+$ ssh-keygen -t rsa -b 4096 -C "goodddd6@gmail.com"
+|
+|
+|
+[root@localhost63 Git]# ssh-keygen -t rsa -b 4096 -C "goodddd6@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /home/alma1/Git/sshkey/id_rsa
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/alma1/Git/sshkey/id_rsa.
+Your public key has been saved in /home/alma1/Git/sshkey/id_rsa.pub.
+The key fingerprint is:
+SHA256:TZ6yluXlFJbcq1pj1cz+/FhjTr9nKMHAS5AeqUWm5qo goodddd6@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|       .oo       |
+|       o*  . o   |
+|      o+ +. = .  |
+|     o. .++o . = |
+|      . S.=+o o +|
+|     .   *.+oo . |
+|    .   + . *. =o|
+|   .   .   +..=+*|
+|  E       .  ..+O|
++----[SHA256]-----+
+[root@localhost63 Git]#
+```
+
+2. Register the ssh public key to git hub
+
+3. Enter the command to check the connection to the git hub
+```
+$ ssh -T git@github.commit
+```
+
+## **Clone the remote repository**
+1. Get the URL of the remote repository
+```
+git@github.com:d-moto/ichiyasaGitSample.git
+```
+
+2. Execute clone
+```
+$ git clone git@github.com:d-moto/ichiyasaGitSample.git
+```
+**note**
+新しくリモートレポジトリが作成されるので、現在操作しているレポジトリがあれば、<br>
+その中から出てから、上記のコマンドを叩く。
+```
+[root@localhost63 Git]# cd ..
+[root@localhost63 alma1]# mkdir ichiyasa-git-repository
+[root@localhost63 alma1]# cd ichiyasa-git-repository/
+[root@localhost63 ichiyasa-git-repository]# ls
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# git status
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# ls -al
+合計 4
+drwxr-xr-x  2 root  root     6 11月 15 22:49 .
+drwx------ 34 alma1 alma1 4096 11月 15 22:49 ..
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# git clone git@github.com:d-moto/ichiyasaGitSample.git
+Cloning into 'ichiyasaGitSample'...
+Enter passphrase for key '/root/.ssh/id_rsa':
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (5/5), done.
+
+remote: Total 33 (delta 0), reused 2 (delta 0), pack-reused 28
+Receiving objects: 100% (33/33), 1.36 MiB | 1.17 MiB/s, done.
+Resolving deltas: 100% (2/2), done.
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# ls
+ichiyasaGitSample
+[root@localhost63 ichiyasa-git-repository]# cd ichiyasaGitSample/
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# cd ..
+[root@localhost63 ichiyasa-git-repository]# ls -al
+合計 4
+drwxr-xr-x  3 root  root    31 11月 15 22:49 .
+drwx------ 34 alma1 alma1 4096 11月 15 22:49 ..
+drwxr-xr-x  5 root  root    99 11月 15 22:52 ichiyasaGitSample
+[root@localhost63 ichiyasa-git-repository]# cd ichiyasaGitSample/
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# ls -al
+合計 16
+drwxr-xr-x 5 root root   99 11月 15 22:52 .
+drwxr-xr-x 3 root root   31 11月 15 22:49 ..
+drwxr-xr-x 8 root root  163 11月 15 22:52 .git
+-rw-r--r-- 1 root root   56 11月 15 22:52 .gitignore
+-rw-r--r-- 1 root root  104 11月 15 22:52 README.md
+drwxr-xr-x 5 root root   40 11月 15 22:52 assets
+drwxr-xr-x 2 root root   42 11月 15 22:52 images
+-rw-r--r-- 1 root root 6369 11月 15 22:52 index.html
+[root@localhost63 ichiyasaGitSample]#
+```
