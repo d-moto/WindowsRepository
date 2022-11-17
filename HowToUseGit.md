@@ -471,3 +471,118 @@ drwxr-xr-x 2 root root   42 11月 15 22:52 images
 -rw-r--r-- 1 root root 6369 11月 15 22:52 index.html
 [root@localhost63 ichiyasaGitSample]#
 ```
+## **Create a dedicated branch and switch**
+1. Create branch
+```
+$ git branch <new branch name>
+
+$ git branch update-venue
+```
+
+2. Check the branch in use
+```
+$ git branch
+
+[root@localhost63 ichiyasaGitSample]# git branch
+* master
+  update-venue
+[root@localhost63 ichiyasaGitSample]#
+```
+
+A list of branches is displayed.
+[*] is the branch currently in use.
+
+3. Check out the branch (Switch the branch)
+```
+$ git checkout <branch-name>
+
+$ git branch update-venue
+
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+[root@localhost63 ichiyasaGitSample]#
+```
+
+4. Check the branch in use
+```
+$ git branch
+
+or 
+
+$ git status
+
+[root@localhost63 ichiyasaGitSample]# git status
+On branch ★update-venue
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]#
+
+```
+
+## **Edit file and commit**
+On the branch you just created, edit the file and commit.
+
+1. Edit "index.html"
+```
+ 55                     <article>
+ 56                         <h3>イベント日時・場所</h3>
+ 57                         <p>3月23日 19:00開始</p>
+ 58                         <p>株式会社インプレス12345678 イベントセミナー会場</p>
+ 59                     </article>
+ 
+ |
+
+ 55                     <article>
+ 56                         <h3>イベント日時・場所</h3>
+ 57                         <p>3月23日 19:00開始</p>
+ 58                         <p>株式会社インプレス イベントセミナー会場</p>
+ 59                     </article>
+ ```
+
+2. Check the status
+```
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@localhost63 ichiyasaGitSample]#
+```
+
+3. Execute commit
+```
+[root@localhost63 ichiyasaGitSample]# git add index.html
+[root@localhost63 ichiyasaGitSample]# git commit -m "Edit venue (delete 12345678)"
+[update-venue 353b7df] Edit venue (delete 12345678)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[root@localhost63 ichiyasaGitSample]#
+```
+
+4. Compare operations on branches (Compare against the master branch)
+```
+[root@localhost63 ichiyasaGitSample]# git diff master
+diff --git a/index.html b/index.html
+index 35483fe..ced2022 100644
+--- a/index.html
++++ b/index.html
+@@ -55,7 +55,7 @@
+                     <article>
+                         <h3>イベント日時・場所</h3>
+                         <p>3月23日 19:00開始</p>
+-                        <p>株式会社インプレス12345678 イベントセミナー会場</p>
++                        <p>株式会社インプレス イベントセミナー会場</p>
+                     </article>
+                     <article>
+                         <h3>スピーカー</h3>
+@@ -159,4 +159,4 @@
+ <script src="assets/js/main.js"></script>
+
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+[root@localhost63 ichiyasaGitSample]#
+```
