@@ -562,6 +562,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
 4. Compare operations on branches (Compare against the master branch)
+
 ```
 [root@localhost63 ichiyasaGitSample]# git diff master
 diff --git a/index.html b/index.html
@@ -585,4 +586,136 @@ index 35483fe..ced2022 100644
 \ No newline at end of file
 +</html>
 [root@localhost63 ichiyasaGitSample]#
+```
+
+## **Create the pull request**
+Changes made in the local repository are reflected in the remote repository. <br>
+Then, the operations in the newly created branch are merged into the master branch. <br>
+The master branch will be the latest state.
+The name of the remote repository to be pushed can be found with the "git remote -v" command.
+
+```
+$ git remote -v
+
+[root@localhost63 ichiyasaGitSample]# git remote -v
+origin  git@github.com:d-moto/ichiyasaGitSample.git (fetch)
+origin  git@github.com:d-moto/ichiyasaGitSample.git (push)
+[root@localhost63 ichiyasaGitSample]#
+```
+
+1. Push the branch
+
+```
+$ git push <Name of the remote repository to be pushed> <Branch name to push>
+
+[root@localhost63 ichiyasaGitSample]# git push origin update-venue
+Enter passphrase for key '/root/.ssh/id_rsa': d-motoi
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 297 bytes | 297.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:d-moto/ichiyasaGitSample.git
+   a2373f9..353b7df  update-venue -> update-venue
+[root@localhost63 ichiyasaGitSample]#
+
+
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+[root@localhost63 ichiyasaGitSample]# git branch update-venue2
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]# git checkout update-venue2
+Switched to branch 'update-venue2'
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+  update-venue
+* update-venue2
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]#
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# vi README.md
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@localhost63 ichiyasaGitSample]# git add README.md
+[root@localhost63 ichiyasaGitSample]# git commit -m "edit README.md"
+[update-venue2 2a37202] edit README.md
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]# git remote -v
+origin  git@github.com:d-moto/ichiyasaGitSample.git (fetch)
+origin  git@github.com:d-moto/ichiyasaGitSample.git (push)
+[root@localhost63 ichiyasaGitSample]# git push origin update-venue2
+Enter passphrase for key '/root/.ssh/id_rsa':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'update-venue2' on GitHub by visiting:
+remote:      https://github.com/d-moto/ichiyasaGitSample/pull/new/update-venue2
+remote:
+To github.com:d-moto/ichiyasaGitSample.git
+ * [new branch]      update-venue2 -> update-venue2
+[root@localhost63 ichiyasaGitSample]#
+```
+
+## **Retrieve the contents of a remote repository to the local repository**
+
+Reflect from remote repository to local repository.
+- git pull command
+```
+$ git pull origin master 
+```
+
+- git fetch origin
+```
+$ git fetch origin
+```
+
+## **Use multiple branches**
+
+1. Create and checkout branch
+```
+$ git checkout -b speakers-info
+```
+
+2. Modify HTML file
+
+3. Add TODO comment
+
+4. Prepare images
+
+5. Check HTML file on browser
+
+6. Execute commit
+```
+$ git status
+$ git add -A #Add all changes to stage
+$ git status
+$ git commit -m "add speaker infomation"
+```
+
+7. Push remote repository
+```
+$ git push origin speaker-info
 ```
