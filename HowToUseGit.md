@@ -1,6 +1,16 @@
 
 # **How To Use Git**
 
+**NOTE**
+
+git repository location: 
+- windowns11 --> /c/Users/mokos/git-ichiyasa
+- Linux --> /home/alma1/Git
+
+git config file location:
+- windows11 --> /c/Users/mokos/.gitconfig
+- Linux --> /root/.gitconfig
+
 ## **1. Set Up Git**
 1. set up user name
 ```
@@ -1010,4 +1020,7 @@ $ git commit -am "いろふさんの画像を追加した。"
 ```
 $ git push origin speakers-info
 ```
+
+## **Udemy**
+
 
