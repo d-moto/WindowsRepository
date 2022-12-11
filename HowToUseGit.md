@@ -719,3 +719,294 @@ $ git commit -m "add speaker infomation"
 ```
 $ git push origin speaker-info
 ```
+[root@localhost63 ichiyasaGitSample]# git push origin speakers-info
+Enter passphrase for key '/root/.ssh/id_rsa': d-motoi
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 756 bytes | 756.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'speakers-info' on GitHub by visiting:
+remote:      https://github.com/d-moto/ichiyasaGitSample/pull/new/speakers-info
+remote:
+To github.com:d-moto/ichiyasaGitSample.git
+ * [new branch]      speakers-info -> speakers-info
+[root@localhost63 ichiyasaGitSample]#
+
+8. Create new branch from master branch
+```
+$ git checkout master
+$ git checkout -b sessions-info
+```
+```
+[root@localhost63 ichiyasaGitSample]# git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+[root@localhost63 ichiyasaGitSample]# git branch
+* master
+  speakers-info
+  update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]# git checkout -b sessions-info
+Switched to a new branch 'sessions-info'
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* sessions-info
+  speakers-info
+  update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]#
+```
+
+**NOTE** :<br>
+Look at the difference between speakers-info and sessions-info.  
+At present, the sessions-info branch is a copy of the master branch. （Changes made in speakers-info are not reflected).
+```
+[root@localhost63 ichiyasaGitSample]# git diff sessions-info speakers-info
+diff --git a/index.html b/index.html
+index 35483fe..f53e6fc 100644
+--- a/index.html
++++ b/index.html
+@@ -60,17 +60,21 @@
+                     <article>
+                         <h3>スピーカー</h3>
+                         <div class="speaker">
++                       <!--TODO : プロフィール画像を受け取ったら更新する-->
+                             <img src="images/speaker1.png" alt="" class="image"/>
+                             <div class="inner">
+-                                <h4>1人目: 未定</h4>
+-                                <p>1人目のプロフィール</p>
++                                <h4>いろふさん</h4>
++                               <p>大阪を中心に仕事をしている、ふつうのプログラマです。</p>
++                               <p>関西Javaエンジニア会の中の人。</p>
++                               <p>主に業務Webアプリの開発をしてきました。</p>
+                             </div>
+                         </div>
+                         <div class="speaker">
+                             <img src="images/speaker2.png" alt="" class="image"/>
+                             <div class="inner">
+-                                <h4>2人目: 未定</h4>
+-                                <p>2人目のプロフィール</p>
++                                <h4>うらがみさん</h4>
++                                <p>大阪のプログラマーです。GitHubを日常的に利用しています。</p>
++                               <p>一年間毎日コミットをしてプロフィールページのcontributionsを緑一色にしたことがあります。</p>
+                             </div>
+                         </div>
+                     </article>
+@@ -159,4 +163,4 @@
+ <script src="assets/js/main.js"></script>
+
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+[root@localhost63 ichiyasaGitSample]#
+```
+
+9. Edit the file and proceed to merge
+
+10. Execute commit
+```
+$ git status
+$ git add index.html
+$ git commit -m "セッション情報を記載した"
+```
+11. Push to remote repository and merge
+```
+$ git push origin sessions-info
+```
+Merge on Github.<br>
+Contents of the index.html file at this time.<br>
+```
+<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Ichiyasa Git User Group</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+
+<!-- Header -->
+<section id="header">
+    <header>
+        <span class="image avatar"><img src="images/avatar.png" alt=""/></span>
+        <h1 id="logo"><a href="#">Ichiyasa Git User Group</a></h1>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="#one" class="active">Japan Git User Groupとは</a></li>
+            <li><a href="#two">イベントのお知らせ</a></li>
+            <li><a href="#three">過去のイベント</a></li>
+        </ul>
+    </nav>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- One -->
+        <section id="one">
+            <div class="container">
+                <header class="major">
+                    <h2>Ichiyasa Git User Group</h2>
+                </header>
+                <p>Gitを利用する人々のコミュニティです。</p>
+                <p>勉強会を企画・運営し、情報交換の場を提供しています。</p>
+                <p>このコミュニティーは、非営利目的で活動しています。</p>
+            </div>
+        </section>
+
+        <!-- Two -->
+        <section id="two">
+            <div class="container">
+                <h2>第２回Git勉強会</h2>
+                <div class="features">
+                    <p>第２回Git勉強会を開催します。みなさま、是非ご参加ください！</p>
+                    <article>
+                        <h3>イベント日時・場所</h3>
+                        <p>3月23日 19:00開始</p>
+                        <p>株式会社インプレス イベントセミナー会場</p>
+                    </article>
+                    <article>
+                        <h3>スピーカー</h3>
+                        <div class="speaker">
+                            <img src="images/speaker1.png" alt="" class="image"/>
+                            <div class="inner">
+                                ★<h4>1人目: 未定</h4>
+                                ★<p>1人目のプロフィール</p>
+                            </div>
+                        </div>
+                        <div class="speaker">
+                            <img src="images/speaker2.png" alt="" class="image"/>
+                            <div class="inner">
+                                ★<h4>2人目: 未定</h4>
+                                ★<p>2人目のプロフィール</p>
+                            </div>
+                        </div>
+                    </article>
+                    <article>
+                        <h3>タイムテーブル</h3>
+                        <div class="table-wrapper">
+                            <table class="alt">
+                                <thead>
+                                <tr>
+                                    <th>時間</th>
+                                    <th>内容</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>19:00〜19:05</td>
+                                    <td>オープニング</td>
+                                </tr>
+                                <tr>
+                                    <td>19:05〜19:50</td>
+                                    ★<td>私のGitの使い方（いろふさん）</td>
+                                </tr>
+                                <tr>
+                                    <td>19:50〜20:00</td>
+                                    <td>休憩</td>
+                                </tr>
+                                <tr>
+                                    <td>20:00〜20:45</td>
+                                    ★<td>現場で使える！実践Git（うらがみさん）</td>
+                                </tr>
+                                <tr>
+                                    <td>20:45〜21:00</td>
+                                    <td>クロージング</td>
+                                </tr>
+                                <tr>
+                                    <td>21:00〜</td>
+                                    <td>懇親会</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three">
+            <div class="container">
+                <h2>過去のイベント</h2>
+                <h3>第１回Git勉強会</h3>
+                <div class="features">
+                    <article>
+                        <h4>Gitはじめの一歩 (@ihcomegaさん)</h4>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/RZizY7tGPn8?rel=0"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </article>
+                    <article>
+                        <h4>Git実践入門 (@syobochimさん)</h4>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LocX863UA_w?rel=0"
+                                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <section id="footer">
+        <div class="container">
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </section>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollzer.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
+```
+
+12. Import the contents of the master branch into the topic branch. (Changes in the sessions-info branch are imported into the speakers-info branch.)
+
+**NOTE** : <br>
+In 11, the changes made in 11 are not reflected in the local repository because the branches were merged on the remote repository.<br>
+Use the git pull command to update the master branch in the local repository to the latest state.
+
+```
+$ git checkout master
+$ git pull origin master
+```
+
+13. Import the latest information from the master branch
+```
+$ git checkout speakers-info
+$ git merge master
+```
+14. Execute commit
+```
+$ git status
+$ git commit -am "いろふさんの画像を追加した。"
+```
+15. Create pull request and merge
+```
+$ git push origin speakers-info
+```
