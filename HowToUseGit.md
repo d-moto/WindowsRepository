@@ -1010,3 +1010,4 @@ $ git commit -am "いろふさんの画像を追加した。"
 ```
 $ git push origin speakers-info
 ```
+
