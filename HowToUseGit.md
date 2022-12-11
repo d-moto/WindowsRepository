@@ -1,7 +1,7 @@
 
 # **How To Use Git**
 
-## **Set Up Git**
+## **1. Set Up Git**
 1. set up user name
 ```
 $ git config --global user.name motoi
@@ -24,7 +24,7 @@ $ git config core.editor
 ```
 ※When you execute this command "git config --global", the file "/c/Users/mokos/.gitconfig" is created and the configuration is written.
 
-## **Set up and create local repository**
+## **2. Set up and create local repository**
 1. careate directory
 ```
 $ cd ~
@@ -95,7 +95,7 @@ $
 </details>
 
 
-## **Check differences of git files**
+## **3. Check differences of git files**
 1. Check the difference between the work tree and the staging area
 ```
 $ git diff
@@ -133,7 +133,7 @@ index 0000000..0a161d4
 ................................
 ```
 
-## **Commit the files**
+## **4. Commit the files**
 1. check status of local repository
 ```
 $ git statsu
@@ -154,7 +154,7 @@ On branch master
 nothing to commit, working tree clean
 ```
 
-## **ローカルリポジトリでの操作を取り消す（checkout, reset）**
+## **5. ローカルリポジトリでの操作を取り消す（checkout, reset）**
 ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について
 
 ワークツリーへの変更の取り消しは、ファイルの状態が直前のコミット（または直前のステージングエリアへの登録）に戻る。  
@@ -168,7 +168,7 @@ nothing to commit, working tree clean
 
 ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、"git checkout"コマンドで、ワークツリーの変更を取り消せる。
 
-- **Work Treeの変更を取り消すコマンド（git checkout）**
+- **6. Work Treeの変更を取り消すコマンド（git checkout）**
 ```
 $ git checkout -- sample.txt
 ```
@@ -352,7 +352,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ファイルの内容も変更したければ、git checkoutを使う。
 </details>
 
-## **Check the commit history**
+## **7. Check the commit history**
 - Check the commit history
 ```
 $ git log
@@ -362,7 +362,7 @@ $ git log
 $ git log -p
 ```
 
-## **Preparing to use git hub**
+## **8. Preparing to use git hub**
 
 - Set up a public key in git hub
 1. Generate the SSH key
@@ -402,7 +402,7 @@ The key's randomart image is:
 $ ssh -T git@github.commit
 ```
 
-## **Clone the remote repository**
+## **9. Clone the remote repository**
 1. Get the URL of the remote repository
 ```
 git@github.com:d-moto/ichiyasaGitSample.git
@@ -471,7 +471,7 @@ drwxr-xr-x 2 root root   42 11月 15 22:52 images
 -rw-r--r-- 1 root root 6369 11月 15 22:52 index.html
 [root@localhost63 ichiyasaGitSample]#
 ```
-## **Create a dedicated branch and switch**
+## **10. Create a dedicated branch and switch**
 1. Create branch
 ```
 $ git branch <new branch name>
@@ -519,7 +519,7 @@ nothing to commit, working tree clean
 
 ```
 
-## **Edit file and commit**
+## **11. Edit file and commit**
 On the branch you just created, edit the file and commit.
 
 1. Edit "index.html"
@@ -588,7 +588,7 @@ index 35483fe..ced2022 100644
 [root@localhost63 ichiyasaGitSample]#
 ```
 
-## **Create the pull request**
+## **12. Create the pull request**
 Changes made in the local repository are reflected in the remote repository. <br>
 Then, the operations in the newly created branch are merged into the master branch. <br>
 The master branch will be the latest state.
@@ -679,7 +679,7 @@ To github.com:d-moto/ichiyasaGitSample.git
 [root@localhost63 ichiyasaGitSample]#
 ```
 
-## **Retrieve the contents of a remote repository to the local repository**
+## **13. Retrieve the contents of a remote repository to the local repository**
 
 Reflect from remote repository to local repository.
 - git pull command
@@ -692,7 +692,7 @@ $ git pull origin master
 $ git fetch origin
 ```
 
-## **Use multiple branches**
+## **14. Use multiple branches**
 
 1. Create and checkout branch
 ```
