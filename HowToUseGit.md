@@ -1023,4 +1023,67 @@ $ git push origin speakers-info
 
 ## **Udemy**
 
+## **git に push する**
 
+1. ローカルレポジトリにリモートレポジトリを追加する。
+```
+# git remote add origin https://github.com/example/example.git
+```
+originというショートカットでURLのリモートレポジトリを登録する。
+
+2. リモートレポジトリ（GitHub）へ送信する。
+```
+# git push <remote name> <branch name>
+# git push origin master
+```
+
+3. tokenの作成
+git のページ
+--> 右上の丸いアイコン
+--> developer settings
+--> personal access tokens
+から作成
+
+4. 新規レポジトリの作成
+git のページ
+--> 右上の丸いアイコン
+--> your profile
+--> repositories
+から作成
+
+5. git に push する
+```
+# git remote add origin git@github.com:d-moto/for_study_git.git
+# git push -u origin main
+```
+
+```
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git remote add origin git@github.com:d-moto/for_study_git.git
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git remote -v
+origin  git@github.com:d-moto/for_study_git.git (fetch)
+origin  git@github.com:d-moto/for_study_git.git (push)
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git push -u origin master
+Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':d-motoi
+Enumerating objects: 51, done.
+Counting objects: 100% (51/51), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (47/47), done.
+Writing objects: 100% (51/51), 12.82 KiB | 1010.00 KiB/s, done.
+Total 51 (delta 15), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (15/15), done.
+To github.com:d-moto/for_study_git.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+
+```
