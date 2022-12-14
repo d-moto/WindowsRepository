@@ -1526,3 +1526,21 @@ conflict 2
 複数人で同じファイルを変更しない。
 pullやmergeする前に変更中の状態をなくしておく（commitやstashしておく）
 pullするときは、pullするブランチに移動してからpullする
+
+## **ブランチを変更・削除する**
+
+- branch名の変更
+```
+自分が作業しているブランチの名前を変更する
+# git branch -m <branch name>
+# git branch -m new_branch
+```
+
+- branchを削除する
+```
+# git branch -d <branch name>
+# git branch -d feature
+
+強制削除する場合
+# git branch -D <branch name>
+```
