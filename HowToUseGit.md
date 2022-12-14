@@ -1257,3 +1257,7 @@ HEADなどがどのブランチを指しているかを確認するときは、�
 # git merge <remote name/branch name>
 # git merge origin/master　# 作業中のブランチにマージする
 ```
+- マージには3種類ある。
+-- Fast Foward:早送りマージ（ポインタが前にずれるだけ）
+-- Auto Merge:基本的なマージ（マージコミットという新しいコミットを作る。親コミットが2つ）
+-- 
