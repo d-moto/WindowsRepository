@@ -1521,3 +1521,8 @@ conflict
 conflict 2
 >>>>>>> feature ★削除する
 ```
+
+- コンフリクトを防ぐ
+複数人で同じファイルを変更しない。
+pullやmergeする前に変更中の状態をなくしておく（commitやstashしておく）
+pullするときは、pullするブランチに移動してからpullする
