@@ -1240,3 +1240,24 @@ HEADは今作業しているブランチのポインタ
 # すべてのブランチ
 # git branch -a
 ```
+HEADなどがどのブランチを指しているかを確認するときは、以下のコマンドを使用すると良い。
+```
+# git log --oneline --decorate
+```
+
+3. branchを切り替える
+```
+# git checkout <既存のbranch>
+# git checkout -b <new branch>
+```
+
+4. 変更履歴をマージする
+```
+# git merge <branch name>
+# git merge <remote name/branch name>
+# git merge origin/master　# 作業中のブランチにマージする
+```
+- マージには3種類ある。
+-- Fast Foward:早送りマージ（ポインタが前にずれるだけ）
+-- Auto Merge:基本的なマージ（マージコミットという新しいコミットを作る。親コミットが2つ）
+-- 
