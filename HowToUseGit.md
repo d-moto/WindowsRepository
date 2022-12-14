@@ -1099,8 +1099,8 @@ $
 
 ## **バージョン管理しないファイルを指定する**
 
-".gitignore"ファイルを作成する。
-```
+1. ".gitignore"ファイルを作成する。
+
 
 ## **変更を元に戻す**
 
@@ -1543,4 +1543,15 @@ pullするときは、pullするブランチに移動してからpullする
 
 強制削除する場合
 # git branch -D <branch name>
+```
+
+## **remote branch とは何か**
+
+リモートブランチとは、リモートのブランチの状態へのポインタ
+git fetchコマンド（リモートレポジトリの状態を取得する）を実行した際などに作成される。
+```
+$ git branch -a
+* master
+  remotes/origin/feature ★これらがリモートブランチ
+  remotes/origin/master ★これらがリモートブランチ
 ```
