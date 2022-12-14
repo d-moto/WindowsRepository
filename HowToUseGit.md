@@ -1506,3 +1506,18 @@ d580a04 create readme.md file
 f3c1df2 first commit
 [root@localhost63 Git]#
 ```
+
+## **コンフリクト**
+
+- いつ起こるのか？
+同じファイルの同じ行に対して、異なる編集を行ったとき
+
+- どうすればよいか？
+```
+$ cat index.html
+<<<<<<< HEAD ★削除する
+conflict
+======= ★削除する
+conflict 2
+>>>>>>> feature ★削除する
+```
