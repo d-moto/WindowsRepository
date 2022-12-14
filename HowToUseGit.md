@@ -1128,3 +1128,33 @@ HEADとは
 # git commit --amend
 ```
 リモートレポジトリにPushしたコミットはやり直せない。
+
+## **リモートレポジトリを表示する**
+```
+# git remote
+URLも表示する。
+# git remote -v
+```
+
+## **リモートレポジトリを登録する（複数可）**
+```
+# git remote add <remote name> <remote URL>
+
+# git remote add origin https://......
+# git remote add tutorial https://.....
+```
+
+## **リモートレポジトリから情報を取得する**
+リモートレポジトリから情報を取得する方法は、2種類ある。
+- fetch
+- pull
+
+1. fetch
+```
+# git fetch <remote name>
+# git fetch origin
+```
+fetch はリモートレポジトリからローカルレポジトリへ情報を持ってくる。リモートのワークツリーへは反映されない。
+ワークツリーへ反映させたい時は、git mergeコマンドを使用する。
+
+
