@@ -1260,4 +1260,192 @@ HEADなどがどのブランチを指しているかを確認するときは、�
 - マージには3種類ある。
 -- Fast Foward:早送りマージ（ポインタが前にずれるだけ）
 -- Auto Merge:基本的なマージ（マージコミットという新しいコミットを作る。親コミットが2つ）
--- 
+-- conflict
+
+Fast Forwardの例：
+masterブランチからbugfixブランチを作成し、bugfixブランチ上で、bugfix.txtを作成。
+そのあとに、bugfixブランチの変更をmasterブランチへマージする。
+この時、masterブランチでは、bugfixブランチ作成時点から、変更が一切ないため、masterブランチのポインタは、bugfixブランチの最新のコミットへずれるだけとなる。
+これが、Fast Forward
+
+```
+[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# touch bugfix.txt
+[root@localhost63 Git]# git add bugfix.txt
+[root@localhost63 Git]# git commit -m "create bugfix.txt"
+[bugfix 900dbde] create bugfix.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix.txt
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:52 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git checkout master
+Switched to branch 'master'
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git merge bugfix
+Updating 355969c..900dbde
+Fast-forward
+ bugfix.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix.txt
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+```
+
+Auto Mergeの例：
+
+```
+[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# touch master-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:58 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git add master-fix
+[root@localhost63 Git]# git commit -m "master-fix added"
+[master 7fca0f9] master-fix added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 master-fix
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]#
+[root@localhost63 Git]#
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# touch bugfix-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:59 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git add .
+[root@localhost63 Git]# git commit -m "bugfix-fix added"
+[bugfix 4158baf] bugfix-fix added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:59 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout master
+Switched to branch 'master'
+[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:59 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git merge bugfix
+hint: Waiting for your editor to close the file... code --wait: code: コマンドが見つかりません
+error: There was a problem with the editor 'code --wait'.
+Not committing merge; use 'git commit' to complete the merge.
+[root@localhost63 Git]# git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+        new file:   bugfix-fix
+
+[root@localhost63 Git]# git commit -m "merge bugfix-fix"
+[master 4427fe3] merge bugfix-fix
+[root@localhost63 Git]#
+[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -> master) merge bugfix-fix
+4158baf (bugfix) bugfix-fix added
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c (origin/master) add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 22:00 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:59 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+```
