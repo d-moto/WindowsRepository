@@ -1111,6 +1111,7 @@ $
 # git checkout -- <directory name>
 *全変更を取り消す
 # git checkout -- .
+```
 
 2. ステージした変更を取り消す
 ```
@@ -1118,6 +1119,7 @@ $
 # git reset HEAD <directory name>
 *全変更を取り消す
 # git reset HEAD .
+```
 指定した変更をステージから取り消すだけなので、ワークツリーへの影響はない。
 
 HEADとは
@@ -1218,18 +1220,16 @@ Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':
 
 ## **ブランチとマージ**
 
-1. branchとは  
-並行して複数機能を開発するための仕組み
+1. branchとは<br>
+並行して複数機能を開発するための仕組み  
+Gitのデータの持ち方  
+リポジトリの中身  
+圧縮ファイル、ツリーファイル、コミットファイル  
+コミットはスナップショット  
+ブランチはコミットIDを指したポインタ  
+HEADは今作業しているブランチのポインタ  
 
-Gitのデータの持ち方
-リポジトリの中身
-圧縮ファイル、ツリーファイル、コミットファイル
-コミットはスナップショット
-
-ブランチはコミットIDを指したポインタ
-HEADは今作業しているブランチのポインタ
-
-2. branchを新規に追加する
+2. branchを新規に追加する<br>
 ```
 # git branch <branch name>
 # git branch testbranch
@@ -1245,13 +1245,13 @@ HEADなどがどのブランチを指しているかを確認するときは、�
 # git log --oneline --decorate
 ```
 
-3. branchを切り替える
+3. branchを切り替える<br>
 ```
 # git checkout <既存のbranch>
 # git checkout -b <new branch>
 ```
 
-4. 変更履歴をマージする
+4. 変更履歴をマージする<br>
 ```
 # git merge <branch name>
 # git merge <remote name/branch name>
