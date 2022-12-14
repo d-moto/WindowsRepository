@@ -1216,4 +1216,27 @@ Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':
 # git remote rm origin2
 ```
 
+## **ブランチとマージ**
 
+1. branchとは
+並行して複数機能を開発するための仕組み
+
+Gitのデータの持ち方
+リポジトリの中身
+圧縮ファイル、ツリーファイル、コミットファイル
+コミットはスナップショット
+
+ブランチはコミットIDを指したポインタ
+HEADは今作業しているブランチのポインタ
+
+2. branchを新規に追加する
+```
+# git branch <branch name>
+# git branch testbranch
+```
+
+```
+# git branch
+# すべてのブランチ
+# git branch -a
+```
