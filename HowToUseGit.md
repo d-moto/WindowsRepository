@@ -1087,3 +1087,27 @@ mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
 $
 
 ```
+
+## **コマンドにエイリアスをつける**
+
+```
+# git config --global alias.ci commit
+# git config --global alias.st status
+# git config --global alias.br branch
+# git config --global alias.co checkout
+```
+
+## **バージョン管理しないファイルを指定する**
+
+".gitignore"ファイルを作成する。
+```
+
+## **変更を元に戻す**
+
+1. ファイルの変更を取り消す
+```
+# git checkout -- <file name>
+-- ワークツリーの状態をステージの状態と同じにする。
+# git checkout -- <directory name>
+*全変更を取り消す
+# git checkout -- .
