@@ -1179,3 +1179,41 @@ pullを使うのは、リモートから情報を取得してマージまでを�
 # git fetch origin master
 # git merge origin/master
 ```
+
+**注意**
+git pull は、それを実行すると、現在自分がいるブランチにマージが実行されてしまう。
+
+例えば、[maste][sub-branch]という2つのブランチがあったとして、現在masterブランチにいるとき、
+```
+# git pull origin sub-branch
+```
+を実行すると、今いるmasterブランチに、sub-branchの内容がマージされてしまう。
+
+## **リモートの詳細表示を知る**
+```
+# git remote show <remote name>
+# git remote show origin
+```
+```
+$ git remote show origin
+Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':
+* remote origin
+  Fetch URL: git@github.com:d-moto/WindowsRepository.git
+  Push  URL: git@github.com:d-moto/WindowsRepository.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+```
+
+## **リモートの変名、削除**
+```
+# git remote rename <old remote name> <new remote name>
+# git remote rename origin origin2
+
+# git remote rm <remote name>
+# git remote rm origin2
+```
+
+
