@@ -1111,3 +1111,20 @@ $
 # git checkout -- <directory name>
 *全変更を取り消す
 # git checkout -- .
+
+2. ステージした変更を取り消す
+```
+# git reset HEAD <file name>
+# git reset HEAD <directory name>
+*全変更を取り消す
+# git reset HEAD .
+指定した変更をステージから取り消すだけなので、ワークツリーへの影響はない。
+
+HEADとは
+自分がいるブランチの最新のコミット状態（リモートレポジトリの最新のコミット状態）を表している。
+
+3. 直前のコミットをやり直す
+```
+# git commit --amend
+```
+リモートレポジトリにPushしたコミットはやり直せない。
