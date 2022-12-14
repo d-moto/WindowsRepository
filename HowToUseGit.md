@@ -1449,3 +1449,60 @@ drwxr-xr-x 3 root root  43 11月 28 11:13 Python
 -rw-r--r-- 1 root root  43 11月 11 23:50 test
 [root@localhost63 Git]#
 ```
+
+ちなみに、masterブランチの状態をbugfixブランチに取り込むこともできる。
+```
+[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -> master, origin/master) merge bugfix-fix ★
+4158baf (bugfix) bugfix-fix added ★
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# git merge master
+Updating 4158baf..4427fe3
+Fast-forward
+ master-fix | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 master-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 22:00 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 22:04 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -> bugfix, origin/master, master) merge bugfix-fix ★bugfixブランチが示すコミットが1つ前にずれている。
+4158baf bugfix-fix added
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]#
+```
