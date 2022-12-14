@@ -1218,7 +1218,7 @@ Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':
 
 ## **ブランチとマージ**
 
-1. branchとは
+1. branchとは  
 並行して複数機能を開発するための仕組み
 
 Gitのデータの持ち方
