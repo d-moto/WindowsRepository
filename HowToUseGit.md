@@ -1157,4 +1157,25 @@ URLも表示する。
 fetch はリモートレポジトリからローカルレポジトリへ情報を持ってくる。リモートのワークツリーへは反映されない。
 ワークツリーへ反映させたい時は、git mergeコマンドを使用する。
 
+```
+# git fetch origin
+# git branch -a
+# git checkout remotes/origin/master
+# ls -al
+# git checkout master
+# git branch -a
+# git merge origin/master
+```
 
+2. pull
+pullを使うのは、リモートから情報を取得してマージまでを一度にやりたい時。
+ワークツリーへも変更が反映される。
+
+```
+# git pull <remote name> <branch name>
+# git pull origin master
+
+上記のコマンドは以下のコマンドと同値
+# git fetch origin master
+# git merge origin/master
+```
