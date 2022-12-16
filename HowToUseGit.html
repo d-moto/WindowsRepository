@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HowToUseGit.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="how-to-use-git"><strong>How To Use Git</strong></h1>
+<p><strong>NOTE</strong></p>
+<p>git repository location:</p>
+<ul>
+<li>windowns11 --&gt; /c/Users/mokos/Git_work</li>
+<li>Linux --&gt; /home/alma1/Git</li>
+</ul>
+<p>git config file location:</p>
+<ul>
+<li>windows11 --&gt; /c/Users/mokos/.gitconfig</li>
+<li>Linux --&gt; /root/.gitconfig</li>
+</ul>
+<h2 id="1-set-up-git"><strong>1. Set Up Git</strong></h2>
+<p>ログインしているユーザーで初めてGitを使用する場合は、以下の設定が必要。</p>
+<ol>
+<li>set up user name</li>
+</ol>
+<pre class="hljs"><code><div>$ git config --global user.name motoi
+</div></code></pre>
+<ol start="2">
+<li>set up email</li>
+</ol>
+<pre class="hljs"><code><div>$ git config --global user.email goodddd6@gmail.com
+</div></code></pre>
+<ol start="3">
+<li>check the configuration</li>
+</ol>
+<pre class="hljs"><code><div>$ git config --list
+</div></code></pre>
+<ol start="4">
+<li>set up Visual Studio Code</li>
+</ol>
+<pre class="hljs"><code><div>$ git config --global core.editor &quot;code --wait&quot;
+</div></code></pre>
+<ol start="5">
+<li>check the configuration</li>
+</ol>
+<pre class="hljs"><code><div>$ git config core.editor
+</div></code></pre>
+<p>※When you execute this command &quot;git config --global&quot;, the file &quot;/c/Users/mokos/.gitconfig&quot; is created and the configuration is written.<br>
+※&quot;git config --globalコマンドを実行すると、そのユーザーのホームディレクトリ（今回の場合は、/c/User/mokos/.gitconfig）の.gitconfigファイルが作成され、そのファイルに設定が書き込まれる。</p>
+<h2 id="2-set-up-and-create-local-repository"><strong>2. Set up and create local repository</strong></h2>
+<p>ローカルレポジトリの設定を行う。</p>
+<ol>
+<li>careate directory</li>
+</ol>
+<pre class="hljs"><code><div>$ cd ~
+$ mkdir Git_work
+</div></code></pre>
+<ol start="2">
+<li>create something</li>
+</ol>
+<pre class="hljs"><code><div>$ touch HowToUseGit.md
+</div></code></pre>
+<ol start="3">
+<li>create local repository</li>
+</ol>
+<pre class="hljs"><code><div>$ cd git-ichiyasa
+$ git init
+</div></code></pre>
+<ol start="4">
+<li>check your directory</li>
+</ol>
+<pre class="hljs"><code><div>$ ls -al
+</div></code></pre>
+<ol start="5">
+<li>check status of local repository</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+</div></code></pre>
+<ol start="6">
+<li>register files by git add command</li>
+</ol>
+<pre class="hljs"><code><div>$ git add HowToUseGit.md
+</div></code></pre>
+<ol start="7">
+<li>check status</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+</div></code></pre>
+<p>※Files that are not registered under git management are treated as &quot;Untracked files&quot; by the git status command.<br>
+※Gitに登録されていないファイルはgit statusコマンドで、&quot;Untracked files&quot;として表示される。</p>
+</br>
+<details>
+<summary>
+example
+</summary>
+<pre class="hljs"><code><div><span class="hljs-meta">
+$</span><span class="bash"> git status</span>
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        HowToUseGit.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git add HowToUseGit.md</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git status</span>
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached &lt;file&gt;..." to unstage)
+        new file:   HowToUseGit.md
+
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span>
+</div></code></pre>
+</details>
+</br>
+</br>
+<h2 id="3-check-differences-of-git-files"><strong>3. Check differences of git files</strong></h2>
+<p>Gitの変更履歴を確認する。</p>
+<ol>
+<li>Check the difference between the work tree and the staging area<br>
+ワークツリーとステージとの差分を確認する時。</li>
+</ol>
+<pre class="hljs"><code><div>$ git diff
+</div></code></pre>
+<ol start="2">
+<li>Check the difference between the staging area and the git directory<br>
+ローカルレポジトリとステージとの差分を確認する時。</li>
+</ol>
+<pre class="hljs"><code><div>$ git diff --cached
+</div></code></pre>
+</br>
+<p><strong>EXAMPLE</strong></p>
+<pre class="hljs"><code><div>$ git diff
+diff --git a/HowToUseGit.md b/HowToUseGit.md
+index 0a161d4..d0fd93c 100644
+#--- a/HowToUseGit.md
+#+++ b/HowToUseGit.md
+@@ -95,4 +95,4 @@ $ git diff
+ #```
+ $ git diff --cached
+ #```
+#-
+#+3.
+#
+#mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git diff --cached
+diff --git a/HowToUseGit.md b/HowToUseGit.md
+new file mode 100644
+index 0000000..0a161d4
+#--- /dev/null
+#+++ b/HowToUseGit.md
+@@ -0,0 +1,98 @@
+#+
+#+# How To Use Git
+#+
+#+## Set Up Git
+#+1. set up user name
+................................
+</div></code></pre>
+</br>
+<h2 id="4-commit-the-files"><strong>4. Commit the files</strong></h2>
+<p>ローカルレポジトリにコミットする。</p>
+<ol>
+<li>check status of local repository</li>
+</ol>
+<pre class="hljs"><code><div>$ git statsu
+</div></code></pre>
+<ol start="2">
+<li>execute commit</li>
+</ol>
+<pre class="hljs"><code><div>$ git commit
+</div></code></pre>
+<ol start="3">
+<li>atom is opend</li>
+<li>write commit message, save and close the file</li>
+<li>check status</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+</div></code></pre>
+</br>
+<p><strong>EXAMPLE</strong></p>
+<pre class="hljs"><code><div>$ git status
+On branch master
+nothing to commit, working tree clean
+</div></code></pre>
+</br>
+</br>
+<h2 id="5-%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%A7%E3%81%AE%E6%93%8D%E4%BD%9C%E3%82%92%E5%8F%96%E3%82%8A%E6%B6%88%E3%81%99checkout-reset"><strong>5. ローカルリポジトリでの操作を取り消す（checkout, reset）</strong></h2>
+<p>ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について。<br>
+ワークツリーへの変更の取り消しは、ファイルの状態が直前のコミット（または直前のステージングエリアへの登録）に戻る。<br>
+ステージングエリアへの変更の取り消しは、ファイルの状態はそのままでステージングエリアへの登録だけを取り消します。</p>
+</br>
+<hr>
+<p>[Work Tree]  --&quot;git add&quot;--&gt;  [Staging area]  --&quot;git commit&quot;--&gt;  [Git Directory]<br>
+[Work Tree]  &lt;--&quot;git reset&quot;--  [Staging area]<br>
+[Work Tree]  &lt;-----------------&quot;git checkout&quot;----------------- [Git Directory]</p>
+<hr>
+</br>
+<ul>
+<li><strong>Work Treeの変更を取り消すコマンド（git checkout）</strong><br>
+ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、&quot;git checkout&quot;コマンドで、ワークツリーの変更を取り消せる。</li>
+</ul>
+<pre class="hljs"><code><div>$ git checkout -- sample.txt
+</div></code></pre>
+<pre class="hljs"><code><div>#[Work Tree (added something)] [staging area (something added is not resistered)] [Git Derectory (newest)]  
+#At this time,  
+#[Work Tree]!=[Git Directory]  
+#--&gt;git checkout  
+#[Work Tree (same as GIt Directory)] [Staging Area (something added is not resistered)] [Git Directory (newest)]  
+#At this time,  
+#[Work Tree]=[Git Directory]
+</div></code></pre>
+<details>
+<summary>
+Example
+</summary>
+<ol>
+<li>Create a new file, and commit</li>
+</ol>
+<pre class="hljs"><code><div>$ touch GitCheckOut.txt
+$ git add GitCheckOut.txt
+$ git commit -m &quot;File to check git checkout command&quot;
+</div></code></pre>
+<ol start="2">
+<li>Write to the file you just created.</li>
+</ol>
+<pre class="hljs"><code><div>$ echo &quot;this is sample script&quot; &gt;&gt; GitCheckOut.txt
+</div></code></pre>
+<ol start="3">
+<li>Check the status of the work tree.</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+</div></code></pre>
+<ol start="4">
+<li>Cancel changes to the work tree.</li>
+</ol>
+<pre class="hljs"><code><div>$ git checkout -- GitCheckOut.txt
+</div></code></pre>
+<ol start="5">
+<li>Check the status of the GitCheckOut.txt</li>
+</ol>
+<pre class="hljs"><code><div>$ cat GitCheckOut.txt
+</div></code></pre>
+<p>It should be back to a blank slate.
+Strictly speaking, the &quot;git checkout&quot; command reverts to the staging area state, not the last committed state.</p>
+</details>
+<details>
+<summary>
+Execution example
+</summary>
+<pre class="hljs"><code><div><span class="hljs-meta">
+$</span><span class="bash"> git status</span>
+On branch master
+nothing to commit, working tree clean
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> touch GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git add GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git commit -m <span class="hljs-string">"File to check git checkout command"</span></span>
+[master 15c2ddc] File to check git checkout command
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 GitCheckOut.txt
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> cat GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">echo</span> <span class="hljs-string">"this is sample script"</span> &gt;&gt; GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git status</span>
+On branch master
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+        modified:   GitCheckOut.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> cat GitCheckOut.txt</span>
+this is sample script
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> git checkout -- GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span><span class="bash"> cat GitCheckOut.txt</span>
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+<span class="hljs-meta">$</span>
+</div></code></pre>
+</details>
+<br>
+<ul>
+<li><strong>ステージングエリアへの登録を取り消すコマンド（git reset）</strong><br><br>
+間違ってファイルの状態をステージングエリアに登録してしまった時は、<br>
+git resetコマンドで取り消せる。<br>
+git checkoutコマンドとは異なり、ワークツリーの状態は変更されない。<br></li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">$</span><span class="bash"> git reset HEAD GitCheckOut.txt</span>
+</div></code></pre>
+<p>resetコマンドの後ろにHEADと指定している。<br>
+HEADはこのローカルレポジトリで<strong>最後にコミットした状態</strong>を意味している。<br>
+ステージングエリアの状態を最後のコミットと同じ状態にリセットするという意味になる。<br><br></p>
+<details>
+<summary>
+Example
+</summary>
+<ol>
+<li>Change file contents</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 Git]# pwd
+/home/alma1/Git
+[root@localhost63 Git]# ls
+readme.md  test
+[root@localhost63 Git]# cat test
+[root@localhost63 Git]# echo &quot;`date`&quot; &gt;&gt; test
+[root@localhost63 Git]# cat test
+2022年 11月 11日 金曜日 23:50:52 JST
+[root@localhost63 Git]#
+</div></code></pre>
+<ol start="2">
+<li>Register the files to staging Area</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git add test
+</div></code></pre>
+<ol start="3">
+<li>Check the status of the local repository</li>
+</ol>
+<pre class="hljs"><code><div># [root@localhost63 Git]# git status
+# On branch master
+# Changes to be committed:
+#   (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+        modified:   test
+# [root@localhost63 Git]#
+</div></code></pre>
+<ol start="4">
+<li>Reset the registration to staging area</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git reset HEAD test
+Unstaged changes after reset:
+M       test
+</div></code></pre>
+<ol start="5">
+<li>Check the status of the local repository</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git status
+On branch master
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   test
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+[root@localhost63 Git]#
+</div></code></pre>
+<ol start="6">
+<li>Check the contents of test file</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 Git]# cat test
+2022年 11月 11日 金曜日 23:50:52 JST
+[root@localhost63 Git]#
+</div></code></pre>
+<p>ワークツリーのファイルの内容は変更されていない。<br>
+ファイルの内容も変更したければ、git checkoutを使う。</p>
+</details>
+</br>
+<h2 id="7-check-the-commit-history"><strong>7. Check the commit history</strong></h2>
+<ul>
+<li>Check the commit history</li>
+</ul>
+<pre class="hljs"><code><div>$ git log
+</div></code></pre>
+<ul>
+<li>Check the commit history with diffs</li>
+</ul>
+<pre class="hljs"><code><div>$ git log -p
+</div></code></pre>
+</br>
+<h2 id="8-preparing-to-use-git-hub"><strong>8. Preparing to use git hub</strong></h2>
+<ul>
+<li>Set up a public key in git hub</li>
+</ul>
+<ol>
+<li>Generate the SSH key</li>
+</ol>
+<pre class="hljs"><code><div>$ ssh-keygen -t rsa -b 4096 -C &quot;goodddd6@gmail.com&quot;
+|
+|
+|
+[root@localhost63 Git]# ssh-keygen -t rsa -b 4096 -C &quot;goodddd6@gmail.com&quot;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /home/alma1/Git/sshkey/id_rsa
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/alma1/Git/sshkey/id_rsa.
+Your public key has been saved in /home/alma1/Git/sshkey/id_rsa.pub.
+The key fingerprint is:
+SHA256:TZ6yluXlFJbcq1pj1cz+/FhjTr9nKMHAS5AeqUWm5qo goodddd6@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|       .oo       |
+|       o*  . o   |
+|      o+ +. = .  |
+|     o. .++o . = |
+|      . S.=+o o +|
+|     .   *.+oo . |
+|    .   + . *. =o|
+|   .   .   +..=+*|
+|  E       .  ..+O|
++----[SHA256]-----+
+[root@localhost63 Git]#
+</div></code></pre>
+<ol start="2">
+<li>
+<p>Register the ssh public key to git hub</p>
+</li>
+<li>
+<p>Enter the command to check the connection to the git hub</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>$ ssh -T git@github.commit
+</div></code></pre>
+</br>
+<h2 id="9-clone-the-remote-repository"><strong>9. Clone the remote repository</strong></h2>
+<ol>
+<li>Get the URL of the remote repository</li>
+</ol>
+<pre class="hljs"><code><div>git@github.com:d-moto/ichiyasaGitSample.git
+</div></code></pre>
+<ol start="2">
+<li>Execute clone</li>
+</ol>
+<pre class="hljs"><code><div>$ git clone git@github.com:d-moto/ichiyasaGitSample.git
+</div></code></pre>
+<p><strong>note</strong>
+新しくリモートレポジトリが作成されるので、現在操作しているレポジトリがあれば、<br>
+その中から出てから、上記のコマンドを叩く。</p>
+<pre class="hljs"><code><div>[root@localhost63 Git]# cd ..
+[root@localhost63 alma1]# mkdir ichiyasa-git-repository
+[root@localhost63 alma1]# cd ichiyasa-git-repository/
+[root@localhost63 ichiyasa-git-repository]# ls
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# git status
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# ls -al
+合計 4
+drwxr-xr-x  2 root  root     6 11月 15 22:49 .
+drwx------ 34 alma1 alma1 4096 11月 15 22:49 ..
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# git clone git@github.com:d-moto/ichiyasaGitSample.git
+Cloning into 'ichiyasaGitSample'...
+Enter passphrase for key '/root/.ssh/id_rsa':
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (5/5), done.
+
+remote: Total 33 (delta 0), reused 2 (delta 0), pack-reused 28
+Receiving objects: 100% (33/33), 1.36 MiB | 1.17 MiB/s, done.
+Resolving deltas: 100% (2/2), done.
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]#
+[root@localhost63 ichiyasa-git-repository]# ls
+ichiyasaGitSample
+[root@localhost63 ichiyasa-git-repository]# cd ichiyasaGitSample/
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# cd ..
+[root@localhost63 ichiyasa-git-repository]# ls -al
+合計 4
+drwxr-xr-x  3 root  root    31 11月 15 22:49 .
+drwx------ 34 alma1 alma1 4096 11月 15 22:49 ..
+drwxr-xr-x  5 root  root    99 11月 15 22:52 ichiyasaGitSample
+[root@localhost63 ichiyasa-git-repository]# cd ichiyasaGitSample/
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# ls -al
+合計 16
+drwxr-xr-x 5 root root   99 11月 15 22:52 .
+drwxr-xr-x 3 root root   31 11月 15 22:49 ..
+drwxr-xr-x 8 root root  163 11月 15 22:52 .git
+-rw-r--r-- 1 root root   56 11月 15 22:52 .gitignore
+-rw-r--r-- 1 root root  104 11月 15 22:52 README.md
+drwxr-xr-x 5 root root   40 11月 15 22:52 assets
+drwxr-xr-x 2 root root   42 11月 15 22:52 images
+-rw-r--r-- 1 root root 6369 11月 15 22:52 index.html
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<h2 id="10-create-a-dedicated-branch-and-switch"><strong>10. Create a dedicated branch and switch</strong></h2>
+<ol>
+<li>Create branch</li>
+</ol>
+<pre class="hljs"><code><div>$ git branch &lt;new branch name&gt;
+
+$ git branch update-venue
+</div></code></pre>
+<ol start="2">
+<li>Check the branch in use</li>
+</ol>
+<pre class="hljs"><code><div>$ git branch
+
+[root@localhost63 ichiyasaGitSample]# git branch
+* master
+  update-venue
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<p>A list of branches is displayed.
+[*] is the branch currently in use.</p>
+<ol start="3">
+<li>Check out the branch (Switch the branch)</li>
+</ol>
+<pre class="hljs"><code><div>$ git checkout &lt;branch-name&gt;
+
+$ git branch update-venue
+
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<ol start="4">
+<li>Check the branch in use</li>
+</ol>
+<pre class="hljs"><code><div>$ git branch
+
+or 
+
+$ git status
+
+[root@localhost63 ichiyasaGitSample]# git status
+On branch ★update-venue
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]#
+
+</div></code></pre>
+</br>
+<h2 id="11-edit-file-and-commit"><strong>11. Edit file and commit</strong></h2>
+<p>On the branch you just created, edit the file and commit.</p>
+<ol>
+<li>Edit &quot;index.html&quot;</li>
+</ol>
+<pre class="hljs"><code><div> 55                     &lt;article&gt;
+ 56                         &lt;h3&gt;イベント日時・場所&lt;/h3&gt;
+ 57                         &lt;p&gt;3月23日 19:00開始&lt;/p&gt;
+ 58                         &lt;p&gt;株式会社インプレス12345678 イベントセミナー会場&lt;/p&gt;
+ 59                     &lt;/article&gt;
+ 
+ |
+
+ 55                     &lt;article&gt;
+ 56                         &lt;h3&gt;イベント日時・場所&lt;/h3&gt;
+ 57                         &lt;p&gt;3月23日 19:00開始&lt;/p&gt;
+ 58                         &lt;p&gt;株式会社インプレス イベントセミナー会場&lt;/p&gt;
+ 59                     &lt;/article&gt;
+</div></code></pre>
+<ol start="2">
+<li>Check the status</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<ol start="3">
+<li>Execute commit</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 ichiyasaGitSample]# git add index.html
+[root@localhost63 ichiyasaGitSample]# git commit -m &quot;Edit venue (delete 12345678)&quot;
+[update-venue 353b7df] Edit venue (delete 12345678)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<ol start="4">
+<li>Compare operations on branches (Compare against the master branch)</li>
+</ol>
+<pre class="hljs"><code><div>[root@localhost63 ichiyasaGitSample]# git diff master
+diff --git a/index.html b/index.html
+index 35483fe..ced2022 100644
+--- a/index.html
++++ b/index.html
+@@ -55,7 +55,7 @@
+                     &lt;article&gt;
+                         &lt;h3&gt;イベント日時・場所&lt;/h3&gt;
+                         &lt;p&gt;3月23日 19:00開始&lt;/p&gt;
+-                        &lt;p&gt;株式会社インプレス12345678 イベントセミナー会場&lt;/p&gt;
++                        &lt;p&gt;株式会社インプレス イベントセミナー会場&lt;/p&gt;
+                     &lt;/article&gt;
+                     &lt;article&gt;
+                         &lt;h3&gt;スピーカー&lt;/h3&gt;
+@@ -159,4 +159,4 @@
+ &lt;script src=&quot;assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+ &lt;/body&gt;
+-&lt;/html&gt;
+\ No newline at end of file
++&lt;/html&gt;
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<h2 id="12-create-the-pull-request"><strong>12. Create the pull request</strong></h2>
+<p>Changes made in the local repository are reflected in the remote repository. <br>
+Then, the operations in the newly created branch are merged into the master branch. <br>
+The master branch will be the latest state.
+The name of the remote repository to be pushed can be found with the &quot;git remote -v&quot; command.</p>
+<pre class="hljs"><code><div>$ git remote -v
+
+[root@localhost63 ichiyasaGitSample]# git remote -v
+origin  git@github.com:d-moto/ichiyasaGitSample.git (fetch)
+origin  git@github.com:d-moto/ichiyasaGitSample.git (push)
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<ol>
+<li>Push the branch</li>
+</ol>
+<pre class="hljs"><code><div>$ git push &lt;Name of the remote repository to be pushed&gt; &lt;Branch name to push&gt;
+
+[root@localhost63 ichiyasaGitSample]# git push origin update-venue
+Enter passphrase for key '/root/.ssh/id_rsa': d-motoi
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 297 bytes | 297.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:d-moto/ichiyasaGitSample.git
+   a2373f9..353b7df  update-venue -&gt; update-venue
+[root@localhost63 ichiyasaGitSample]#
+
+
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+[root@localhost63 ichiyasaGitSample]# git branch update-venue2
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]# git checkout update-venue2
+Switched to branch 'update-venue2'
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+  update-venue
+* update-venue2
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]#
+[root@localhost63 ichiyasaGitSample]# ls
+README.md  assets  images  index.html
+[root@localhost63 ichiyasaGitSample]# vi README.md
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   README.md
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+[root@localhost63 ichiyasaGitSample]# git add README.md
+[root@localhost63 ichiyasaGitSample]# git commit -m &quot;edit README.md&quot;
+[update-venue2 2a37202] edit README.md
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[root@localhost63 ichiyasaGitSample]# git status
+On branch update-venue2
+nothing to commit, working tree clean
+[root@localhost63 ichiyasaGitSample]# git remote -v
+origin  git@github.com:d-moto/ichiyasaGitSample.git (fetch)
+origin  git@github.com:d-moto/ichiyasaGitSample.git (push)
+[root@localhost63 ichiyasaGitSample]# git push origin update-venue2
+Enter passphrase for key '/root/.ssh/id_rsa':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'update-venue2' on GitHub by visiting:
+remote:      https://github.com/d-moto/ichiyasaGitSample/pull/new/update-venue2
+remote:
+To github.com:d-moto/ichiyasaGitSample.git
+ * [new branch]      update-venue2 -&gt; update-venue2
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<h2 id="13-retrieve-the-contents-of-a-remote-repository-to-the-local-repository"><strong>13. Retrieve the contents of a remote repository to the local repository</strong></h2>
+<p>Reflect from remote repository to local repository.</p>
+<ul>
+<li>git pull command</li>
+</ul>
+<pre class="hljs"><code><div>$ git pull origin master 
+</div></code></pre>
+<ul>
+<li>git fetch origin</li>
+</ul>
+<pre class="hljs"><code><div>$ git fetch origin
+</div></code></pre>
+<h2 id="14-use-multiple-branches"><strong>14. Use multiple branches</strong></h2>
+<ol>
+<li>Create and checkout branch</li>
+</ol>
+<pre class="hljs"><code><div>$ git checkout -b speakers-info
+</div></code></pre>
+<ol start="2">
+<li>
+<p>Modify HTML file</p>
+</li>
+<li>
+<p>Add TODO comment</p>
+</li>
+<li>
+<p>Prepare images</p>
+</li>
+<li>
+<p>Check HTML file on browser</p>
+</li>
+<li>
+<p>Execute commit</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+$ git add -A #Add all changes to stage
+$ git status
+$ git commit -m &quot;add speaker infomation&quot;
+</div></code></pre>
+<ol start="7">
+<li>Push remote repository</li>
+</ol>
+<pre class="hljs"><code><div>$ git push origin speaker-info
+</div></code></pre>
+<p>[root@localhost63 ichiyasaGitSample]# git push origin speakers-info
+Enter passphrase for key '/root/.ssh/id_rsa': d-motoi
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 756 bytes | 756.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'speakers-info' on GitHub by visiting:
+remote:      https://github.com/d-moto/ichiyasaGitSample/pull/new/speakers-info
+remote:
+To github.com:d-moto/ichiyasaGitSample.git</p>
+<ul>
+<li>[new branch]      speakers-info -&gt; speakers-info
+[root@localhost63 ichiyasaGitSample]#</li>
+</ul>
+<ol start="8">
+<li>Create new branch from master branch</li>
+</ol>
+<pre class="hljs"><code><div>$ git checkout master
+$ git checkout -b sessions-info
+</div></code></pre>
+<pre class="hljs"><code><div>[root@localhost63 ichiyasaGitSample]# git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+[root@localhost63 ichiyasaGitSample]# git branch
+* master
+  speakers-info
+  update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]# git checkout -b sessions-info
+Switched to a new branch 'sessions-info'
+[root@localhost63 ichiyasaGitSample]# git branch
+  master
+* sessions-info
+  speakers-info
+  update-venue
+  update-venue2
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<p><strong>NOTE</strong> :<br>
+Look at the difference between speakers-info and sessions-info.<br>
+At present, the sessions-info branch is a copy of the master branch. （Changes made in speakers-info are not reflected).</p>
+<pre class="hljs"><code><div>[root@localhost63 ichiyasaGitSample]# git diff sessions-info speakers-info
+diff --git a/index.html b/index.html
+index 35483fe..f53e6fc 100644
+--- a/index.html
++++ b/index.html
+@@ -60,17 +60,21 @@
+                     &lt;article&gt;
+                         &lt;h3&gt;スピーカー&lt;/h3&gt;
+                         &lt;div class=&quot;speaker&quot;&gt;
++                       &lt;!--TODO : プロフィール画像を受け取ったら更新する--&gt;
+                             &lt;img src=&quot;images/speaker1.png&quot; alt=&quot;&quot; class=&quot;image&quot;/&gt;
+                             &lt;div class=&quot;inner&quot;&gt;
+-                                &lt;h4&gt;1人目: 未定&lt;/h4&gt;
+-                                &lt;p&gt;1人目のプロフィール&lt;/p&gt;
++                                &lt;h4&gt;いろふさん&lt;/h4&gt;
++                               &lt;p&gt;大阪を中心に仕事をしている、ふつうのプログラマです。&lt;/p&gt;
++                               &lt;p&gt;関西Javaエンジニア会の中の人。&lt;/p&gt;
++                               &lt;p&gt;主に業務Webアプリの開発をしてきました。&lt;/p&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                         &lt;div class=&quot;speaker&quot;&gt;
+                             &lt;img src=&quot;images/speaker2.png&quot; alt=&quot;&quot; class=&quot;image&quot;/&gt;
+                             &lt;div class=&quot;inner&quot;&gt;
+-                                &lt;h4&gt;2人目: 未定&lt;/h4&gt;
+-                                &lt;p&gt;2人目のプロフィール&lt;/p&gt;
++                                &lt;h4&gt;うらがみさん&lt;/h4&gt;
++                                &lt;p&gt;大阪のプログラマーです。GitHubを日常的に利用しています。&lt;/p&gt;
++                               &lt;p&gt;一年間毎日コミットをしてプロフィールページのcontributionsを緑一色にしたことがあります。&lt;/p&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                     &lt;/article&gt;
+@@ -159,4 +163,4 @@
+ &lt;script src=&quot;assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+ &lt;/body&gt;
+-&lt;/html&gt;
+\ No newline at end of file
++&lt;/html&gt;
+[root@localhost63 ichiyasaGitSample]#
+</div></code></pre>
+<ol start="9">
+<li>
+<p>Edit the file and proceed to merge</p>
+</li>
+<li>
+<p>Execute commit</p>
+</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+$ git add index.html
+$ git commit -m &quot;セッション情報を記載した&quot;
+</div></code></pre>
+<ol start="11">
+<li>Push to remote repository and merge</li>
+</ol>
+<pre class="hljs"><code><div>$ git push origin sessions-info
+</div></code></pre>
+<p>Merge on Github.<br>
+Contents of the index.html file at this time.<br></p>
+<pre class="hljs"><code><div>&lt;!DOCTYPE HTML&gt;
+&lt;!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+--&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Ichiyasa Git User Group&lt;/title&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/main.css&quot;/&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- Header --&gt;
+&lt;section id=&quot;header&quot;&gt;
+    &lt;header&gt;
+        &lt;span class=&quot;image avatar&quot;&gt;&lt;img src=&quot;images/avatar.png&quot; alt=&quot;&quot;/&gt;&lt;/span&gt;
+        &lt;h1 id=&quot;logo&quot;&gt;&lt;a href=&quot;#&quot;&gt;Ichiyasa Git User Group&lt;/a&gt;&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;nav id=&quot;nav&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#one&quot; class=&quot;active&quot;&gt;Japan Git User Groupとは&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#two&quot;&gt;イベントのお知らせ&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;#three&quot;&gt;過去のイベント&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/section&gt;
+
+&lt;!-- Wrapper --&gt;
+&lt;div id=&quot;wrapper&quot;&gt;
+
+    &lt;!-- Main --&gt;
+    &lt;div id=&quot;main&quot;&gt;
+
+        &lt;!-- One --&gt;
+        &lt;section id=&quot;one&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;header class=&quot;major&quot;&gt;
+                    &lt;h2&gt;Ichiyasa Git User Group&lt;/h2&gt;
+                &lt;/header&gt;
+                &lt;p&gt;Gitを利用する人々のコミュニティです。&lt;/p&gt;
+                &lt;p&gt;勉強会を企画・運営し、情報交換の場を提供しています。&lt;/p&gt;
+                &lt;p&gt;このコミュニティーは、非営利目的で活動しています。&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Two --&gt;
+        &lt;section id=&quot;two&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;h2&gt;第２回Git勉強会&lt;/h2&gt;
+                &lt;div class=&quot;features&quot;&gt;
+                    &lt;p&gt;第２回Git勉強会を開催します。みなさま、是非ご参加ください！&lt;/p&gt;
+                    &lt;article&gt;
+                        &lt;h3&gt;イベント日時・場所&lt;/h3&gt;
+                        &lt;p&gt;3月23日 19:00開始&lt;/p&gt;
+                        &lt;p&gt;株式会社インプレス イベントセミナー会場&lt;/p&gt;
+                    &lt;/article&gt;
+                    &lt;article&gt;
+                        &lt;h3&gt;スピーカー&lt;/h3&gt;
+                        &lt;div class=&quot;speaker&quot;&gt;
+                            &lt;img src=&quot;images/speaker1.png&quot; alt=&quot;&quot; class=&quot;image&quot;/&gt;
+                            &lt;div class=&quot;inner&quot;&gt;
+                                ★&lt;h4&gt;1人目: 未定&lt;/h4&gt;
+                                ★&lt;p&gt;1人目のプロフィール&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;speaker&quot;&gt;
+                            &lt;img src=&quot;images/speaker2.png&quot; alt=&quot;&quot; class=&quot;image&quot;/&gt;
+                            &lt;div class=&quot;inner&quot;&gt;
+                                ★&lt;h4&gt;2人目: 未定&lt;/h4&gt;
+                                ★&lt;p&gt;2人目のプロフィール&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/article&gt;
+                    &lt;article&gt;
+                        &lt;h3&gt;タイムテーブル&lt;/h3&gt;
+                        &lt;div class=&quot;table-wrapper&quot;&gt;
+                            &lt;table class=&quot;alt&quot;&gt;
+                                &lt;thead&gt;
+                                &lt;tr&gt;
+                                    &lt;th&gt;時間&lt;/th&gt;
+                                    &lt;th&gt;内容&lt;/th&gt;
+                                &lt;/tr&gt;
+                                &lt;/thead&gt;
+                                &lt;tbody&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;19:00〜19:05&lt;/td&gt;
+                                    &lt;td&gt;オープニング&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;19:05〜19:50&lt;/td&gt;
+                                    ★&lt;td&gt;私のGitの使い方（いろふさん）&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;19:50〜20:00&lt;/td&gt;
+                                    &lt;td&gt;休憩&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;20:00〜20:45&lt;/td&gt;
+                                    ★&lt;td&gt;現場で使える！実践Git（うらがみさん）&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;20:45〜21:00&lt;/td&gt;
+                                    &lt;td&gt;クロージング&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td&gt;21:00〜&lt;/td&gt;
+                                    &lt;td&gt;懇親会&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;/tbody&gt;
+                            &lt;/table&gt;
+                        &lt;/div&gt;
+                    &lt;/article&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Three --&gt;
+        &lt;section id=&quot;three&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;h2&gt;過去のイベント&lt;/h2&gt;
+                &lt;h3&gt;第１回Git勉強会&lt;/h3&gt;
+                &lt;div class=&quot;features&quot;&gt;
+                    &lt;article&gt;
+                        &lt;h4&gt;Gitはじめの一歩 (@ihcomegaさん)&lt;/h4&gt;
+                        &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/RZizY7tGPn8?rel=0&quot;
+                                frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt;
+                    &lt;/article&gt;
+                    &lt;article&gt;
+                        &lt;h4&gt;Git実践入門 (@syobochimさん)&lt;/h4&gt;
+                        &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/LocX863UA_w?rel=0&quot;
+                                frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;&lt;/iframe&gt;
+                    &lt;/article&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;section id=&quot;footer&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;ul class=&quot;copyright&quot;&gt;
+                &lt;li&gt;&amp;copy; Untitled. All rights reserved.&lt;/li&gt;
+                &lt;li&gt;Design: &lt;a href=&quot;http://html5up.net&quot;&gt;HTML5 UP&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Scripts --&gt;
+&lt;script src=&quot;assets/js/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/jquery.scrollzer.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/jquery.scrolly.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/skel.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/util.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;assets/js/main.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</div></code></pre>
+<ol start="12">
+<li>Import the contents of the master branch into the topic branch. (Changes in the sessions-info branch are imported into the speakers-info branch.)</li>
+</ol>
+<p><strong>NOTE</strong> : <br>
+In 11, the changes made in 11 are not reflected in the local repository because the branches were merged on the remote repository.<br>
+Use the git pull command to update the master branch in the local repository to the latest state.</p>
+<pre class="hljs"><code><div>$ git checkout master
+$ git pull origin master
+</div></code></pre>
+<ol start="13">
+<li>Import the latest information from the master branch</li>
+</ol>
+<pre class="hljs"><code><div>$ git checkout speakers-info
+$ git merge master
+</div></code></pre>
+<ol start="14">
+<li>Execute commit</li>
+</ol>
+<pre class="hljs"><code><div>$ git status
+$ git commit -am &quot;いろふさんの画像を追加した。&quot;
+</div></code></pre>
+<ol start="15">
+<li>Create pull request and merge</li>
+</ol>
+<pre class="hljs"><code><div>$ git push origin speakers-info
+</div></code></pre>
+<h2 id="udemy"><strong>Udemy</strong></h2>
+<h2 id="git-%E3%81%AB-push-%E3%81%99%E3%82%8B"><strong>git に push する</strong></h2>
+<ol>
+<li>ローカルレポジトリにリモートレポジトリを追加する。</li>
+</ol>
+<pre class="hljs"><code><div># git remote add origin https://github.com/example/example.git
+</div></code></pre>
+<p>originというショートカットでURLのリモートレポジトリを登録する。</p>
+<ol start="2">
+<li>リモートレポジトリ（GitHub）へ送信する。</li>
+</ol>
+<pre class="hljs"><code><div># git push &lt;remote name&gt; &lt;branch name&gt;
+# git push origin master
+</div></code></pre>
+<ol start="3">
+<li>
+<p>tokenの作成
+git のページ
+--&gt; 右上の丸いアイコン
+--&gt; developer settings
+--&gt; personal access tokens
+から作成</p>
+</li>
+<li>
+<p>新規レポジトリの作成
+git のページ
+--&gt; 右上の丸いアイコン
+--&gt; your profile
+--&gt; repositories
+から作成</p>
+</li>
+<li>
+<p>git に push する</p>
+</li>
+</ol>
+<pre class="hljs"><code><div># git remote add origin git@github.com:d-moto/for_study_git.git
+# git push -u origin main
+</div></code></pre>
+<pre class="hljs"><code><div>mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git remote add origin git@github.com:d-moto/for_study_git.git
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git remote -v
+origin  git@github.com:d-moto/for_study_git.git (fetch)
+origin  git@github.com:d-moto/for_study_git.git (push)
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$ git push -u origin master
+Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':d-motoi
+Enumerating objects: 51, done.
+Counting objects: 100% (51/51), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (47/47), done.
+Writing objects: 100% (51/51), 12.82 KiB | 1010.00 KiB/s, done.
+Total 51 (delta 15), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (15/15), done.
+To github.com:d-moto/for_study_git.git
+ * [new branch]      master -&gt; master
+branch 'master' set up to track 'origin/master'.
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/git-ichiyasa (master)
+$
+
+</div></code></pre>
+<h2 id="%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%82%92%E3%81%A4%E3%81%91%E3%82%8B"><strong>コマンドにエイリアスをつける</strong></h2>
+<pre class="hljs"><code><div># git config --global alias.ci commit
+# git config --global alias.st status
+# git config --global alias.br branch
+# git config --global alias.co checkout
+</div></code></pre>
+<h2 id="%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86%E3%81%97%E3%81%AA%E3%81%84%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B"><strong>バージョン管理しないファイルを指定する</strong></h2>
+<ol>
+<li>&quot;.gitignore&quot;ファイルを作成する。</li>
+</ol>
+<h2 id="%E5%A4%89%E6%9B%B4%E3%82%92%E5%85%83%E3%81%AB%E6%88%BB%E3%81%99"><strong>変更を元に戻す</strong></h2>
+<ol>
+<li>ファイルの変更を取り消す</li>
+</ol>
+<pre class="hljs"><code><div># git checkout -- &lt;file name&gt;
+-- ワークツリーの状態をステージの状態と同じにする。
+# git checkout -- &lt;directory name&gt;
+*全変更を取り消す
+# git checkout -- .
+</div></code></pre>
+<ol start="2">
+<li>ステージした変更を取り消す</li>
+</ol>
+<pre class="hljs"><code><div># git reset HEAD &lt;file name&gt;
+# git reset HEAD &lt;directory name&gt;
+*全変更を取り消す
+# git reset HEAD .
+</div></code></pre>
+<p>指定した変更をステージから取り消すだけなので、ワークツリーへの影響はない。</p>
+<p>HEADとは
+自分がいるブランチの最新のコミット状態（リモートレポジトリの最新のコミット状態）を表している。</p>
+<ol start="3">
+<li>直前のコミットをやり直す</li>
+</ol>
+<pre class="hljs"><code><div># git commit --amend
+</div></code></pre>
+<p>リモートレポジトリにPushしたコミットはやり直せない。</p>
+<h2 id="%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AC%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B"><strong>リモートレポジトリを表示する</strong></h2>
+<pre class="hljs"><code><div># git remote
+URLも表示する。
+# git remote -v
+</div></code></pre>
+<h2 id="%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AC%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E8%A4%87%E6%95%B0%E5%8F%AF"><strong>リモートレポジトリを登録する（複数可）</strong></h2>
+<pre class="hljs"><code><div># git remote add &lt;remote name&gt; &lt;remote URL&gt;
+
+# git remote add origin https://......
+# git remote add tutorial https://.....
+</div></code></pre>
+<h2 id="%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AC%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%8B%E3%82%89%E6%83%85%E5%A0%B1%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B"><strong>リモートレポジトリから情報を取得する</strong></h2>
+<p>リモートレポジトリから情報を取得する方法は、2種類ある。</p>
+<ul>
+<li>fetch</li>
+<li>pull</li>
+</ul>
+<ol>
+<li>fetch</li>
+</ol>
+<pre class="hljs"><code><div># git fetch &lt;remote name&gt;
+# git fetch origin
+</div></code></pre>
+<p>fetch はリモートレポジトリからローカルレポジトリへ情報を持ってくる。リモートのワークツリーへは反映されない。
+ワークツリーへ反映させたい時は、git mergeコマンドを使用する。</p>
+<pre class="hljs"><code><div># git fetch origin
+# git branch -a
+# git checkout remotes/origin/master
+# ls -al
+# git checkout master
+# git branch -a
+# git merge origin/master
+</div></code></pre>
+<ol start="2">
+<li>pull
+pullを使うのは、リモートから情報を取得してマージまでを一度にやりたい時。
+ワークツリーへも変更が反映される。</li>
+</ol>
+<pre class="hljs"><code><div># git pull &lt;remote name&gt; &lt;branch name&gt;
+# git pull origin master
+
+上記のコマンドは以下のコマンドと同値
+# git fetch origin master
+# git merge origin/master
+</div></code></pre>
+<p><strong>注意</strong>
+git pull は、それを実行すると、現在自分がいるブランチにマージが実行されてしまう。</p>
+<p>例えば、[maste][sub-branch]という2つのブランチがあったとして、現在masterブランチにいるとき、</p>
+<pre class="hljs"><code><div># git pull origin sub-branch
+</div></code></pre>
+<p>を実行すると、今いるmasterブランチに、sub-branchの内容がマージされてしまう。</p>
+<h2 id="%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%81%AE%E8%A9%B3%E7%B4%B0%E8%A1%A8%E7%A4%BA%E3%82%92%E7%9F%A5%E3%82%8B"><strong>リモートの詳細表示を知る</strong></h2>
+<pre class="hljs"><code><div># git remote show &lt;remote name&gt;
+# git remote show origin
+</div></code></pre>
+<pre class="hljs"><code><div>$ git remote show origin
+Enter passphrase for key '/c/Users/mokos/.ssh/id_rsa':
+* remote origin
+  Fetch URL: git@github.com:d-moto/WindowsRepository.git
+  Push  URL: git@github.com:d-moto/WindowsRepository.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (fast-forwardable)
+</div></code></pre>
+<h2 id="%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%81%AE%E5%A4%89%E5%90%8D%E5%89%8A%E9%99%A4"><strong>リモートの変名、削除</strong></h2>
+<pre class="hljs"><code><div># git remote rename &lt;old remote name&gt; &lt;new remote name&gt;
+# git remote rename origin origin2
+
+# git remote rm &lt;remote name&gt;
+# git remote rm origin2
+</div></code></pre>
+<h2 id="%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%A8%E3%83%9E%E3%83%BC%E3%82%B8"><strong>ブランチとマージ</strong></h2>
+<ol>
+<li>
+<p>branchとは<br>
+並行して複数機能を開発するための仕組み<br>
+Gitのデータの持ち方<br>
+リポジトリの中身<br>
+圧縮ファイル、ツリーファイル、コミットファイル<br>
+コミットはスナップショット<br>
+ブランチはコミットIDを指したポインタ<br>
+HEADは今作業しているブランチのポインタ</p>
+</li>
+<li>
+<p>branchを新規に追加する<br></p>
+</li>
+</ol>
+<pre class="hljs"><code><div># git branch &lt;branch name&gt;
+# git branch testbranch
+</div></code></pre>
+<pre class="hljs"><code><div># git branch
+# すべてのブランチ
+# git branch -a
+</div></code></pre>
+<p>HEADなどがどのブランチを指しているかを確認するときは、以下のコマンドを使用すると良い。</p>
+<pre class="hljs"><code><div># git log --oneline --decorate
+</div></code></pre>
+<ol start="3">
+<li>branchを切り替える<br></li>
+</ol>
+<pre class="hljs"><code><div># git checkout &lt;既存のbranch&gt;
+# git checkout -b &lt;new branch&gt;
+</div></code></pre>
+<ol start="4">
+<li>変更履歴をマージする<br></li>
+</ol>
+<pre class="hljs"><code><div># git merge &lt;branch name&gt;
+# git merge &lt;remote name/branch name&gt;
+# git merge origin/master　# 作業中のブランチにマージする
+</div></code></pre>
+<ul>
+<li>マージには3種類ある。
+-- Fast Foward:早送りマージ（ポインタが前にずれるだけ）
+-- Auto Merge:基本的なマージ（マージコミットという新しいコミットを作る。親コミットが2つ）
+-- conflict</li>
+</ul>
+<p>Fast Forwardの例：
+masterブランチからbugfixブランチを作成し、bugfixブランチ上で、bugfix.txtを作成。
+そのあとに、bugfixブランチの変更をmasterブランチへマージする。
+この時、masterブランチでは、bugfixブランチ作成時点から、変更が一切ないため、masterブランチのポインタは、bugfixブランチの最新のコミットへずれるだけとなる。
+これが、Fast Forward</p>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# touch bugfix.txt
+[root@localhost63 Git]# git add bugfix.txt
+[root@localhost63 Git]# git commit -m &quot;create bugfix.txt&quot;
+[bugfix 900dbde] create bugfix.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix.txt
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:52 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git checkout master
+Switched to branch 'master'
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git merge bugfix
+Updating 355969c..900dbde
+Fast-forward
+ bugfix.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix.txt
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+</div></code></pre>
+<p>Auto Mergeの例：</p>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# touch master-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:58 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git add master-fix
+[root@localhost63 Git]# git commit -m &quot;master-fix added&quot;
+[master 7fca0f9] master-fix added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 master-fix
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]#
+[root@localhost63 Git]#
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# touch bugfix-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:59 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git add .
+[root@localhost63 Git]# git commit -m &quot;bugfix-fix added&quot;
+[bugfix 4158baf] bugfix-fix added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bugfix-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:59 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+[root@localhost63 Git]# git checkout master
+Switched to branch 'master'
+[root@localhost63 Git]# git branch
+  bugfix
+* master
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:59 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git merge bugfix
+hint: Waiting for your editor to close the file... code --wait: code: コマンドが見つかりません
+error: There was a problem with the editor 'code --wait'.
+Not committing merge; use 'git commit' to complete the merge.
+[root@localhost63 Git]# git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use &quot;git commit&quot; to conclude merge)
+
+Changes to be committed:
+        new file:   bugfix-fix
+
+[root@localhost63 Git]# git commit -m &quot;merge bugfix-fix&quot;
+[master 4427fe3] merge bugfix-fix
+[root@localhost63 Git]#
+[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -&gt; master) merge bugfix-fix
+4158baf (bugfix) bugfix-fix added
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c (origin/master) add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 22:00 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 21:59 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]#
+</div></code></pre>
+<p>ちなみに、masterブランチの状態をbugfixブランチに取り込むこともできる。</p>
+<pre class="hljs"><code><div>[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -&gt; master, origin/master) merge bugfix-fix ★
+4158baf (bugfix) bugfix-fix added ★
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]# git checkout bugfix
+Switched to branch 'bugfix'
+[root@localhost63 Git]# git branch
+* bugfix
+  master
+[root@localhost63 Git]# git merge master
+Updating 4158baf..4427fe3
+Fast-forward
+ master-fix | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 master-fix
+[root@localhost63 Git]# ls -l
+合計 8
+drwxr-xr-x 2 root root  95 12月 14 09:50 C
+drwxr-xr-x 3 root root  43 11月 28 11:13 Python
+-rw-r--r-- 1 root root   0 12月 14 22:00 bugfix-fix
+-rw-r--r-- 1 root root   0 12月 14 21:53 bugfix.txt
+-rw-r--r-- 1 root root   0 12月 14 22:04 master-fix
+-rw-r--r-- 1 root root 413 12月 11 22:59 readme.md
+-rw-r--r-- 1 root root  43 11月 11 23:50 test
+[root@localhost63 Git]# git log --oneline
+4427fe3 (HEAD -&gt; bugfix, origin/master, master) merge bugfix-fix ★bugfixブランチが示すコミットが1つ前にずれている。
+4158baf bugfix-fix added
+7fca0f9 master-fix added
+900dbde create bugfix.txt
+355969c add emulater.c
+2a9bccb rename sshkey file name
+120da98 modify .gitignore
+d2dd84c make ignore file
+92b96cb modify readme
+f9f75a3 modify readme
+dc6a5dc 2022-12-11
+d580a04 create readme.md file
+5d51a5d 2022/11/12
+6b4a5c8 add readme.md
+f3c1df2 first commit
+[root@localhost63 Git]#
+</div></code></pre>
+<h2 id="%E3%82%B3%E3%83%B3%E3%83%95%E3%83%AA%E3%82%AF%E3%83%88"><strong>コンフリクト</strong></h2>
+<ul>
+<li>
+<p>いつ起こるのか？
+同じファイルの同じ行に対して、異なる編集を行ったとき</p>
+</li>
+<li>
+<p>どうすればよいか？</p>
+</li>
+</ul>
+<pre class="hljs"><code><div>$ cat index.html
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ★削除する
+conflict
+======= ★削除する
+conflict 2
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature ★削除する
+</div></code></pre>
+<ul>
+<li>コンフリクトを防ぐ
+複数人で同じファイルを変更しない。
+pullやmergeする前に変更中の状態をなくしておく（commitやstashしておく）
+pullするときは、pullするブランチに移動してからpullする</li>
+</ul>
+<h2 id="%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%82%92%E5%A4%89%E6%9B%B4%E3%83%BB%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B"><strong>ブランチを変更・削除する</strong></h2>
+<ul>
+<li>branch名の変更</li>
+</ul>
+<pre class="hljs"><code><div>自分が作業しているブランチの名前を変更する
+# git branch -m &lt;branch name&gt;
+# git branch -m new_branch
+</div></code></pre>
+<ul>
+<li>branchを削除する</li>
+</ul>
+<pre class="hljs"><code><div># git branch -d &lt;branch name&gt;
+# git branch -d feature
+
+強制削除する場合
+# git branch -D &lt;branch name&gt;
+</div></code></pre>
+<h2 id="remote-branch-%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%8B"><strong>remote branch とは何か</strong></h2>
+<p>リモートブランチとは、リモートのブランチの状態へのポインタ
+git fetchコマンド（リモートレポジトリの状態を取得する）を実行した際などに作成される。</p>
+<pre class="hljs"><code><div>$ git branch -a
+* master
+  remotes/origin/feature ★これらがリモートブランチ
+  remotes/origin/master ★これらがリモートブランチ
+</div></code></pre>
+<h2 id="%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E6%89%8B%E9%A0%86"><strong>プルリクエストの手順</strong></h2>
+<ul>
+<li>
+<p>ローカル</p>
+<ol>
+<li>masterブランチを最新に更新</li>
+<li>ブランチを作成</li>
+<li>ファイルを変更</li>
+<li>変更をコミット--&gt;ローカルレポジトリ</li>
+</ol>
+</li>
+<li>
+<p>リモート
+5. GItHubへプッシュ
+6. プルリクエストを送る
+7. コードレビュー
+8. プルリクエストをマージ
+9. ブランチを削除</p>
+</li>
+</ul>
+
+</body>
+</html>
