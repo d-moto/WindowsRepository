@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>section2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="windows%E3%81%ABpython%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B">Windowsにpythonをインストールする</h2>
+<h3 id="anaconda%E3%81%8B%E3%82%89%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">anacondaからインストールする方法</h3>
+<ol>
+<li>
+<p>python.org からインストールする or anaconda.com へ移動する。</p>
+</li>
+<li>
+<p>上記サイトへ移動し、ダウンロードボタンをクリックする。</p>
+</li>
+<li>
+<p>exeファイルのダウンロードが始まるので、終わるまで待つ。</p>
+</li>
+<li>
+<p>ダウンロードが終わったら、exeファイルを起動する。</p>
+</li>
+<li>
+<p>インストールウィンドウの指示に従う。<br>
+Destination Folder : C:\Users\mokos\anaconda3</p>
+</li>
+<li>
+<p>ダウンロードができたら、アプリ検索で、「Anaconda Powershell Prompt」を探す。</p>
+</li>
+<li>
+<p>上記が起動すれば、インストールは正常にできている。</p>
+</li>
+</ol>
+<h2 id="windows%E3%81%ABpycharm%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8Bide%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B">WindowsにPycharmをインストールする。(IDEをインストールする。)</h2>
+<ol>
+<li>
+<p>https://www.jetbrains.com/ja-jp/pycharm/　に移動する。</p>
+</li>
+<li>
+<p>右上のダウンロードボタンをクリック。</p>
+</li>
+<li>
+<p>FreeのCommunityをダウンロードする。</p>
+</li>
+<li>
+<p>インストーラーが起動するので、指示に従う。<br>
+インストール先：C:\Program Files\JetBrains\PyCharm Community Edition 2022.3</p>
+</li>
+<li>
+<p>インストールが完了したら、Run PyCharm Community Edition にチェックを入れて、起動する。</p>
+</li>
+<li>
+<p>Welcome to PyCharmの画面で、New Projectを押す。</p>
+</li>
+<li>
+<p>Locationの最後のpythonProjectをpython_programmingに変更。</p>
+</li>
+<li>
+<p>Previously configured interpreterにチェックを入れる。</p>
+</li>
+<li>
+<p>Add Interpreterをクリック。(これにAnacondaを指定する。)</p>
+</li>
+<li>
+<p>左のSystem Interpreterをクリックする。</p>
+</li>
+<li>
+<p>anacondaをインストールした、ディレクトリを指定する。（今回は、C:\Users\mokos\anaconda3）</p>
+</li>
+<li>
+<p>PyCharmが起動し、右下にIndexing Python SDK 'Python3.9'が表示されているので、終わるまでしばらく待つ。</p>
+</li>
+<li>
+<p>終われば、PyCharmが使用できる。</p>
+</li>
+</ol>
+<h2 id="pycharm%E3%81%AEterminal%E6%A9%9F%E8%83%BD%E3%81%A7%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E5%87%BA%E3%81%9F">PyCharmのTerminal機能で以下のエラーが出た</h2>
+<pre class="hljs"><code><div>To initialize your shell, run
+Import-Module : このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\mo
+    $ conda init &lt;SHELL_NAME&gt;Conda.psm1 を読み込むことができません。詳細については、「about_
+Execution_Policies」(https://go.microsoft.com/fwlink/?LinkID=135170) を参照してください。
+Currently supported shells are:
+  - bash-Module &quot;$Env:_CONDA_ROOT\shell\condabin\Conda.psm1&quot; -ArgumentL ...
+  - cmd.exe~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  - fishtegoryInfo          : セキュリティ エラー: (: ) [Import-Module]、PSSecurityException
+  - tcshllyQualifiedErrorId : UnauthorizedAccess,Microsoft.PowerShell.Commands.ImportModule 
+  - xonshd
+  - zsh
+  - powershelldError: Your shell has not been properly configured to use 'conda activate'.
+If using 'conda activate' from a batch script, change your
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+If using 'conda activate' from a batch script, change your
+invocation to 'CALL conda.bat activate'.
+
+To initialize your shell, run
+
+    $ conda init &lt;SHELL_NAME&gt;
+
+Currently supported shells are:
+  - bash
+  - cmd.exe
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+</div></code></pre>
+<p>windowsPowerShellで以下のようにした。</p>
+<pre class="hljs"><code><div>Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+新機能と改善のために最新の PowerShell をインストールしてください!https://aka.ms/PSWindows
+
+PS C:\WINDOWS\system32&gt; Get-ExecutionPlicy
+Get-ExecutionPlicy : 用語 'Get-ExecutionPlicy' は、コマンドレット、関数、スクリプト ファイル、または操作可能なプログラ
+ムの名前として認識されません。名前が正しく記述されていることを確認し、パスが含まれている場合はそのパスが正しいことを確
+認してから、再試行してください。
+発生場所 行:1 文字:1
++ Get-ExecutionPlicy
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Get-ExecutionPlicy:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\WINDOWS\system32&gt; Get-ExecutionPolicy
+Restricted
+PS C:\WINDOWS\system32&gt; Set-ExecutionPolicy RemoteSigned
+
+実行ポリシーの変更
+実行ポリシーは、信頼されていないスクリプトからの保護に役立ちます。実行ポリシーを変更すると、about_Execution_Policies
+のヘルプ トピック (https://go.microsoft.com/fwlink/?LinkID=135170)
+で説明されているセキュリティ上の危険にさらされる可能性があります。実行ポリシーを変更しますか?
+[Y] はい(Y)  [A] すべて続行(A)  [N] いいえ(N)  [L] すべて無視(L)  [S] 中断(S)  [?] ヘルプ (既定値は &quot;N&quot;): Y
+PS C:\WINDOWS\system32&gt; Get-ExecutionPolicy
+RemoteSigned
+PS C:\WINDOWS\system32&gt;
+</div></code></pre>
+<p>Terminalを再起動すると、入れた。</p>
+<pre class="hljs"><code><div>(base) PS C:\Users\mokos\PycharmProjects\python_programming&gt; 
+</div></code></pre>
+
+</body>
+</html>
