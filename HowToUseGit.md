@@ -4,7 +4,7 @@
 **NOTE**
 
 git repository location: 
-- windowns11 --> /c/Users/mokos/git-ichiyasa
+- windowns11 --> /c/Users/mokos/Git_work
 - Linux --> /home/alma1/Git
 
 git config file location:
@@ -12,6 +12,8 @@ git config file location:
 - Linux --> /root/.gitconfig
 
 ## **1. Set Up Git**
+ログインしているユーザーで初めてGitを使用する場合は、以下の設定が必要。
+
 1. set up user name
 ```
 $ git config --global user.name motoi
@@ -32,13 +34,15 @@ $ git config --global core.editor "code --wait"
 ```
 $ git config core.editor
 ```
-※When you execute this command "git config --global", the file "/c/Users/mokos/.gitconfig" is created and the configuration is written.
+※When you execute this command "git config --global", the file "/c/Users/mokos/.gitconfig" is created and the configuration is written.  
+※"git config --globalコマンドを実行すると、そのユーザーのホームディレクトリ（今回の場合は、/c/User/mokos/.gitconfig）の.gitconfigファイルが作成され、そのファイルに設定が書き込まれる。
 
 ## **2. Set up and create local repository**
+ローカルレポジトリの設定を行う。
 1. careate directory
 ```
 $ cd ~
-$ mkdir git-ichiyasa
+$ mkdir Git_work
 ```
 2. create something
 ```
@@ -65,7 +69,11 @@ $ git add HowToUseGit.md
 ```
 $ git status
 ```
-※Files that are not registered under git management are treated as "Untracked files" by the git status command.
+※Files that are not registered under git management are treated as "Untracked files" by the git status command.  
+※Gitに登録されていないファイルはgit statusコマンドで、"Untracked files"として表示される。
+
+</br>
+
 
 <details>
 <summary>
@@ -104,16 +112,26 @@ $
 ```
 </details>
 
+</br>
+</br>
 
 ## **3. Check differences of git files**
-1. Check the difference between the work tree and the staging area
+Gitの変更履歴を確認する。
+1. Check the difference between the work tree and the staging area  
+ワークツリーとステージとの差分を確認する時。
 ```
 $ git diff
 ```
-2. Check the difference between the staging area and the git directory
+2. Check the difference between the staging area and the git directory  
+ローカルレポジトリとステージとの差分を確認する時。
 ```
 $ git diff --cached
 ```
+
+
+</br>
+
+**EXAMPLE**
 ```
 $ git diff
 diff --git a/HowToUseGit.md b/HowToUseGit.md
@@ -142,8 +160,10 @@ index 0000000..0a161d4
 #+1. set up user name
 ................................
 ```
+</br>
 
 ## **4. Commit the files**
+ローカルレポジトリにコミットする。
 1. check status of local repository
 ```
 $ git statsu
@@ -153,22 +173,30 @@ $ git statsu
 $ git commit
 ```
 3. atom is opend
-4. write commit message
+4. write commit message, save and close the file
 5. check status
 ```
 $ git status
 ```
+</br>
+
+**EXAMPLE**
 ```
 $ git status
 On branch master
 nothing to commit, working tree clean
 ```
 
-## **5. ローカルリポジトリでの操作を取り消す（checkout, reset）**
-ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について
+</br>
+</br>
 
+
+## **5. ローカルリポジトリでの操作を取り消す（checkout, reset）**
+ワークツリーへの変更を取り消す方法(git checkout)とステージングエリアへの変更を取り消す方法(git reset)について。  
 ワークツリーへの変更の取り消しは、ファイルの状態が直前のコミット（または直前のステージングエリアへの登録）に戻る。  
 ステージングエリアへの変更の取り消しは、ファイルの状態はそのままでステージングエリアへの登録だけを取り消します。
+
+</br>
 
 ***
 [Work Tree]  --"git add"-->  [Staging area]  --"git commit"-->  [Git Directory]  
@@ -176,9 +204,10 @@ nothing to commit, working tree clean
 [Work Tree]  <-----------------"git checkout"----------------- [Git Directory]
 ***
 
-ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、"git checkout"コマンドで、ワークツリーの変更を取り消せる。
+</br>
 
-- **6. Work Treeの変更を取り消すコマンド（git checkout）**
+- **Work Treeの変更を取り消すコマンド（git checkout）**  
+ファイルをいろいろ変更したが、やっぱり直前のコミット状態まで戻したい時に、"git checkout"コマンドで、ワークツリーの変更を取り消せる。
 ```
 $ git checkout -- sample.txt
 ```
@@ -362,6 +391,9 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ファイルの内容も変更したければ、git checkoutを使う。
 </details>
 
+</br>
+
+
 ## **7. Check the commit history**
 - Check the commit history
 ```
@@ -371,6 +403,9 @@ $ git log
 ```
 $ git log -p
 ```
+
+</br>
+
 
 ## **8. Preparing to use git hub**
 
@@ -411,6 +446,7 @@ The key's randomart image is:
 ```
 $ ssh -T git@github.commit
 ```
+</br>
 
 ## **9. Clone the remote repository**
 1. Get the URL of the remote repository
@@ -528,6 +564,8 @@ nothing to commit, working tree clean
 [root@localhost63 ichiyasaGitSample]#
 
 ```
+
+</br>
 
 ## **11. Edit file and commit**
 On the branch you just created, edit the file and commit.
