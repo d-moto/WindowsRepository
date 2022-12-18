@@ -237,3 +237,125 @@ s = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' \
      'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
 print(s)
 ```
+
+## 5. 文字列のインデックスとスライス
+
+文字列にはインデックスがある。
+
+```python
+word = 'python'
+print(word[0])
+print(word[1])
+
+# 一番最後の文字のインデックスは[-1]
+print(word[-1])
+
+# スライスというものが存在する
+# インデックス0から2の1つ手前までを表示する場合
+print(word[0:2])
+
+# 0は省略できる。一番最初から2の1つ手前までを表示する。
+print(word[:2])
+
+# 同様にある点から最後までという省略もできる。
+print(word[2:])
+
+# インデックス2から5の1つ手前までを表示する場合
+# つまり、「yth」が表示される。
+print(word[2:5])
+
+# 最初も最後も省略するとすべて表示される。
+print(word[:])
+
+# 文字列を書き換えることもできる
+# 以下のような記述はできない。
+word[0] = 'j'
+
+word = 'j' + word[1:]
+
+# len()というものがある。
+n = len(word)
+print(n)
+```
+
+## 6. 文字のメソッド
+
+```python
+s = 'My name is Mike. Hi Mike.'
+print(s)
+
+is_start = s.startswith('My')
+print(is_start)
+is_start = s.startswith('X')
+print(is_start)
+
+print(s.find('Mike'))
+print(s.rfind('Mike'))
+print(s.count('Mike'))
+print(s.capitalize())
+print(s.title())
+print(s.upper())
+print(s.lower())
+print(s.replace('Mike', 'Nancy'))
+```
+
+## 7. 文字列の代入
+```python
+>>> 'a is {}'.format('a')
+'a is a'
+>>> 'a is {}'.format('test')
+'a is test'
+>>> 'a is {} {} {}'.format(1, 2, 3)
+'a is 1 2 3'
+>>> 'a is {0} {1} {2}'.format(1, 2, 3)
+'a is 1 2 3'
+>>> 'a is {2} {1} {0}'.format(1, 2, 3)
+'a is 3 2 1'
+>>> 'My name is {0} {1}'.format('Daichi', 'Motoi')
+'My name is Daichi Motoi'
+>>> 'My name is {0} {1}. Watashi ha {1} {0}'.format('Daichi', 'Motoi')
+'My name is Daichi Motoi. Watashi ha Motoi Daichi'
+>>> 'My name is {name} {family}. Watashi ha {family} {name}'.format(name='Daichi', family='Motoi')
+'My name is Daichi Motoi. Watashi ha Motoi Daichi'
+>>> '1'
+'1'
+>>> 1
+1
+>>> srt(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'srt' is not defined
+>>> str(1)
+'1'
+>>> x = str(1)
+>>> type(x)
+<class 'str'>
+>>> True
+True
+>>> type(True)
+<class 'bool'>
+>>>
+```
+
+## 8. f-strings
+
+```python
+>>> a = 'a'
+>>> print(f'a is {a}')
+a is a
+>>> a = 'b'
+>>> print(f'a is {a}')
+a is b
+>>>
+>>> x, y, z = 1, 2, 3
+>>> print(f'a is {x}, {y}, {z}')
+a is 1, 2, 3
+>>> print(f'a is {z}, {y}, {x}')
+a is 3, 2, 1
+>>>
+>>> name = 'Daichi'
+>>> family = 'Motoi'
+>>> print(f'My name is {name} {family}. Watashi ha {family} {name}')
+My name is Daichi Motoi. Watashi ha Motoi Daichi
+>>>
+```
