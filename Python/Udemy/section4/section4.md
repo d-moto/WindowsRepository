@@ -110,6 +110,8 @@
 [200, 500, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 100]
 >>> n.pop()
 100
+>>> n.pop(0)
+200
 >>> n[2:11]
 ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 >>> n[2:12]
@@ -178,8 +180,82 @@ ValueError: list.remove(x): x not in list
 
 ```
 ## リストのメソッド
+```python
+# リストの定義
+r = [1, 2, 3, 4, 5, 1, 2, 3]
+
+# 要素3がどのindexか調べる。初めにヒットしたものしか出力しない。
+print(r.index(3))
+
+# 要素3のサーチを4番目のindexから始める場合。
+print(r.index(3, 4))
+
+# 要素の数を数える場合。
+print(r.count(3))
+
+# rに5が入っているかどうか。
+if 5 in r:
+    print('exist')
+
+# リストのソート
+r.sort()
+print(r)
+
+# リストのソート（リバース）
+r.sort(reverse=True)
+print(r)
+
+# リストのソート（リバース２）
+r.reverse()
+print(r)
+
+# スプリット
+# s.split(' ')で空白を基準にリストに格納してくれる。
+s = 'My name is Mike.'
+to_split = s.split(' ')
+print(to_split)
+
+# もとに戻す
+x = ' '.join(to_split)
+print(x)
+
+# helpの表示
+print(help(list))
+```
 
 ## リストのコピー
+```python
+## リストのコピー
+
+# iにもjにも100が挿入されてしまう。
+i = [1, 2, 3, 4, 5]
+j = i
+j[0] = 100
+print('j =', j)
+print('i =', i)
+
+# リストのコピーは以下のようにする
+# x = y とすると、yには、xのリストのアドレスがyに格納される（参照わたし）
+x = [1, 2, 3, 4, 5]
+y = x.copy()
+# y = x[:] とすることでもy = x.copy()と同様のことができるが、見にくいのであまりやらない。
+y[0] = 100
+print('y =', y)
+print('x =', x)
+
+X = 20
+Y = X
+Y = 5
+print('X : ', id(X))
+print('Y : ', id(Y))
+
+X = [ 'a', 'b' ]
+Y = X
+Y[0] = 'p'
+# まったく同じIDが出力される。
+print('X : ', id(X))
+print('Y : ', id(Y))
+```
 
 ## リストの使いどころ
 
