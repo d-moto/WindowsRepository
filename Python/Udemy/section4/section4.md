@@ -276,23 +276,808 @@ print('Y : ', id(Y))
 ```
 
 ## リストの使いどころ
+```python
+seat = []
+min = 0
+max = 5
+min <= len(seat) < max
+
+seat.append('p')
+min <= len(seat) < max
+len(seat)
+
+seat.append('p')
+min <= len(seat) < max
+len(seat)
+
+seat.append('p')
+min <= len(seat) < max
+len(seat)
+
+seat.append('p')
+min <= len(seat) < max
+len(seat)
+
+seat.append('p')
+min <= len(seat) < max
+len(seat)
+
+```
 
 ## タプル型
+```python
+# タプルは（）で括り、宣言する。
+>>> t = (1, 2, 3, 4, 1, 2)
+>>> t
+(1, 2, 3, 4, 1, 2)
+>>>
+>>> type(t)
+<class 'tuple'>
+>>> t[0]
+1
+
+# タプルは一度宣言すると、要素の値を変更することはできない。
+# 変更しようとすると以下のようなエラーとなる。
+>>> t[0] = 100
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+>>>
+
+# リストと同様に、インデックスを指定して値を参照することができる。
+>>> t[-2]
+1
+>>> t[2:]
+(3, 4, 1, 2)
+>>> t.index(1)
+0
+>>> t.index(1, 1)
+4
+
+# ヘルプを見るとわかるが、値を変更できないという性質上、タプルを操作するメソッドは、リストほど多くはない。
+>>> help(tuple)
+Help on class tuple in module builtins:
+
+class tuple(object)
+ |  tuple(iterable=(), /)
+ |
+ |  Built-in immutable sequence.
+ |
+ |  If no argument is given, the constructor returns an empty tuple.
+ |  If iterable is specified the tuple is initialized from iterable's items.
+ |
+ |  If the argument is a tuple, the return value is the same object.
+ |
+ |  Built-in subclasses:
+ |      asyncgen_hooks
+ |      UnraisableHookArgs
+ |
+ |  Methods defined here:
+ |
+ |  __add__(self, value, /)
+ |      Return self+value.
+ |
+ |  __contains__(self, key, /)
+ |      Return key in self.
+ |
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |
+ |  __ge__(self, value, /)
+ |      Return self>=value.
+ |
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |
+ |  __getitem__(self, key, /)
+ |      Return self[key].
+ |
+ |  __getnewargs__(self, /)
+ |
+ |  __gt__(self, value, /)
+ |      Return self>value.
+ |
+ |  __hash__(self, /)
+ |      Return hash(self).
+ |
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |
+ |  __le__(self, value, /)
+ |      Return self<=value.
+ |
+ |  __len__(self, /)
+ |      Return len(self).
+ |
+ |  __lt__(self, value, /)
+ |      Return self<value.
+ |
+ |  __mul__(self, value, /)
+ |      Return self*value.
+ |
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |
+ |  __rmul__(self, value, /)
+ |      Return value*self.
+ |
+ |  count(self, value, /)
+ |      Return number of occurrences of value.
+ |
+ |  index(self, value, start=0, stop=9223372036854775807, /)
+ |      Return first index of value.
+ |
+ |      Raises ValueError if the value is not present.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  __class_getitem__(...) from builtins.type
+ |      See PEP 585
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+
+>>>
+>>>
+
+# タプルの要素にリストを入れることは可能。
+>>> t = ([1, 2, 3], [4, 5, 6])
+>>> t
+([1, 2, 3], [4, 5, 6])
+>>> t[0]
+[1, 2, 3]
+
+# タプル内の、リストの要素は変更可能。
+>>> t[0][0]
+1
+>>> t[0][0] = 100
+>>> t
+([100, 2, 3], [4, 5, 6])
+>>>
+
+# 以下のような表現でもタプルは宣言可能。
+>>> t = 1, 2, 3
+>>> type(t)
+<class 'tuple'>
+>>> t
+(1, 2, 3)
+>>>
+
+# 要素が1つしかないタプルの場合、要素の後に「,」が必要。
+>>> t = 1,
+>>> type(t)
+<class 'tuple'>
+>>>
+>>> t
+(1,)
+>>>
+>>> t = ()
+>>> type(t)
+<class 'tuple'>
+>>> t
+()
+>>>
+
+# コンマがないと、タプルとはならない。
+>>> t = (1)
+>>> t
+1
+>>> type(t)
+<class 'int'>
+>>> t
+1
+>>>
+>>> t = ('test')
+>>> type(t)
+<class 'str'>
+>>> t = ('test',)
+>>> type(t)
+<class 'tuple'>
+>>>
+>>> t = 1,
+>>> t + 100
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate tuple (not "int") to tuple
+>>>
+>>> new_tuple = (1, 2, 3) + (4, 5, 6)
+>>> new_tuple
+(1, 2, 3, 4, 5, 6)
+>>> new_tuple = (1, 2, 3) + (4, 5, 6)
+>>> new_tuple = (1) + (4, 5, 6)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'tuple'
+>>>
+>>> new_tuple = (1,) + (4, 5, 6)
+>>> new_tuple
+(1, 4, 5, 6)
+>>>
+
+```
 
 ## タプルのアンパッキング
+```python
+# tupleのアンパッキング
+num_tuple = (10, 20)
+print(num_tuple)
+
+x, y = num_tuple
+print(x, y)
+
+x, y = (10, 20)
+x, y = 10, 20
+print(x, y)
+
+min, max = 0, 100
+print(min, max)
+
+i = 10
+j = 20
+tmp = i
+i = j
+j = tmp
+print(i, j)
+
+a = 100 
+b = 200
+print(a, b)
+
+a, b = b, a
+print(a, b)
+```
 
 ## タプルの使いどころ
+```python
+chose_from_two = ('A', 'B', 'C')
+
+answer = []
+answer.append('A')
+answer.append('B')
+
+print(chose_from_two)
+print(answer)
+```
 
 ## 辞書型
+```python
+>>> d = {'x': 10, 'y': 20}
+>>> d
+{'x': 10, 'y': 20}
+>>> type(d)
+<class 'dict'>
+>>> d['x']
+10
+>>> d['y']
+20
+>>> d['x'] = 100
+>>>
+>>> d
+{'x': 100, 'y': 20}
+>>> d['x'] = 'XXXX'
+>>> d
+{'x': 'XXXX', 'y': 20}
+>>>
+>>> d['z'] = 4000
+>>> d
+{'x': 'XXXX', 'y': 20, 'z': 4000}
+>>> d[1] = 10000
+>>> d
+{'x': 'XXXX', 'y': 20, 'z': 4000, 1: 10000}
+>>> dict(a=10, b=20)
+{'a': 10, 'b': 20}
+>>> dict([('a', 10), ('b', 40)])
+{'a': 10, 'b': 40}
+>>>
+```
+
 
 ## 辞書型のメソッド
+```python
+>>> d = {'x': 10, 'y': 20}
+>>> help(d)
+Help on dict object:
+
+class dict(object)
+ |  dict() -> new empty dictionary
+ |  dict(mapping) -> new dictionary initialized from a mapping object's
+ |      (key, value) pairs
+ |  dict(iterable) -> new dictionary initialized as if via:
+ |      d = {}
+ |      for k, v in iterable:
+ |          d[k] = v
+ |  dict(**kwargs) -> new dictionary initialized with the name=value pairs
+ |      in the keyword argument list.  For example:  dict(one=1, two=2)
+ |
+ |  Methods defined here:
+ |
+ |  __contains__(self, key, /)
+ |      True if the dictionary has the specified key, else False.
+ |
+ |  __delitem__(self, key, /)
+ |      Delete self[key].
+ |
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |
+ |  __ge__(self, value, /)
+ |      Return self>=value.
+ |
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |
+ |  __getitem__(...)
+ |      x.__getitem__(y) <==> x[y]
+ |
+ |  __gt__(self, value, /)
+ |      Return self>value.
+ |
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |
+ |  __ior__(self, value, /)
+ |      Return self|=value.
+ |
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |
+ |  __le__(self, value, /)
+ |      Return self<=value.
+ |
+ |  __len__(self, /)
+ |      Return len(self).
+ |
+ |  __lt__(self, value, /)
+ |      Return self<value.
+ |
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |
+ |  __or__(self, value, /)
+ |      Return self|value.
+ |
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |
+ |  __reversed__(self, /)
+ |      Return a reverse iterator over the dict keys.
+ |
+ |  __ror__(self, value, /)
+ |      Return value|self.
+ |
+ |  __setitem__(self, key, value, /)
+ |      Set self[key] to value.
+ |
+ |  __sizeof__(...)
+ |      D.__sizeof__() -> size of D in memory, in bytes
+ |
+ |  clear(...)
+ |      D.clear() -> None.  Remove all items from D.
+ |
+ |  copy(...)
+ |      D.copy() -> a shallow copy of D
+ |
+ |  get(self, key, default=None, /)
+ |      Return the value for key if key is in the dictionary, else default.
+ |
+ |  items(...)
+ |      D.items() -> a set-like object providing a view on D's items
+ |
+ |  keys(...)
+ |      D.keys() -> a set-like object providing a view on D's keys
+ |
+ |  pop(...)
+ |      D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
+ |
+ |      If key is not found, default is returned if given, otherwise KeyError is raised
+ |
+ |  popitem(self, /)
+ |      Remove and return a (key, value) pair as a 2-tuple.
+ |
+ |      Pairs are returned in LIFO (last-in, first-out) order.
+ |      Raises KeyError if the dict is empty.
+ |
+ |  setdefault(self, key, default=None, /)
+ |      Insert key with a value of default if key is not in the dictionary.
+ |
+ |      Return the value for key if key is in the dictionary, else default.
+ |
+ |  update(...)
+ |      D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
+ |      If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
+ |      If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
+ |      In either case, this is followed by: for k in F:  D[k] = F[k]
+ |
+ |  values(...)
+ |      D.values() -> an object providing a view on D's values
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  __class_getitem__(...) from builtins.type
+ |      See PEP 585
+ |
+ |  fromkeys(iterable, value=None, /) from builtins.type
+ |      Create a new dictionary with keys from iterable and values set to value.
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  __hash__ = None
+
+>>> d.keys()
+dict_keys(['x', 'y'])
+>>> d.values()
+dict_values([10, 20])
+>>> d2 = {'x': 1000, 'j': 500}
+>>>
+>>> d
+{'x': 10, 'y': 20}
+>>> d2
+{'x': 1000, 'j': 500}
+>>>
+>>> d.update(d2)
+>>> d
+{'x': 1000, 'y': 20, 'j': 500}
+>>>
+>>> d['x']
+1000
+>>> d.get('x')
+1000
+>>> d['z']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'z'
+>>> d.get('z')
+>>> r = d.get('z')
+>>> r
+>>> type(r)
+<class 'NoneType'>
+>>>
+>>> d
+{'x': 1000, 'y': 20, 'j': 500}
+>>> d.get('x')
+1000
+>>> d
+{'x': 1000, 'y': 20, 'j': 500}
+>>>
+>>> d.pop('x')
+1000
+>>> d
+{'y': 20, 'j': 500}
+>>> del d['y']
+>>> d
+{'j': 500}
+>>> del d
+>>> d
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'd' is not defined
+>>>
+>>> d = {'a': 100, 'b': 200}
+>>> d.clear()
+>>> d
+{}
+>>>
+>>> d = {'a': 100, 'b': 200}
+>>> d
+{'a': 100, 'b': 200}
+>>>
+>>> 'a' in d
+True
+>>> 'j' in d
+False
+>>>
+```
+
 
 ## 辞書のコピー
+```python
+x = {'a': 1}
+y = x
+y['a'] = 1000
+print(x)
+print(y)
+
+x = {'a': 1}
+y = x.copy()
+y['a'] = 1000
+print(x)
+print(y)
+```
 
 ## 辞書の使いどころ
+```python
+fruits = {
+  'apple': 100,
+  'banana': 200,
+  'orange': 300,
+}
+
+print(fruits['apple'])
+
+
+l = [
+  ['apple', 100 ],
+  ['banana', 200 ],
+  ['orange', 300 ],
+]
+
+
+```
 
 ## 集合型
+```python
+>>> a = {1, 2, 3, 4, 4, 4, 4, 6, 4}
+>>> a
+{1, 2, 3, 4, 6}
+>>> type(a)
+<class 'set'>
+>>>
+>>> b = {2, 3, 3, 6, 7}
+>>> b
+{2, 3, 6, 7}
+>>>
+>>> a
+{1, 2, 3, 4, 6}
+>>> b
+{2, 3, 6, 7}
+>>> a - b
+{1, 4}
+>>>
+>>> b - a
+{7}
+>>>
+>>> a & b
+{2, 3, 6}
+>>> a + b
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+>>>
+>>> a | b
+{1, 2, 3, 4, 6, 7}
+
+# 排他的論理和
+>>> a ^ b
+{1, 4, 7}
+>>>
+```
+
 
 ## 集合のメソッド
+```
+>>> s = {1, 2, 3, 4, 5}
+>>> s
+{1, 2, 3, 4, 5}
+>>>
+>>> s[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'set' object is not subscriptable
+>>>
+>>> s.add(6)
+>>> s
+{1, 2, 3, 4, 5, 6}
+>>>
+>>> s.add(6)
+>>> s
+{1, 2, 3, 4, 5, 6}
+>>>
+>>> s.remove(6)
+>>> s
+{1, 2, 3, 4, 5}
+>>>
+>>> s.clear()
+>>> s
+set()
+>>> a = {}
+>>> type(a)
+<class 'dict'>
+>>> a
+{}
+>>>
+>>> s
+set()
+>>> type(s)
+<class 'set'>
+>>>
+>>> help(set)
+Help on class set in module builtins:
+
+class set(object)
+ |  set() -> new empty set object
+ |  set(iterable) -> new set object
+ |
+ |  Build an unordered collection of unique elements.
+ |
+ |  Methods defined here:
+ |
+ |  __and__(self, value, /)
+ |      Return self&value.
+ |
+ |  __contains__(...)
+ |      x.__contains__(y) <==> y in x.
+ |
+ |  __eq__(self, value, /)
+ |      Return self==value.
+ |
+ |  __ge__(self, value, /)
+ |      Return self>=value.
+ |
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |
+ |  __gt__(self, value, /)
+ |      Return self>value.
+ |
+ |  __iand__(self, value, /)
+ |      Return self&=value.
+ |
+ |  __init__(self, /, *args, **kwargs)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |
+ |  __ior__(self, value, /)
+ |      Return self|=value.
+ |
+ |  __isub__(self, value, /)
+ |      Return self-=value.
+ |
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |
+ |  __ixor__(self, value, /)
+ |      Return self^=value.
+ |
+ |  __le__(self, value, /)
+ |      Return self<=value.
+ |
+ |  __len__(self, /)
+ |      Return len(self).
+ |
+ |  __lt__(self, value, /)
+ |      Return self<value.
+ |
+ |  __ne__(self, value, /)
+ |      Return self!=value.
+ |
+ |  __or__(self, value, /)
+ |      Return self|value.
+ |
+ |  __rand__(self, value, /)
+ |      Return value&self.
+ |
+ |  __reduce__(...)
+ |      Return state information for pickling.
+ |
+ |  __repr__(self, /)
+ |      Return repr(self).
+ |
+ |  __ror__(self, value, /)
+ |      Return value|self.
+ |
+ |  __rsub__(self, value, /)
+ |      Return value-self.
+ |
+ |  __rxor__(self, value, /)
+ |      Return value^self.
+ |
+ |  __sizeof__(...)
+ |      S.__sizeof__() -> size of S in memory, in bytes
+ |
+ |  __sub__(self, value, /)
+ |      Return self-value.
+ |
+ |  __xor__(self, value, /)
+ |      Return self^value.
+ |
+ |  add(...)
+ |      Add an element to a set.
+ |
+ |      This has no effect if the element is already present.
+ |
+ |  clear(...)
+ |      Remove all elements from this set.
+ |
+ |  copy(...)
+ |      Return a shallow copy of a set.
+ |
+ |  difference(...)
+ |      Return the difference of two or more sets as a new set.
+ |
+ |      (i.e. all elements that are in this set but not the others.)
+ |
+ |  difference_update(...)
+ |      Remove all elements of another set from this set.
+ |
+ |  discard(...)
+ |      Remove an element from a set if it is a member.
+ |
+ |      If the element is not a member, do nothing.
+ |
+ |  intersection(...)
+ |      Return the intersection of two sets as a new set.
+ |
+ |      (i.e. all elements that are in both sets.)
+ |
+ |  intersection_update(...)
+ |      Update a set with the intersection of itself and another.
+ |
+ |  isdisjoint(...)
+ |      Return True if two sets have a null intersection.
+ |
+ |  issubset(...)
+ |      Report whether another set contains this set.
+ |
+ |  issuperset(...)
+ |      Report whether this set contains another set.
+ |
+ |  pop(...)
+ |      Remove and return an arbitrary set element.
+ |      Raises KeyError if the set is empty.
+ |
+ |  remove(...)
+ |      Remove an element from a set; it must be a member.
+ |
+ |      If the element is not a member, raise a KeyError.
+ |
+ |  symmetric_difference(...)
+ |      Return the symmetric difference of two sets as a new set.
+ |
+ |      (i.e. all elements that are in exactly one of the sets.)
+ |
+ |  symmetric_difference_update(...)
+ |      Update a set with the symmetric difference of itself and another.
+ |
+ |  union(...)
+ |      Return the union of sets as a new set.
+ |
+ |      (i.e. all elements that are in either set.)
+ |
+ |  update(...)
+ |      Update a set with the union of itself and others.
+ |
+ |  ----------------------------------------------------------------------
+ |  Class methods defined here:
+ |
+ |  __class_getitem__(...) from builtins.type
+ |      See PEP 585
+ |
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+ |
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |
+ |  __hash__ = None
+
+>>>
+>>>
+```
 
 ## 集合の使いどころ
+```python
+my_friends = {'A', 'D', 'C'}
+A_friends = {'B', 'D', 'E', 'F'}
+print(my_friends & A_friends)
+
+f = ['apple', 'banana', 'apple', 'banana']
+kind = set(f)
+print(kind)
+```
