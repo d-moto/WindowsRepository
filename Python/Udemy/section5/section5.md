@@ -26,6 +26,11 @@ if a > 0:
 ```
 
 ## デバッカーを使用して確認してみる
+コードの右側をクリックし、breakポイントを付ける。  
+画面右上の緑の虫ボタンをクリックする。  
+F7を押して、プログラムを進める。  
+
+![](debug.png)
 
 ## 比較演算子と論理演算子
 ```python
@@ -145,8 +150,36 @@ print(None is None)
 ```
 
 ## while文とcontunue文とbreak文
+```python
+count = 0
+while count < 5:
+    print(count)
+    count += 1 # count = count + 1
+
+count = 0
+while True:
+    if count >= 5:
+        break
+    print(count)
+    count += 1
+
+count = 0
+while True:
+    if count >= 5:
+        break # 完全にwhileのループから抜ける。
+
+    if count == 2:
+        count += 1
+        continue # continue以下の文はスキップして、次のループへ行く。count = 2は出力されない。
+
+    print(count)
+    count += 1
+```
 
 ## while else文
+```python
+
+```
 
 ## while else文
 
