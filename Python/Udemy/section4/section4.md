@@ -509,6 +509,7 @@ TypeError: unsupported operand type(s) for +: 'int' and 'tuple'
 num_tuple = (10, 20)
 print(num_tuple)
 
+# タプルがアンパッキングされ、要素がそれぞれx,yに格納される。
 x, y = num_tuple
 print(x, y)
 
