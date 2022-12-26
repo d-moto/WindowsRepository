@@ -417,14 +417,127 @@ print(r)
 
 
 ## 位置引数のタプル化
+```python
+def say_something(word):
+    print(word)
+
+say_something('HI')
+
+def say_something(word, *args):
+    print('word = ', word)
+    for arg in artgs:
+    print(arg)
+
+say_something('HI', 'Mike')
+
+t = ('Mike', 'Nancy')
+say_something('Hi', *t)
+
+```
 
 ## キーワード引数の辞書化
+```python
+
+def menu(entree='beef', drink='wine'):
+    print(entree, drink)
+
+menu(entree='beef', drink='coffee')
+
+
+def menu(**kwargs):
+    # print(kwargs)
+    for k, v in kwargs.items():
+        print(k, v)
+
+menu(entree='beef', drink='coffee')
+
+d = {
+    'entree': 'beef',
+    'drink': 'ice coffee',
+    'dessert': 'ice'
+}
+menu(**d)
+
+
+def menu(food, *args, **kwargs):
+    print(food)
+    print(args)
+    print(kwargs)
+
+menu('banana', 'apple', 'orange', entree='beef', drink='coffee')
+
+### 1つ目の位置引数はそのまま格納される。
+### 2つ目の位置引数（タプル化表現）はタプルで格納される。
+### 3つ目の引数（キーワード引数の辞書化の表現）は辞書で格納される。
+### タプル化位置引数と辞書化キーワード引数は、順番が入れ替わるとエラーとなる。
+banana
+('apple', 'orange')
+{'entree': 'beef', 'drink': 'coffee'}
+###
+
+```
 
 ## Docstringsとは
+```python
+def example_func(param1, param2):
+    # ["""]を使用すると、documentとして記述することができる。
+    """Example function with types documented in the docstring.
+
+    Args:
+        param1 (int): The first parameter.
+        param2 (str): The second parameter.
+
+    Returns:
+        bool: The return value. True for success, False otherwise.
+
+    """
+    print(param1)
+    print(param2)
+    return True
+
+print(example_func.__doc__)
+```
 
 ## 関数内関数
+```python
+def outer(a, b):
+    
+    def plus(c, d):
+        return c + d
+
+    r1 = plus(a, b)
+    r2 = plus(b, a)
+    print(r1 + r2)
+    
+outer(1, 2)
+```
 
 ## クロージャー
+```python
+def outer(a, b):
+
+    def inner():
+        return a + b
+
+    return inner
+
+f = outer(1, 2)
+r = f()
+print(r)
+
+
+def circle_area_func(pi):
+    def circle_area(radius):
+        return pi * radius * radius
+    
+    return circle_area
+
+cal1 = circle_area_func(3.14)
+cal2 = circle_area_func(3.141592)
+
+print(cal1(10))
+print(cal2(10))
+```
 
 ## デコレーター
 
