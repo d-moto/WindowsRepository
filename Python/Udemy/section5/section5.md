@@ -400,8 +400,20 @@ print(r)
 
 # 空のリストなどを使用したい場合は、以下のようにする。
 def test_func(x, l=None): 
+    if l is None:
+        l = []
     l.append(x)
     return l
+
+r = test_func(100)
+print(r)
+
+r = test_func(100) 
+print(r)
+
+[100]
+[100]
+```
 
 
 ## 位置引数のタプル化
