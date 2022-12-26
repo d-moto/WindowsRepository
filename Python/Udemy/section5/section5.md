@@ -178,32 +178,231 @@ while True:
 
 ## while else文
 ```python
+count = 0
+
+while count < 5:
+    if count == 1:
+        break
+    print(count)
+    count += 1
+else: # while内で、breakで抜けなければ、elseが実行される。
+    print('done')
+
+```
+## input関数
+```python
+while True:
+    word = input('Enter:')
+    if word == 'ok':
+        break
+    print('next')
+
+while True:
+    word = input('Enter:')
+    num = int(word)
+    if num == '100':
+        break
+    print('next')
+```
+
+## for文とbreak文とcontinue文
+```python
+some_list = [1, 2, 3, 4, 5]
+
+i = 0
+while i < len(some_list):
+    print(some_list[i])
+    i += 1
+
+for i in some_list:
+    print(i)
+
+
+for s in 'abcde':
+    print(s)
+
+for word in ['My', 'name', 'is', 'Mike']:
+    if word == 'name':
+        # break [word == 'name'なら、forループが終了]
+        # continue [word == 'name'なら、print(word)がスキップされ、次のループへ。]
+    print(word)
+```
+
+## for else文
+```python
+for fruit in ['apple', 'banana', 'orange']:
+    # if fruit == 'banana':
+    #    print('stop eating')
+    # break #breakはforループすべてから抜ける。elseは実行されない。
+    print(fruit)
+else:
+    print('I ate all!')
+```
+
+## range関数
+```python
+for i in range(10):
+    print(i) # 0~9
+
+for i in range(2, 10):
+    print(i) # 2~9
+
+for i in range(2, 10, 2)
+    print(i) # 2,4,6,8
+
+for _ in range(10): # for内で、インデックスを使用しない時は、アンダースコアを使用する。
+    print('hello')
+```
+## enumerate関数
+```python
+i = 0
+for fruit in ['apple', 'banana', 'orange']:
+    print(i, fruit)
+    i +=1
+
+i = 0
+for i, fruit in enumerate(['apple', 'banana', 'orange']):
+    print(i, fruit)
+```
+
+## zip関数
+```python
+days = ['Mon', 'Tue', 'Wed']
+fruits = ['apple', 'banana', 'orange']
+drinks = ['coffee', 'tea', 'beer']
+
+for i in range(len(days)):
+    print(days[i], fruits[i], drinks[i])
+
+
+for day, fruit, drink in zip(days, fruits, drinks):
+    print(day, fruit, drink)
+```
+
+## 辞書をfor文で処理する
+```python
+d = {'x': 100, 'y': 200}
+
+for v in d:
+    print(v)
+
+for k, v in d.items():
+    print(k, ':', v)
+
+d = {'x': 100, 'y': 200}
+print(d.items())
+
+# dict_items([('x', 100), ('y', 200)])
+# listの中にtaple
+# それぞれの周でtapleのアンパッキングで、k, vの変数に入れられる。
+```
+
+
+## 関数定義
+```python
+
+def say_something():
+    print('hi')
+
+say_something()
+
+print(type(say_something))
+
+def say_somethong():
+    s = 'hi'
+    return s
+
+result = say_something()
+print(result)
+
+def what_is_this(color):
+    print(color)
+
+what_is_this('red')
+
+def what_is_this(color):
+    if color == 'red':
+        return 'tomato'
+    elif color == 'green':
+        return 'green pepper'
+    else:
+        return "I don't know"
+    print(color)
+
+result = what_is_this('red')
+print(result)
+```
+
+
+## 関数の引数と返り値の宣言
+```python
+num: int = 10
+
+def add_num(a: int, b: int) -> int:
+    return a + b
+
+r = add_num(10, 20)
+print(r)
+
+r = add_num('a', 'b') # stringを渡しても実行できてしまう。
+print(r)
+```
+## 位置引数とキーワード引数とデフォルト引数
+```python
+def menu(entree, drink, dessert): 
+    # print(entree, drink, dessert)
+    print('entree = ', entree)
+    print('drink = ', drink)
+    print('dessert = ', dessert)
+
+menu('beef', 'ice', 'ice')　# 位置引数。関数で定義した順番に、引数として渡される。
+menu(entree='beef', dessert='ice', drink='ice') # キーワード引数。キーワードで指定したものが引数として渡される。
+
+def menu(entree='beef', drink='wine', dessert='ice'): # デフォルト引数。
+    # print(entree, drink, dessert)
+    print('entree = ', entree)
+    print('drink = ', drink)
+    print('dessert = ', dessert)
+
+menu()
+menu(entree='chicken', drink='beer')
+menu('chicken', drink='beer')
 
 ```
 
-## while else文
-
-## input関数
-
-## for文とbreak文とcontinue文
-
-## for else文
-
-## range関数
-
-## enumerate関数
-
-## zip関数
-
-## 辞書をfor文で処理する
-
-## 関数定義
-
-## 関数の引数と返り値の宣言
-
-## 位置引数とキーワード引数とデフォルト引数
-
 ## デフォルト引数で気を付けること
+```python
+def test_func(x, l=[]): 
+    l.append(x)
+    return l
+
+y = [1, 2, 3]
+r = test_func(100, y)
+print(r)
+
+y = [1, 2, 3]
+r = test_func(200, y)
+print(r)
+
+
+# リストはデフォルト引数で渡すべきではない。空のリストlを指すアドレスは、一度だけ生成される。
+# 1回目のtest_funcの実行時は、空のリストに100がappendされるが、
+# 2回目はアドレス参照により、既に100が格納された、リストlが参照される。
+# そのため、[100, 100]というリストになってしまう。
+r = test_func(100)
+print(r)
+
+r = test_func(100) 
+print(r)
+
+[100]
+[100, 100]
+
+# 空のリストなどを使用したい場合は、以下のようにする。
+def test_func(x, l=None): 
+    l.append(x)
+    return l
+
 
 ## 位置引数のタプル化
 
