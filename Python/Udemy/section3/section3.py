@@ -1,32 +1,32 @@
-# ƒVƒ“ƒOƒ‹ƒNƒH[ƒgAƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“‚Ç‚¿‚ç‚Å‚à‰ÂB
+# ã‚ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½gï¿½Aï¿½_ï¿½uï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ÂB
 print('hello')
 print("hello")
 
-# ƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ““à‚ÉƒVƒ“ƒOƒ‹ƒNƒH[ƒg‚ª‚ ‚Á‚Ä‚à•¶Žš—ñ‚Æ‚µ‚Ä•\Ž¦‚µ‚Ä‚­‚ê‚éB
+# ï¿½_ï¿½uï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒVï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½B
 print("I don't know")
 
-# ƒVƒ“ƒOƒ‹ƒNƒH[ƒg‚ð•¶Žš‚Æ‚µ‚Ä•\Ž¦‚µ‚½‚¢Žž‚ÉˆÈ‰º‚Ì‚æ‚¤‚É‚·‚é‚ÆƒGƒ‰[‚ª‚Å‚éB
+# ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½gï¿½ð•¶Žï¿½ï¿½Æ‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÉˆÈ‰ï¿½ï¿½Ì‚æ‚¤ï¿½É‚ï¿½ï¿½ï¿½ÆƒGï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å‚ï¿½B
 # print('I don't know')
 
-# ƒVƒ“ƒOƒ‹ƒNƒH[ƒg‚ð•¶Žš—ñ‚Æ‚µ‚Ä•\Ž¦‚µ‚½‚¢ê‡‚ÍˆÈ‰º‚Ì‚æ‚¤‚ÉƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚ð“ü‚ê‚éBi‰~ƒ}[ƒNj
+# ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½gï¿½ð•¶Žï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ÍˆÈ‰ï¿½ï¿½Ì‚æ‚¤ï¿½Éƒoï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½iï¿½~ï¿½}ï¿½[ï¿½Nï¿½j
 print('I don\'t know')
 
-# ƒVƒ“ƒOƒ‹ƒNƒH[ƒg“à‚Éƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“‚ª‚ ‚é‚Ì‚Í‰ÂB
+# ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½gï¿½ï¿½ï¿½Éƒ_ï¿½uï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚Í‰ÂB
 print('say "I don\'t know"')
 
-# ‚·‚×‚Ä‚ðƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“‚Å‘‚­‚È‚ç‚ÎAˆÈ‰º‚Ì‚æ‚¤‚É‚·‚éB
+# ï¿½ï¿½ï¿½×‚Ä‚ï¿½ï¿½_ï¿½uï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½È‚ï¿½ÎAï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½É‚ï¿½ï¿½ï¿½B
 print("say \"I don't know\"")
 
-# ‰üs‚ÍAƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚Æni\nj
+# ï¿½ï¿½ï¿½sï¿½ÍAï¿½oï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½nï¿½i\nï¿½j
 print('hello.\nHow are you?')
 
-# winndows‚ÌƒpƒX‚Ì‚æ‚¤‚È‚à‚Ì‚ÅAƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚ÌŽŸ‚Én‚ª‚­‚é‚ÆA—\Šú‚¹‚ÊŒ‹‰Ê‚É‚È‚éB
+# winndowsï¿½Ìƒpï¿½Xï¿½Ì‚æ‚¤ï¿½È‚ï¿½ï¿½Ì‚ÅAï¿½oï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ÌŽï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆAï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ÊŒï¿½ï¿½Ê‚É‚È‚ï¿½B
 print('C:\name\name')
 
-# ‚·‚×‚Ä‚ð•¶Žš—ñ‚Æ‚µ‚Ä•\Ž¦‚µ‚½‚¢ê‡‚ÍAraw‚ðˆÓ–¡‚·‚ér‚ðÅ‰‚É‘‚­B
+# ï¿½ï¿½ï¿½×‚Ä‚ð•¶Žï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ÍArawï¿½ï¿½ï¿½Ó–ï¿½ï¿½ï¿½ï¿½ï¿½rï¿½ï¿½ï¿½Åï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½B
 print(r'C:\name\name')
 
-# ˆÈ‰º‚Ì‚æ‚¤‚É‚·‚é‚ÆA‰üs‚ðŽ©“®‚Ås‚Á‚Ä‚­‚ê‚éBiu"""vƒ_ƒuƒ‹ƒNƒH[ƒe[ƒVƒ‡ƒ“‚ð3‚Â‚Â‚È‚°‚éBj
+# ï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½É‚ï¿½ï¿½ï¿½ÆAï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åsï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Bï¿½iï¿½u"""ï¿½vï¿½_ï¿½uï¿½ï¿½ï¿½Nï¿½Hï¿½[ï¿½eï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½Â‚Â‚È‚ï¿½ï¿½ï¿½Bï¿½j
 print("######################")
 print("""
 line1
@@ -35,7 +35,7 @@ line3
 """)
 print("######################")
 
-# ‚½‚¾ã‰º‚É‹ó”’s‚ª‚Å‚«‚é‚Ì‚ÅA–h‚¬‚½‚¢ê‡‚ÍAƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚ð“ü‚ê‚é
+# ï¿½ï¿½ï¿½ï¿½ï¿½ã‰ºï¿½É‹ó”’sï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½Ì‚ÅAï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½ÍAï¿½oï¿½bï¿½Nï¿½Xï¿½ï¿½ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 print("######################")
 print("""\
 line1
@@ -44,7 +44,7 @@ line3\
 """)
 print("######################")
 
-# ‚Ü‚½‚ÍˆÈ‰º‚Ì‚æ‚¤‚É‚·‚é‚Æ‹ó”’s‚Í‚Å‚«‚È‚¢‚ªA“Ç‚Ý‚É‚­‚¢‚Ì‚ÅA‚ ‚Ü‚è‚µ‚È‚¢B
+# ï¿½Ü‚ï¿½ï¿½ÍˆÈ‰ï¿½ï¿½Ì‚æ‚¤ï¿½É‚ï¿½ï¿½ï¿½Æ‹ó”’sï¿½Í‚Å‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½Aï¿½Ç‚Ý‚É‚ï¿½ï¿½ï¿½ï¿½Ì‚ÅAï¿½ï¿½ï¿½Ü‚è‚µï¿½È‚ï¿½ï¿½B
 print("######################")
 print("""line1
 line2
@@ -52,19 +52,19 @@ line3
 line4""")
 print("######################")
 
-# •¶Žš—ñ‚Ì‰‰ŽZ‚à‚Å‚«‚éB
-print('Hi.' * 3 + 'Mike'.)
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‰ï¿½ï¿½Zï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½B
+print('Hi.' * 3 + 'Mike.')
 print('Py' + 'thon')
 print('Py''thon')
 
-# ˆÈ‰º‚Ì‚æ‚¤‚È‘‚«•û‚ÍƒGƒ‰[‚Æ‚È‚é
+# ï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½Èï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÍƒGï¿½ï¿½ï¿½[ï¿½Æ‚È‚ï¿½
 str = 'Py'
 print(str 'thon')
 
-# •Ï”‚É‘ã“ü‚µ‚½•¶Žš—ñ‚ªŠÜ‚Ü‚ê‚é‚Æ‚«‚Í+‚ðŽg—p‚·‚éB
+# ï¿½Ïï¿½ï¿½É‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ‚ªŠÜ‚Ü‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½B
 print(str + 'thon')
 
-# •¶Žš—ñ‚ª‚©‚È‚è’·‚¢‚Æ‚«‚ÍA‚¢‚©‚Ì‚æ‚¤‚È‘‚«•û‚à‚Å‚«‚éB
+# ï¿½ï¿½ï¿½ï¿½ï¿½ñ‚ª‚ï¿½ï¿½È‚è’·ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ÍAï¿½ï¿½ï¿½ï¿½ï¿½Ì‚æ‚¤ï¿½Èï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½B
 s = ('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
      'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
 print(s)
