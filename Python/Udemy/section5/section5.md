@@ -720,9 +720,191 @@ print(s)
 ```
 
 ## ジェネレーター内包表記
+```python
+def g():
+    for i in range(10):
+        yield i
+
+g = g()
+
+print(type(g))
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+g = (i for i in range(10))
+# タプルの時はtupleと宣言する
+# g = tuple(i for i in range(10))
+
+for x in g:
+    print(x)
+```
 
 ## 名前空間とスコープ
+```python
+animal = 'cat'
+
+print(animal)
+
+def f():
+    print(animal) # 関数内でグローバル変数は使用できる。
+
+f()
+
+def f():
+    print(animal)
+    animal = 'dog'
+    # エラーとなる。一行上で関数内のローカル変数animalが参照されようとしているため。
+    #(animal = 'dog'を定義する前のため) print(animal)がなければ、エラーとはならない。
+    print('after', animal)
+
+    # グローバルのanimalを参照したいときは、以下のようにする。
+    # global animal
+    # animal = 'dog'
+    # print('local:', animal)
+    
+    # ローカル変数の確認ができる。locals()
+    # print('local:', locals())
+
+f()
+print(animal)
+
+# 以下のように記述するとエラーとはならない。
+def f():
+    animal = 'dog'
+    print('after:', animal)
+
+f()
+print('global:', globals())
+print('global:', animal)
+
+
+"""
+Test Test
+"""
+animal = 'cat'
+
+def f():
+    """Test func doc"""
+    print(f.__name__)
+    print(f.__doc__)
+
+f()
+print('global:', __name__)
+```
 
 ## 例外処理
+```python
+#
+l = [1, 2, 3]
+i = 5
+del l
+
+try:
+    l[i]
+    # () + l
+except IndexError as ex:
+    print("Don't worry: {}".format(ex))
+except NameError as ex:
+    print(ex)
+except Exception as ex:
+    print('other:{}'.format(ex))
+else:
+    print('done') # exceptに該当しなかった場合にelseが実行される。
+finally: # finallyは必ず実行される。
+    print('clean up')
+
+print("last")
+
+# python document 
+# 5.4. Exception hierarchy
+# https://docs.python.org/ja/3.6/library/exceptions.html#exception-hierarchy
+BaseException
+ +-- SystemExit
+ +-- KeyboardInterrupt
+ +-- GeneratorExit
+ +-- Exception ★
+      +-- StopIteration
+      +-- StopAsyncIteration
+      +-- ArithmeticError
+      |    +-- FloatingPointError
+      |    +-- OverflowError
+      |    +-- ZeroDivisionError
+      +-- AssertionError
+      +-- AttributeError
+      +-- BufferError
+      +-- EOFError
+      +-- ImportError
+      |    +-- ModuleNotFoundError
+      +-- LookupError
+      |    +-- IndexError ★
+      |    +-- KeyError
+      +-- MemoryError
+      +-- NameError ★
+      |    +-- UnboundLocalError
+      +-- OSError
+      |    +-- BlockingIOError
+      |    +-- ChildProcessError
+      |    +-- ConnectionError
+      |    |    +-- BrokenPipeError
+      |    |    +-- ConnectionAbortedError
+      |    |    +-- ConnectionRefusedError
+      |    |    +-- ConnectionResetError
+      |    +-- FileExistsError
+      |    +-- FileNotFoundError
+      |    +-- InterruptedError
+      |    +-- IsADirectoryError
+      |    +-- NotADirectoryError
+      |    +-- PermissionError
+      |    +-- ProcessLookupError
+      |    +-- TimeoutError
+      +-- ReferenceError
+      +-- RuntimeError
+      |    +-- NotImplementedError
+      |    +-- RecursionError
+      +-- SyntaxError
+      |    +-- IndentationError
+      |         +-- TabError
+      +-- SystemError
+      +-- TypeError
+      +-- ValueError
+      |    +-- UnicodeError
+      |         +-- UnicodeDecodeError
+      |         +-- UnicodeEncodeError
+      |         +-- UnicodeTranslateError
+      +-- Warning
+           +-- DeprecationWarning
+           +-- PendingDeprecationWarning
+           +-- RuntimeWarning
+           +-- SyntaxWarning
+           +-- UserWarning
+           +-- FutureWarning
+           +-- ImportWarning
+           +-- UnicodeWarning
+           +-- BytesWarning
+           +-- ResourceWarning
+#
+```
+
+
 
 ## 独自例外の作成
+```python
+# raise IndexError('test error')
+
+class UppercaseError(Exception):
+    pass
+
+def check():
+    words = ['apple', 'orange', 'banana', 'PINEAPPLE']
+    for word in words:
+        if word.isupper():# 大文字かどうか
+            raise UppercaseError(word)
+
+try:
+    check()
+except UppercaseError as ex:
+    print('This is my fault. Go next')
+
+```
