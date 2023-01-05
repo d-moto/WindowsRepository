@@ -540,16 +540,184 @@ print(cal2(10))
 ```
 
 ## デコレーター
+```python
+def print_more(func):
+    def wrapper(*args, **kwargs):
+        print('func:', func.__name__)
+        print('args:', args)
+        print('kwargs:', kwargs)
+        result = func(*args, **kwargs)
+        print('end')
+        return result
+    return wrapper
 
+def print_info(func):
+    def wrapper(*args, **kwargs):
+        print('start')
+        result = func(*args, **kwargs)
+        print('end')
+        return result
+    return wrapper
+
+
+@print_info
+@print_more
+def add_num(a, b):
+    return a + b
+
+# @print_infoとデコレータを示しておけば以下のように書ける
+r = add_num(10, 20)
+print(r)
+
+##
+# @なしの時は、以下のように書ける
+f = print_info(print_more(add_num))
+#f = print_info(add_num)
+r = f(10, 20)
+print(r)
+
+print('start')
+r = add_num(10, 20)
+print('end')
+
+print(r)
+
+
+```
 ## ラムダ
+```python
+l = ['Mon', 'tue', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
+
+def change_words(words, func):
+    for word in words:
+        print(func(word))
+
+# ラムダを使用すると、一行で書ける
+#def sample_func(word):
+#    return word.capitalize()
+sample_func = lambda word: word.capitalize()
+
+# ラムダを引数に直接指定することもあり。
+change_words(l, sample_func)
+change_words(l, lambda word: word.lower())
+# change_words(l, lambda word: word.capitalize())
+```
 
 ## ジェネレーター
+```python
+l = ['Good morning', 'Good afternoon', 'Good night']
+
+for i in l:
+    print(i)
+
+print('#####################################')
+
+def counter(num=10):
+    for _ in range(num):
+        yield 'run'
+
+# ジェネレーター
+def greeting():
+    yield 'Good morning'
+    #for i in range(10000000):
+    #    print(i)
+    yield 'Good afternoon'
+    #for i in range(10000000):
+    #    print(i)
+    yield 'Good night'
+
+for g in greeting():
+    print(g)
+
+# 反復処理の間に追加処理を記述することができる。
+g = greeting()
+c = counter()
+
+print(next(g))
+
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+
+print(next(g))
+
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+
+print('@@@@')
+print(next(g))
+print('@@@@')
+print(next(g))
+
+# エラー発生
+print(next(c))
+```
+
 
 ## リスト内包表記
+```python
+t = (1, 2, 3, 4, 5)
+t2 = (5, 6, 7, 8, 9, 10)
+r = []
+for i in t:
+    if i % 2 == 0:
+        r.append(i)
+
+print(r)
+
+# リスト内包表記
+r = [i for i in t if i % 2 == 0]
+print(r)
+
+r = []
+for i in t:
+    for j in t2:
+        r.append(i * j)
+
+print(r)
+
+r = [i * j for i in t for j in t2]
+print(r)
+```
 
 ## 辞書包括表記
+```python
+w = ['mon', 'tue', 'wed']
+f = ['coffee', 'milk', 'water']
+
+d = {}
+for x, y in zip(w, f):
+    d[x] = y
+
+print(d)
+
+# 辞書内包表記
+d = {x: y for x, y in zip(w, f)}
+print(d)
+```
+
 
 ## 集合包括表記
+```python
+s = set()
+
+for i in range(10):
+    if i % 2 == 0:
+        s.add(i)
+
+print(s)
+
+# 集合包括表記
+s = {i for i in range(10) if i % 2 == 0}
+print(s)
+
+
+```
 
 ## ジェネレーター内包表記
 
