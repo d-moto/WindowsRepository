@@ -1,4 +1,10 @@
-## Windowsにpythonをインストールする
+# Python環境の設定 4_7
+
+## 4. Macにpythonをインストールする
+略
+## 5. MacにPycharmをインストールする
+略
+## 6. Windowsにpythonをインストールする
 
 ### anacondaからインストールする方法
 
@@ -17,7 +23,7 @@ Destination Folder : C:\Users\mokos\anaconda3
 
 7. 上記が起動すれば、インストールは正常にできている。
 
-## WindowsにPycharmをインストールする。(IDEをインストールする。)
+## 7. WindowsにPycharmをインストールする。(IDEをインストールする。)
 
 1. https://www.jetbrains.com/ja-jp/pycharm/　に移動する。
 
@@ -46,7 +52,7 @@ Destination Folder : C:\Users\mokos\anaconda3
 
 13. 終われば、PyCharmが使用できる。
 
-## PyCharmのTerminal機能で以下のエラーが出た
+### **NOTE : PyCharmのTerminal機能で以下のエラーが出た**
 
 ```
 To initialize your shell, run

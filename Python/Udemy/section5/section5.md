@@ -1,4 +1,10 @@
-## if文
+# 制御フローとコード構造 31_66
+
+## 31. コメント
+
+## 32. 1行が長くなるとき
+
+## 33. if文
 ```python
 x = -10
 if x < 0:
@@ -25,14 +31,14 @@ if a > 0:
         print('b is positive')
 ```
 
-## デバッカーを使用して確認してみる
+## 34. デバッカーを使用して確認してみる
 コードの右側をクリックし、breakポイントを付ける。  
 画面右上の緑の虫ボタンをクリックする。  
 F7を押して、プログラムを進める。  
 
 ![](debug.png)
 
-## 比較演算子と論理演算子
+## 35. 比較演算子と論理演算子
 ```python
 # var
 a = 1
@@ -74,7 +80,7 @@ else:
     print('a < 0 or b < 0')
 ```
 
-## In と Notの使いどころ
+## 36. In と Notの使いどころ
 ```python
 y = [1, 2, 3]
 x = 1
@@ -107,7 +113,7 @@ if not is_ok:
 ```
 
 
-## 値が入っていない判定をするテクニック
+## 37. 値が入っていない判定をするテクニック
 ```python
 # Falseと判定されるもの
 # 0, 0.0, '', [], (), {}, set()
@@ -126,7 +132,7 @@ else:
     print('NO')
 ```
 
-## Noneを判定する場合
+## 38. Noneを判定する場合
 ```python
 is_empty = None
 print(is_empty)
@@ -149,7 +155,7 @@ print(True is True)
 print(None is None)
 ```
 
-## while文とcontunue文とbreak文
+## 39. while文とcontunue文とbreak文
 ```python
 count = 0
 while count < 5:
@@ -176,7 +182,7 @@ while True:
     count += 1
 ```
 
-## while else文
+## 40. while else文
 ```python
 count = 0
 
@@ -189,7 +195,8 @@ else: # while内で、breakで抜けなければ、elseが実行される。
     print('done')
 
 ```
-## input関数
+
+## 41. input関数
 ```python
 while True:
     word = input('Enter:')
@@ -205,7 +212,7 @@ while True:
     print('next')
 ```
 
-## for文とbreak文とcontinue文
+## 42. for文とbreak文とcontinue文
 ```python
 some_list = [1, 2, 3, 4, 5]
 
@@ -228,7 +235,7 @@ for word in ['My', 'name', 'is', 'Mike']:
     print(word)
 ```
 
-## for else文
+## 43. for else文
 ```python
 for fruit in ['apple', 'banana', 'orange']:
     # if fruit == 'banana':
@@ -239,7 +246,7 @@ else:
     print('I ate all!')
 ```
 
-## range関数
+## 44. range関数
 ```python
 for i in range(10):
     print(i) # 0~9
@@ -253,7 +260,8 @@ for i in range(2, 10, 2)
 for _ in range(10): # for内で、インデックスを使用しない時は、アンダースコアを使用する。
     print('hello')
 ```
-## enumerate関数
+
+## 45. enumerate関数
 ```python
 i = 0
 for fruit in ['apple', 'banana', 'orange']:
@@ -265,7 +273,7 @@ for i, fruit in enumerate(['apple', 'banana', 'orange']):
     print(i, fruit)
 ```
 
-## zip関数
+## 46. zip関数
 ```python
 days = ['Mon', 'Tue', 'Wed']
 fruits = ['apple', 'banana', 'orange']
@@ -279,7 +287,7 @@ for day, fruit, drink in zip(days, fruits, drinks):
     print(day, fruit, drink)
 ```
 
-## 辞書をfor文で処理する
+## 47. 辞書をfor文で処理する
 ```python
 d = {'x': 100, 'y': 200}
 
@@ -298,7 +306,7 @@ print(d.items())
 ```
 
 
-## 関数定義
+## 48. 関数定義
 ```python
 
 def say_something():
@@ -334,7 +342,7 @@ print(result)
 ```
 
 
-## 関数の引数と返り値の宣言
+## 49. 関数の引数と返り値の宣言
 ```python
 num: int = 10
 
@@ -347,7 +355,8 @@ print(r)
 r = add_num('a', 'b') # stringを渡しても実行できてしまう。
 print(r)
 ```
-## 位置引数とキーワード引数とデフォルト引数
+
+## 50. 位置引数とキーワード引数とデフォルト引数
 ```python
 def menu(entree, drink, dessert): 
     # print(entree, drink, dessert)
@@ -370,7 +379,7 @@ menu('chicken', drink='beer')
 
 ```
 
-## デフォルト引数で気を付けること
+## 51. デフォルト引数で気を付けること
 ```python
 def test_func(x, l=[]): 
     l.append(x)
@@ -416,7 +425,7 @@ print(r)
 ```
 
 
-## 位置引数のタプル化
+## 52. 位置引数のタプル化
 ```python
 def say_something(word):
     print(word)
@@ -435,7 +444,7 @@ say_something('Hi', *t)
 
 ```
 
-## キーワード引数の辞書化
+## 53. キーワード引数の辞書化
 ```python
 
 def menu(entree='beef', drink='wine'):
@@ -477,7 +486,7 @@ banana
 
 ```
 
-## Docstringsとは
+## 54. Docstringsとは
 ```python
 def example_func(param1, param2):
     # ["""]を使用すると、documentとして記述することができる。
@@ -498,7 +507,7 @@ def example_func(param1, param2):
 print(example_func.__doc__)
 ```
 
-## 関数内関数
+## 55. 関数内関数
 ```python
 def outer(a, b):
     
@@ -512,7 +521,7 @@ def outer(a, b):
 outer(1, 2)
 ```
 
-## クロージャー
+## 56. クロージャー
 ```python
 def outer(a, b):
 
@@ -539,7 +548,7 @@ print(cal1(10))
 print(cal2(10))
 ```
 
-## デコレーター
+## 57. デコレーター
 ```python
 def print_more(func):
     def wrapper(*args, **kwargs):
@@ -584,7 +593,8 @@ print(r)
 
 
 ```
-## ラムダ
+
+## 58. ラムダ
 ```python
 l = ['Mon', 'tue', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
 
@@ -603,7 +613,7 @@ change_words(l, lambda word: word.lower())
 # change_words(l, lambda word: word.capitalize())
 ```
 
-## ジェネレーター
+## 59. ジェネレーター
 ```python
 l = ['Good morning', 'Good afternoon', 'Good night']
 
@@ -659,7 +669,7 @@ print(next(c))
 ```
 
 
-## リスト内包表記
+## 60. リスト内包表記
 ```python
 t = (1, 2, 3, 4, 5)
 t2 = (5, 6, 7, 8, 9, 10)
@@ -685,7 +695,7 @@ r = [i * j for i in t for j in t2]
 print(r)
 ```
 
-## 辞書包括表記
+## 61. 辞書包括表記
 ```python
 w = ['mon', 'tue', 'wed']
 f = ['coffee', 'milk', 'water']
@@ -702,7 +712,7 @@ print(d)
 ```
 
 
-## 集合包括表記
+## 62. 集合包括表記
 ```python
 s = set()
 
@@ -719,7 +729,7 @@ print(s)
 
 ```
 
-## ジェネレーター内包表記
+## 63. ジェネレーター内包表記
 ```python
 def g():
     for i in range(10):
@@ -741,7 +751,7 @@ for x in g:
     print(x)
 ```
 
-## 名前空間とスコープ
+## 64. 名前空間とスコープ
 ```python
 animal = 'cat'
 
@@ -794,7 +804,7 @@ f()
 print('global:', __name__)
 ```
 
-## 例外処理
+## 65. 例外処理
 ```python
 #
 l = [1, 2, 3]
@@ -889,7 +899,7 @@ BaseException
 
 
 
-## 独自例外の作成
+## 66. 独自例外の作成
 ```python
 # raise IndexError('test error')
 

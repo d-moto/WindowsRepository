@@ -1,80 +1,73 @@
-# Pythonの基本
+# Pythonの基本 8_15
 
-## 1. 変数宣言
+## 8. 変数宣言
 
 </br>
 
-### **変数宣言**
+- **変数宣言**
 </br>
-
 pythonでは、int,srtなど変数の宣言時に指定する必要はない。  
-変数のタイプはtype()関数で確認できる。
+変数のタイプはtype()関数で確認できる。  
+  ```python
+  num = 1
+  name = 'Mike'
+  is_ok = True
 
-```python
-num = 1
-name = 'Mike'
-is_ok = True
+  print(num, type(num))
+  print(name, type(name))
+  print(is_ok, type(is_ok))
+  ```
+  ↓ 実行結果
+  ```python
+  1 <class 'int'>
+  Mike <class 'str'>
+  True <class 'bool'>
+  ```
 
-print(num, type(num))
-print(name, type(name))
-print(is_ok, type(is_ok))
-```
-↓ 実行結果
-```python
-1 <class 'int'>
-Mike <class 'str'>
-True <class 'bool'>
-```
-
-### **型の上書きと型変換**
+- **型の上書きと型変換**
 </br>
-
 以下のようにすると、変数の上書きと、型変換ができる
+  ```python
+  # 型の上書き
+  num = 1
+  name = 'Mike'
 
-型の上書き
-```python
-num = 1
-name = 'Mike'
+  num = name
 
-num = name
+  print(num, type(num))
+  ```
+  ↓ 実行結果
+  ```python
+  Mike <class 'str'>
+  ```
+  ```python
+  # 型の変換
+  name = '1'
 
-print(num, type(num))
-```
-↓ 実行結果
-```python
-Mike <class 'str'>
-```
+  new_num = int(name)
 
-型の変換
-```python
-name = '1'
+  print(new_num, type(new_num))
+  ```
+  ↓ 実行結果
+  ```python
+  1 <class 'int'>
+  ```
 
-new_num = int(name)
-
-print(new_num, type(new_num))
-```
-↓ 実行結果
-```python
-1 <class 'int'>
-```
-
-### **型の宣言**
-</br>
-
+- **型の宣言**  
 一応Python3.9から型の宣言ができる
-```python
-num: int = 1
-name: str = 'Mike'
-```
-ただ基本的に使用しない。
+  ```python
+  num: int = 1
+  name: str = 'Mike'
+  ```
+  ただ基本的に使用しない。
 
-### **変数の命名**
+- **変数の命名**  
 Pythonでは、変数の先頭に数字は使用できない。
 また、予約語も変数の名前には使用できない。
 
 </br>
 
-## 2. printで出力
+## 9. printで出力
 </br>
 
 - sep : 引数と引数の間の文字を設定する。（デフォルトではスペース）
@@ -91,7 +84,7 @@ print('4', 'Hi', 'Mike', sep=',', end='.\n')
 4,Hi,Mike.
 ```
 
-## 3. 数値
+## 10. 数値
 </br>
 
 ```python
@@ -160,7 +153,7 @@ print(help(math))
 
 ```
 
-## 4. 文字列
+## 11. 文字列
 ```python
 # シングルクォート、ダブルクォーテーションどちらでも可。
 print('hello')
@@ -238,7 +231,7 @@ s = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' \
 print(s)
 ```
 
-## 5. 文字列のインデックスとスライス
+## 12. 文字列のインデックスとスライス
 
 文字列にはインデックスがある。
 
@@ -278,7 +271,7 @@ n = len(word)
 print(n)
 ```
 
-## 6. 文字のメソッド
+## 13. 文字のメソッド
 
 ```python
 s = 'My name is Mike. Hi Mike.'
@@ -299,7 +292,7 @@ print(s.lower())
 print(s.replace('Mike', 'Nancy'))
 ```
 
-## 7. 文字列の代入
+## 14. 文字列の代入
 ```python
 >>> 'a is {}'.format('a')
 'a is a'
@@ -337,7 +330,7 @@ True
 >>>
 ```
 
-## 8. f-strings
+## 15. f-strings
 
 ```python
 >>> a = 'a'
