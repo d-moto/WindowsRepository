@@ -59,7 +59,8 @@ print('Py''thon')
 
 # �ȉ��̂悤�ȏ������̓G���[�ƂȂ�
 str = 'Py'
-print(str 'thon')
+#print(str 'thon')
+print('print(str "thon")')
 
 # �ϐ��ɑ�����������񂪊܂܂��Ƃ���+���g�p����B
 print(str + 'thon')
