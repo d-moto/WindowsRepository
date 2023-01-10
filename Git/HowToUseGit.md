@@ -1611,4 +1611,169 @@ $ git branch -a
   8. プルリクエストをマージ  
   9. ブランチを削除  
 
+## 2023/1/11 追記 git fetchなどについて
+```shell
+★git initで.gitファイルを作成し、新規のローカルレポジトリを作成。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane
+$ git init
+Initialized empty Git repository in C:/Users/axppe/Git_workspace/ayane/.git/
+
+★もちろんディレクトリは以下には、何もファイルはない。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ ls
+
+★リモートリポジトリも何も登録されていない。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git remote -v
+
+★リモートリポジトリを登録する。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git remote add origin https://github.com/d-moto/WindowsRepository.git
+
+★リモートリポジトリが登録されたことを確認。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git remote -v
+origin  https://github.com/d-moto/WindowsRepository.git (fetch)
+origin  https://github.com/d-moto/WindowsRepository.git (push)
+
+★git fetchしてみる。https://github.com/d-moto/WindowsRepository.gitの情報をローカルレポジトリへ持ってきた。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git fetch origin
+remote: Enumerating objects: 392, done.
+remote: Counting objects: 100% (392/392), done.
+remote: Compressing objects: 100% (250/250), done.
+Receiving objects: 100% (392/392)used 333 (delta 110), pack-reused 0
+Receiving objects: 100% (392/392), 1.05 MiB | 8.05 MiB/s, done.
+Resolving deltas: 100% (169/169), done.
+From https://github.com/d-moto/WindowsRepository
+ * [new branch]      master     -> origin/master
+ * [new branch]      mod_axppe  -> origin/mod_axppe
+
+★git fetchの場合、ワークツリーは変更されない。そのため、まだディレクトリ配下は空となっている。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ ls
+
+★ブランチを確認すると、fetchしてきたブランチ情報を確認できる。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git branch -a
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+★remotes/origin/masterのブランチにチェックアウトする。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git checkout remotes/origin/master
+Note: switching to 'remotes/origin/master'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1e725f4 mod 10.py and section3.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((1e725f4...))
+
+★lsコマンドで確認してみる。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((1e725f4...))
+$ ls
+Git  LinuC  Python
+
+★mod_axppeブランチにスイッチしてみる。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((1e725f4...))
+$ git checkout remotes/origin/mod_axppe
+Previous HEAD position was 1e725f4 mod 10.py and section3.py
+HEAD is now at 32b75ee First commit (create HTML/sample.html)
+
+★lsで確認するとしっかりチェックアウトできている。
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((32b75ee...))
+$ ls
+Git  HTML  LinuC  Python
+
+★masterブランチに戻ったらマージされた？
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((32b75ee...))
+$ git branch -a
+* (HEAD detached at origin/mod_axppe)
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((32b75ee...))
+$ git checkout master
+Previous HEAD position was 32b75ee First commit (create HTML/sample.html)
+Switched to a new branch 'master'
+branch 'master' set up to track 'origin/master'.
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git branch
+* master
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git branch -a
+* master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git checkout remotes/origin/master
+Note: switching to 'remotes/origin/master'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1e725f4 mod 10.py and section3.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((1e725f4...))
+$ git branch -a
+* (HEAD detached at origin/master)
+  master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane ((1e725f4...))
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ ls
+Git  LinuC  Python
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git branch -a
+* master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (master)
+$ git checkout mod_axppe
+Switched to a new branch 'mod_axppe'
+branch 'mod_axppe' set up to track 'origin/mod_axppe'.
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/ayane (mod_axppe)
+$ ls
+Git  HTML  LinuC  Python
+```
+
+
 
