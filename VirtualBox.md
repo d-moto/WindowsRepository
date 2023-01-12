@@ -26,6 +26,12 @@ C:\Program Files\Oracle\VirtualBox>VBoxManage.exe list runningvms
 "AlmaLinux9" {6ebc2119-de35-467b-a695-047eb2e424f5}
 
 C:\Program Files\Oracle\VirtualBox>
+C:\Program Files\Oracle\VirtualBox>VBoxManage.exe controlvm AlmaLinux9 poweroff
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+
+C:\Program Files\Oracle\VirtualBox>VBoxManage.exe list runningvms
+
+C:\Program Files\Oracle\VirtualBox>
 ```
 
 ## 参考
