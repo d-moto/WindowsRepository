@@ -77,6 +77,19 @@ def cry():
 ```
 
 ## 69. 絶対パスと相対パスのImport
+```python
+# human.py
+from lesson_package.tools import utils
+from ..tools import utils
+
+
+def sing():
+    return 'sing'
+
+def cry():
+    return utils.say_twice('cry')
+```
+
 
 ## 70. アスタリスクのインポートと__init__.pyと__all__
 
