@@ -1,0 +1,13 @@
+.box1{
+  width:100px;
+  height:100px;
+  background:gold;
+  border-radius:50px;
+  margin:auto
+  text-align:center
+}
+
+.text1{
+ text-align:center;
+ padding:30% 0;
+}
