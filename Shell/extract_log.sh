@@ -48,7 +48,7 @@ function digit_check_date() {
 # 引数の範囲をチェックする関数
 function range_check() {
   if [ $1 -lt 0 ] || [ $1 -gt 59 ]; then
-    echo "Error: Argument '$2' is out of range (0-59)" >&2
+    echo "Error: Argument '$1' is out of range (0-59)" >&2
     exit 1
   fi
 }
@@ -65,15 +65,15 @@ function convert_time_format() {
   range_check ${day_tmp}
   day=${day_tmp}
 
-  # 時間のフォーマットをチェック
+  # 時間のフォーマットをチェック（時）
   is_number ${time_arr[2]}
-  hour_tmp=${digit_check_time ${time_arr[2]}}
+  hour_tmp=$(digit_check_time ${time_arr[2]})
   range_check ${hour_tmp}
   hour=${hour_tmp}
 
   # 時間のフォーマットをチェック（分）
   is_number ${time_arr[3]}
-  min_tmp=${digit_check_time ${time_arr[3]}}
+  min_tmp=$(digit_check_time ${time_arr[3]})
   range_check ${min_tmp}
   min=${min_tmp}
 
@@ -89,12 +89,13 @@ check_args ${START_TIME} ${STOP_TIME}
 start_time_formatted=$(convert_time_format "${START_TIME}")
 end_time_formatted=$(convert_time_format "${STOP_TIME}")
 
-echo "${start_time_formatted}"
-echo "${end_time_formatted}"
+echo "START TIME : ${start_time_formatted}"
+echo "END TIME : ${end_time_formatted}"
 
 # 必要な変数の初期化
 log_dir="./log"
 output_file="$log_dir/syslog.$(date +%Y%m%d%H%M%S).log"
+touch ${output_file}
 
 # log_dirの作成
 mkdir -p "$log_dir"
