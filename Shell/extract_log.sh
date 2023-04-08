@@ -45,8 +45,6 @@ function convert_mon() {
     echo "Error: Argument ${time_arr_e[0]} is invalid month with code ${ret}"
     exit 32
   fi
-  echo ${month_s}
-  echo ${month_e}
 }
 
 # 引数の桁数を判定する関数（DAY）
@@ -84,9 +82,6 @@ function convert_day() {
     echo "exit 80"
     exit 80
   fi
-
-  echo ${day_s}
-  echo ${day_e}
 }
 
 ## 引数の桁数を判定する関数（HOUR・MIN）
@@ -117,50 +112,6 @@ function range_check_m() {
     exit 52
   fi
 }
-
-# フォーマット変換関数
-# function convert_time_format() {
-#   # 日付のフォーマットをチェック（月）
-#   local time_str="$1"
-#   IFS=',' read -ra time_arr <<< "$time_str"
-#   is_number ${time_arr[0]}
-#   month=$(LANG=en_US.UTF-8 date -d "${time_arr[0]}/1" +"%b")
-#   ret="$?"
-#   if [ ${ret} -ne 0 ]; then
-#     echo "Error: date command failed with exit code ${ret}." >&2
-#     exit 10
-#   fi
-
-#   # 日付のフォーマットをチェック（日）
-#   is_number ${time_arr[1]}
-#   #day_tmp=$(digit_check_date ${time_arr[1]})
-#   digit_check_date ${time_arr[1]}
-#   if [ "x${day_tmp}" == "x" ]; then
-#     exit 20
-#   fi
-#   range_check ${day_tmp}
-#   day=${day_tmp}
-
-#   # 時間のフォーマットをチェック（時）
-#   is_number ${time_arr[2]}
-#   hour_tmp=$(digit_check_time ${time_arr[2]})
-#   if [ "x${hour_tmp}" == "x" ]; then
-#     exit 30
-#   fi
-#   range_check ${hour_tmp}
-#   hour=${hour_tmp}
-
-#   # 時間のフォーマットをチェック（分）
-#   is_number ${time_arr[3]}
-#   min_tmp=$(digit_check_time ${time_arr[3]})
-#   if [ "x${min_tmp}" == "x" ]; then
-#     exit 40
-#   fi
-#   range_check ${min_tmp}
-#   min=${min_tmp}
-
-#   echo "$month $day $hour:$min"
-# }
 
 ## MAIN
 # 引数の数チェック
@@ -194,50 +145,6 @@ min_e=$(digit_check_time ${time_arr_e[3]})
 
 start_time_formatted="${month_s} ${day_s} ${hour_s}:${min_s}"
 end_time_formatted="${month_e} ${day_e} ${hour_e}:${min_e}"
-#echo "${start_time_formatted}"
-#echo "${end_time_formatted}"
-
-
-
-
-# 引数のフォーマット変換
-# start_time_formatted=$(convert_time_format "${START_TIME}")
-# ret=$?
-# # echo "ret = ${ret}"
-# if [ "${ret}" != "0" ]; then
-
-#   # if [ "${ret}" == "3" ]; then
-#   #   echo "Error: invalid args 'day' : exit code ${ret}"
-#   # elif [ ${ret} -eq 4 ]; then
-#   #   echo "Error: invalid args 'hour' : exit code ${ret}"
-#   # elif [ ${ret} -eq 5 ]; then
-#   #   echo "Error: invalid args 'min' : exit code ${ret}"
-#   # else
-#   #   echo "Error: Error occuered"
-#   # fi
-
-#   echo "Error: func: start_time_formatted: convert_time_format : exit code ${ret}"
-#   exit 1
-# fi
-
-# end_time_formatted=$(convert_time_format "${STOP_TIME}")
-# ret=$?
-# # echo "ret = ${ret}"
-# if [ "${ret}" != "0" ]; then
-
-#   # if [ "${ret}" == "3" ]; then
-#   #   echo "Error: invalid args 'day' : exit code ${ret}"
-#   # elif [ ${ret} -eq 4 ]; then
-#   #   echo "Error: invalid args 'hour' : exit code ${ret}"
-#   # elif [ ${ret} -eq 5 ]; then
-#   #   echo "Error: invalid args 'min' : exit code ${ret}"
-#   # else
-#   #   echo "Error: Error occuered"
-#   # fi
-
-#   echo "Error: func: end_time_formatted: convert_time_format : exit code ${ret}"
-#   exit 1
-# fi
 
 echo "START TIME : ${start_time_formatted}"
 echo "END TIME : ${end_time_formatted}"
@@ -260,4 +167,5 @@ while read line; do
   # syslogに書き込み
   echo "$line" >> "$output_file"
 done < /var/log/messages
+echo "All done!"
 
