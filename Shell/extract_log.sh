@@ -12,8 +12,8 @@ function convert_time_format() {
   IFS=',' read -ra time_arr <<< "$time_str"
   month=$(LANG=en_US.UTF-8 date -d "${time_arr[0]}/1" +"%b")
   day=${time_arr[1]}
-  hour=${time_arr[2]}
-  min=${time_arr[3]}
+  hour=$(printf "%02d" ${time_arr[2]})
+  min=$(printf "%02d" ${time_arr[3]})
   echo "$month $day $hour:$min"
 }
 
@@ -38,3 +38,4 @@ while read line; do
   # syslogに書き込み
   echo "$line" >> "$output_file"
 done < /var/log/messages
+
