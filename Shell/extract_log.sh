@@ -1,5 +1,8 @@
 #!/bin/bash
 
+START_TIME=$1
+STOP_TIME=$2
+
 # 引数チェック関数
 function check_args(){
   if [ $# -ne 2 ]; then
@@ -21,11 +24,11 @@ function convert_time_format() {
 }
 
 # 引数チェック
-check_args
+check_args ${START_TIME} ${STOP_TIME}
 
 # 引数のフォーマット変換
-start_time_formatted=$(convert_time_format "$1")
-end_time_formatted=$(convert_time_format "$2")
+start_time_formatted=$(convert_time_format "${START_TIME}")
+end_time_formatted=$(convert_time_format "${STOP_TIME}")
 
 # 必要な変数の初期化
 log_dir="./log"
