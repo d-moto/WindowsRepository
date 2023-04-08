@@ -97,7 +97,7 @@ check_args ${START_TIME} ${STOP_TIME}
 # 引数のフォーマット変換
 start_time_formatted=$(convert_time_format "${START_TIME}")
 ret=$?
-echo "ret = ${ret}"
+# echo "ret = ${ret}"
 if [ "${ret}" != "0" ]; then
 
   if [ "${ret}" == "3" ]; then
@@ -116,7 +116,7 @@ fi
 
 end_time_formatted=$(convert_time_format "${STOP_TIME}")
 ret=$?
-echo "ret = ${ret}"
+# echo "ret = ${ret}"
 if [ "${ret}" != "0" ]; then
 
   if [ "${ret}" == "3" ]; then
