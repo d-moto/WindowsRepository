@@ -31,65 +31,33 @@ function is_number() {
   fi
 }
 
-# 数字で指定されたmonthを文字に変換
-function convert_mon() {
-  month_s=$(LANG=C date -d "${time_arr_s[0]}/1" +"%b")
-  ret=$?
-  if [ ${ret} -ne 0 ]; then
-    echo "Error: Argument ${time_arr_s[0]} is invalid month with code ${ret}"
-    exit 31
-  fi
-  month_e=$(LANG=C date -d "${time_arr_e[0]}/1" +"%b")
-  ret=$?
-  if [ ${ret} -ne 0 ]; then
-    echo "Error: Argument ${time_arr_e[0]} is invalid month with code ${ret}"
-    exit 32
-  fi
-  echo ${month_s}
-  echo ${month_e}
-}
-
 # 引数の桁数を判定する関数（DAY）
 function digit_check_date() {
-  digit=${#1}
-  date_num=$1
-  if [ ${digit} -eq 1 ]; then
-    echo ${date_num}
-  elif [ ${digit} -eq 2 ]; then
+  local digit=${#1}
+  if [ ${digit} -eq 2 ]; then
+    date_num=$1
     date_num1=${date_num:0:1}
     date_num2=${date_num:1:1}
+
     if [ ${date_num1} -eq 0 ]; then
       echo ${date_num2}
     else
-      echo ${date_num}
+      if [ ${date_num} -gt 12 ]; then
+        echo "Error: Argument '${date_num}' is grater than 12"
+        exit 90
+      else
+        echo ${date_num}
+      fi
     fi
+  elif [ ${digit} -eq 1 ]; then
+    echo ${date_num2}
   else
     echo "Error: Argument '$1' has too many digits" >&2
     exit 80
   fi
 }
 
-# 数字で指定されたdayを変換する関数（DAY）
-function convert_day() {
-  day_s=$(digit_check_date ${time_arr_s[1]})
-  ret=$?
-  if [ ${ret} -eq 80 ]; then
-    echo "exit 80"
-    exit 80
-  fi
-
-  day_e=$(digit_check_date ${time_arr_e[1]})
-  ret=$?
-  if [ ${ret} -eq 80 ]; then
-    echo "exit 80"
-    exit 80
-  fi
-
-  echo ${day_s}
-  echo ${day_e}
-}
-
-## 引数の桁数を判定する関数（HOUR・MIN）
+# 引数の桁数を判定する関数（HOUR・MIN）
 function digit_check_time() {
   local digit=${#1}
   if [ $digit -gt 2 ]; then
@@ -102,19 +70,11 @@ function digit_check_time() {
   fi
 }
 
-# 引数の範囲をチェックする関数（HOUR）
-function range_check_h() {
-  if [ $1 -lt 0 ] || [ $1 -gt 24 ]; then
-    echo "Error: Argument '$1' is out of range (0-24)" >&2
-    exit 51
-  fi
-}
-
-# 引数の範囲をチェックする関数（MINUTES）
-function range_check_m() {
+# 引数の範囲をチェックする関数
+function range_check() {
   if [ $1 -lt 0 ] || [ $1 -gt 59 ]; then
     echo "Error: Argument '$1' is out of range (0-59)" >&2
-    exit 52
+    exit 50
   fi
 }
 
@@ -170,74 +130,51 @@ check_args ${START_TIME} ${END_TIME}
 split_arg
 
 # 引数が数値かどうかを判定
-for i in {0..3}; do
+for i in range(0,4){
   is_number ${time_arr_s[i]}
   is_number ${time_arr_e[i]}
-done
-
-# それぞれの値が適切かを判定
-# monthに当たる数値の判定
-convert_mon
-
-# dayに当たる数値の判定
-convert_day
-
-# hour / minutes に当たる数値の判定
-range_check_h ${time_arr_s[2]}
-range_check_h ${time_arr_e[2]}
-range_check_m ${time_arr_s[3]}
-range_check_m ${time_arr_e[3]}
-hour_s=$(digit_check_time ${time_arr_s[2]})
-hour_e=$(digit_check_time ${time_arr_e[2]})
-min_s=$(digit_check_time ${time_arr_s[3]})
-min_e=$(digit_check_time ${time_arr_e[3]})
-
-start_time_formatted="${month_s} ${day_s} ${hour_s}:${min_s}"
-end_time_formatted="${month_e} ${day_e} ${hour_e}:${min_e}"
-#echo "${start_time_formatted}"
-#echo "${end_time_formatted}"
-
+}
 
 
 
 # 引数のフォーマット変換
-# start_time_formatted=$(convert_time_format "${START_TIME}")
-# ret=$?
-# # echo "ret = ${ret}"
-# if [ "${ret}" != "0" ]; then
+start_time_formatted=$(convert_time_format "${START_TIME}")
+ret=$?
+# echo "ret = ${ret}"
+if [ "${ret}" != "0" ]; then
 
-#   # if [ "${ret}" == "3" ]; then
-#   #   echo "Error: invalid args 'day' : exit code ${ret}"
-#   # elif [ ${ret} -eq 4 ]; then
-#   #   echo "Error: invalid args 'hour' : exit code ${ret}"
-#   # elif [ ${ret} -eq 5 ]; then
-#   #   echo "Error: invalid args 'min' : exit code ${ret}"
-#   # else
-#   #   echo "Error: Error occuered"
-#   # fi
+  # if [ "${ret}" == "3" ]; then
+  #   echo "Error: invalid args 'day' : exit code ${ret}"
+  # elif [ ${ret} -eq 4 ]; then
+  #   echo "Error: invalid args 'hour' : exit code ${ret}"
+  # elif [ ${ret} -eq 5 ]; then
+  #   echo "Error: invalid args 'min' : exit code ${ret}"
+  # else
+  #   echo "Error: Error occuered"
+  # fi
 
-#   echo "Error: func: start_time_formatted: convert_time_format : exit code ${ret}"
-#   exit 1
-# fi
+  echo "Error: func: start_time_formatted: convert_time_format : exit code ${ret}"
+  exit 1
+fi
 
-# end_time_formatted=$(convert_time_format "${STOP_TIME}")
-# ret=$?
-# # echo "ret = ${ret}"
-# if [ "${ret}" != "0" ]; then
+end_time_formatted=$(convert_time_format "${STOP_TIME}")
+ret=$?
+# echo "ret = ${ret}"
+if [ "${ret}" != "0" ]; then
 
-#   # if [ "${ret}" == "3" ]; then
-#   #   echo "Error: invalid args 'day' : exit code ${ret}"
-#   # elif [ ${ret} -eq 4 ]; then
-#   #   echo "Error: invalid args 'hour' : exit code ${ret}"
-#   # elif [ ${ret} -eq 5 ]; then
-#   #   echo "Error: invalid args 'min' : exit code ${ret}"
-#   # else
-#   #   echo "Error: Error occuered"
-#   # fi
+  # if [ "${ret}" == "3" ]; then
+  #   echo "Error: invalid args 'day' : exit code ${ret}"
+  # elif [ ${ret} -eq 4 ]; then
+  #   echo "Error: invalid args 'hour' : exit code ${ret}"
+  # elif [ ${ret} -eq 5 ]; then
+  #   echo "Error: invalid args 'min' : exit code ${ret}"
+  # else
+  #   echo "Error: Error occuered"
+  # fi
 
-#   echo "Error: func: end_time_formatted: convert_time_format : exit code ${ret}"
-#   exit 1
-# fi
+  echo "Error: func: end_time_formatted: convert_time_format : exit code ${ret}"
+  exit 1
+fi
 
 echo "START TIME : ${start_time_formatted}"
 echo "END TIME : ${end_time_formatted}"
