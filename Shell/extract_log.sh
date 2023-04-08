@@ -4,7 +4,7 @@
 function check_args(){
   if [ $# -ne 2 ]; then
     echo "Usage: $0 [start_time] [end_time]"
-    echo 'Ex: $0 "12,30,9,0" "12,31,9,55"'
+    echo "Ex: $0 \"12,30,9,0\" \"12,31,9,55\""
     exit 1
   fi
 }
