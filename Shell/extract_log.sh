@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# 引数チェック
-if [ $# -ne 2 ]; then
-  echo "Usage: $0 [start_time] [end_time]"
-  echo 'Ex: $0 "12,30,9,0" "12,31,9,55"'
-  exit 1
-fi
+# 引数チェック関数
+function check_args(){
+  if [ $# -ne 2 ]; then
+    echo "Usage: $0 [start_time] [end_time]"
+    echo 'Ex: $0 "12,30,9,0" "12,31,9,55"'
+    exit 1
+  fi
+}
 
 # フォーマット変換関数
 function convert_time_format() {
@@ -17,6 +19,9 @@ function convert_time_format() {
   min=$(printf "%02d" ${time_arr[3]})
   echo "$month $day $hour:$min"
 }
+
+# 引数チェック
+check_args
 
 # 引数のフォーマット変換
 start_time_formatted=$(convert_time_format "$1")
