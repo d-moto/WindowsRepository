@@ -12,14 +12,73 @@ function check_args(){
   fi
 }
 
+# 引数が数字かどうかを判定する関数
+function is_number() {
+  re='^[0-9]+$'
+  if ! [[ $1 =~ $re ]]; then
+    echo "Error: Argument '$1' is not a number" >&2
+    exit 1
+  fi
+}
+
+# 引数の桁数を判定する関数（時間）
+function digit_check_time() {
+  local digit=${#1}
+  if [ $digit -gt 2 ]; then
+    echo "Error: Argument '$1' has too many digits" >&2
+    exit 1
+  elif [ $digit -eq 1 ]; then
+    echo "0$1"
+  else
+    echo "$1"
+  fi
+}
+
+# 引数の桁数を判定する関数（日付）
+function digit_check_date() {
+  local digit=${#1}
+  if [ $digit -gt 2 ]; then
+    echo "Error: Argument '$1' has too many digits" >&2
+    exit 1
+  else
+    echo "$1"
+  fi
+}
+
+# 引数の範囲をチェックする関数
+function range_check() {
+  if [ $1 -lt 0 ] || [ $1 -gt 59 ]; then
+    echo "Error: Argument '$2' is out of range (0-59)" >&2
+    exit 1
+  fi
+}
+
 # フォーマット変換関数
 function convert_time_format() {
   local time_str="$1"
   IFS=',' read -ra time_arr <<< "$time_str"
   month=$(LANG=en_US.UTF-8 date -d "${time_arr[0]}/1" +"%b")
-  day=${time_arr[1]}
-  hour=$(printf "%02d" ${time_arr[2]})
-  min=$(printf "%02d" ${time_arr[3]})
+
+  # 日付のフォーマットをチェック
+  is_number ${time_arr[1]}
+  day_tmp=$(digit_check_date ${time_arr[1]})
+  range_check ${day_tmp}
+  day=${day_tmp}
+
+  # 時間のフォーマットをチェック
+  is_number ${time_arr[2]}
+  hour_tmp=${digit_check_time ${time_arr[2]}}
+  range_check ${hour_tmp}
+  hour=${hour_tmp}
+
+  # 時間のフォーマットをチェック（分）
+  is_number ${time_arr[3]}
+  min_tmp=${digit_check_time ${time_arr[3]}}
+  range_check ${min_tmp}
+  min=${min_tmp}
+
+  #hour=$(printf "%02d" ${time_arr[2]})
+  #min=$(printf "%02d" ${time_arr[3]})
   echo "$month $day $hour:$min"
 }
 
@@ -29,6 +88,9 @@ check_args ${START_TIME} ${STOP_TIME}
 # 引数のフォーマット変換
 start_time_formatted=$(convert_time_format "${START_TIME}")
 end_time_formatted=$(convert_time_format "${STOP_TIME}")
+
+echo "${start_time_formatted}"
+echo "${end_time_formatted}"
 
 # 必要な変数の初期化
 log_dir="./log"
