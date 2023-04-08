@@ -59,6 +59,7 @@ function range_check() {
 function convert_time_format() {
   local time_str="$1"
   IFS=',' read -ra time_arr <<< "$time_str"
+  is_number ${time_arr[0]}
   month=$(LANG=en_US.UTF-8 date -d "${time_arr[0]}/1" +"%b")
 
   # 日付のフォーマットをチェック
