@@ -2,7 +2,9 @@ import os
 import openai
 import requests
 
-openai.api_key = "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"
+#openai.api_key = "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"
+openai.api_key = "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"
+
 
 def chat_with_gpt(prompt):
     # ChatGPTのAPIエンドポイント
