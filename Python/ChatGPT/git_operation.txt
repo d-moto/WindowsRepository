@@ -1,0 +1,1269 @@
+This is executed by [ /c/Users/axppe/.bashrc ]
+
+   @ @
+ (o 0 o) // [ Hello Ayane! ]
+
+Your local git directory is /c/Users/axppe/Git_workspace/daichi/WindowsRepository
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ ls
+Git/  HTML/  LinuC/  Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ cd Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls
+Linear-model-with-one-dimensional-input.py  openBrowser.py    teraterm.py
+Udemy/                                      requirements.txt
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git stauts
+git: 'stauts' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls
+Linear-model-with-one-dimensional-input.py  openBrowser.py    teraterm.py
+Udemy/                                      requirements.txt
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls -l
+total 15
+-rw-r--r-- 1 axppe 197609 5526 Jan  9 15:27 Linear-model-with-one-dimensional-input.py
+drwxr-xr-x 1 axppe 197609    0 Jan  9 15:27 Udemy/
+-rw-r--r-- 1 axppe 197609  405 Jan  9 15:27 openBrowser.py
+-rw-r--r-- 1 axppe 197609  382 Jan  9 15:27 requirements.txt
+-rw-r--r-- 1 axppe 197609  157 Jan  9 15:27 teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ mkdir GhatGPT
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls -l
+total 15
+drwxr-xr-x 1 axppe 197609    0 Apr  6 07:54 GhatGPT/
+-rw-r--r-- 1 axppe 197609 5526 Jan  9 15:27 Linear-model-with-one-dimensional-input.py
+drwxr-xr-x 1 axppe 197609    0 Jan  9 15:27 Udemy/
+-rw-r--r-- 1 axppe 197609  405 Jan  9 15:27 openBrowser.py
+-rw-r--r-- 1 axppe 197609  382 Jan  9 15:27 requirements.txt
+-rw-r--r-- 1 axppe 197609  157 Jan  9 15:27 teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ cd Udemy/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/Udemy (master)
+$ ls
+python.ics      section1/  section3/  section5/
+python_memo.md  section2/  section4/  section6/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/Udemy (master)
+$ cd ..
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls -l
+total 15
+drwxr-xr-x 1 axppe 197609    0 Apr  6 07:56 GhatGPT/
+-rw-r--r-- 1 axppe 197609 5526 Jan  9 15:27 Linear-model-with-one-dimensional-input.py
+drwxr-xr-x 1 axppe 197609    0 Jan  9 15:27 Udemy/
+-rw-r--r-- 1 axppe 197609  405 Jan  9 15:27 openBrowser.py
+-rw-r--r-- 1 axppe 197609  382 Jan  9 15:27 requirements.txt
+-rw-r--r-- 1 axppe 197609  157 Jan  9 15:27 teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ mv GhatGPT/ ChatGPT
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls  -l
+total 15
+drwxr-xr-x 1 axppe 197609    0 Apr  6 07:56 ChatGPT/
+-rw-r--r-- 1 axppe 197609 5526 Jan  9 15:27 Linear-model-with-one-dimensional-input.py
+drwxr-xr-x 1 axppe 197609    0 Jan  9 15:27 Udemy/
+-rw-r--r-- 1 axppe 197609  405 Jan  9 15:27 openBrowser.py
+-rw-r--r-- 1 axppe 197609  382 Jan  9 15:27 requirements.txt
+-rw-r--r-- 1 axppe 197609  157 Jan  9 15:27 teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ cd ChatGPT/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ ls
+chatgpt_chat.py  chatgpt_image.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git staus
+git: 'staus' is not a git command. See 'git --help'.
+
+The most similar command is
+        status
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ./
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git add .
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   chatgpt_chat.py
+        new file:   chatgpt_image.py
+
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git commit -m "add ChatGPT py"
+[master d848b91] add ChatGPT py
+ 2 files changed, 107 insertions(+)
+ create mode 100644 Python/ChatGPT/chatgpt_chat.py
+ create mode 100644 Python/ChatGPT/chatgpt_image.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git remote -v
+origin  git@github.com:d-moto/WindowsRepository.git (fetch)
+origin  git@github.com:d-moto/WindowsRepository.git (push)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git diff master origin/master
+diff --git a/Python/ChatGPT/chatgpt_chat.py b/Python/ChatGPT/chatgpt_chat.py
+deleted file mode 100644
+index 0ed8b3a..0000000
+--- a/Python/ChatGPT/chatgpt_chat.py
++++ /dev/null
+@@ -1,48 +0,0 @@
+-import os
+-import openai
+-import requests
+-
+-openai.api_key = "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"
+-
+-def chat_with_gpt(prompt):
+-    # ChatGPTのAPIエンドポイント
+-    #url = 'https://api.openai.com/v1/engines/davinci-codex/completions'
+-    url = 'https://api.openai.com/v1/chat/completions'
+-
+-    # APIにリクエストを送信
+-    response = openai.ChatCompletion.create(
+-        model = "gpt-3.5-turbo",
+-        # model = "gpt-4",
+-        messages = [
+-            {"role": "system", "content": "The user appears to be particularly interested in physical mathematics. In particular, they have a considerable k interest in physics. He is considering writing and solving physics problems in python."},
+-            {"role": "assistant", "content": "you are python teacher"},
+-            {"role": "user", "content": prompt},
+-        ]
+-        # temperature = 1.5,
+-        # top_p = 1.0,
+-        #frequency_penalty = 2.0,
+-        #presence_penalty = 2.0
+-    )
+-
+-    # レスポンスから応答テキストを取得
+-    response_text = response["choices"][0]["message"]["content"]
+-
+-    # ログファイルに入力と応答を書き込む
+-    log_file = open('chatgpt_chat.log', 'a')
+-    log_file.write(f'入力: \n{prompt}\n\n')
+-    # log_file.write(f'出力: {response_text}\n')
+-    log_file.write('出力: ' + '\n' + response_text.encode('utf-8').decode('utf-8') + '\n\n')
+-    log_file.close()
+-
+-    return response_text
+-
+-# 対話の開始
+-while True:
+-    # ユーザーからの入力を受け取る
+-    user_input = input('> ')
+-
+-    # ChatGPTによる応答生成の処理
+-    response = chat_with_gpt(user_input)
+-
+-    # ChatGPTからの応答を表示する
+-    print(response)
+diff --git a/Python/ChatGPT/chatgpt_image.py b/Python/ChatGPT/chatgpt_image.py
+deleted file mode 100644
+index 0c815a7..0000000
+--- a/Python/ChatGPT/chatgpt_image.py
++++ /dev/null
+@@ -1,59 +0,0 @@
+-import os
+-import openai
+-import requests
+-
+-openai.api_key = "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"
+-
+-def chat_with_gpt(prompt_img):
+-    # ChatGPTのAPIエンドポイント
+-    url = 'https://api.openai.com/v1/chat/images/generations'
+-
+-    response_img = openai.Image.create(
+-        prompt = prompt_img,
+-        n=5,
+-        size="1024x1024"
+-    )
+-
+-    # レスポンスから応答テキストを取得
+-    image_url = []
+-    n = 0
+-
+-    for i in range(10):
+-        try:
+-            image_url.append(response_img['data'][i]['url'])
+-            if isinstance(image_url[i], str):
+-                n = n + 1
+-                print('"url_' + str(n) + '"')
+-                print("")
+-                print(image_url[i])
+-                print("")
+-
+-                # ログファイルに入力と応答を書き込む
+-                log_file = open('image_url.log', 'a')
+-                log_file.write(f'URL: {image_url[i]}\n')
+-                log_file.write(f'\n')
+-                log_file.close()
+-
+-        except IndexError as ex:
+-            print("No such No." + str(i + 1) + " picture : {}".format(ex))
+-        else:
+-            print("")
+-
+-
+-
+-    print("")
+-    print(n, "pictures", "created")
+-
+-    return image_url
+-
+-# 対話の開始
+-while True:
+-    # ユーザーからの入力を受け取る
+-    user_input = input('> ')
+-
+-    # ChatGPTによる応答生成の処理
+-    response = chat_with_gpt(user_input)
+-
+-    # ChatGPTからの応答を表示する
+-    # print(response)
+-    print("")
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git branch -a
+* master
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git branch -vv
+* master    d848b91 [origin/master: ahead 1] add ChatGPT py
+  mod_axppe 32b75ee First commit (create HTML/sample.html)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git remote -v
+origin  git@github.com:d-moto/WindowsRepository.git (fetch)
+origin  git@github.com:d-moto/WindowsRepository.git (push)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ git fetch origin master
+Enter passphrase for key '/c/Users/axppe/.ssh/id_rsa':
+remote: Enumerating objects: 109, done.
+remote: Counting objects: 100% (109/109), done.
+remote: Compressing objects: 100% (83/83), done.
+remote: Total 103 (delta 35), reused 86 (delta 20), pack-reused 0
+Receiving objects: 100% (103/103), 6.32 MiB | 4.37 MiB/s, done.
+Resolving deltas: 100% (35/35), completed with 2 local objects.
+From github.com:d-moto/WindowsRepository
+ * branch            master     -> FETCH_HEAD
+   323cf86..badeac1  master     -> origin/master
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ ls -l
+total 8
+-rw-r--r-- 1 axppe 197609 1747 Apr  5 23:59 chatgpt_chat.py
+-rw-r--r-- 1 axppe 197609 1579 Apr  5 22:50 chatgpt_image.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ cd ..
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls -l
+total 15
+drwxr-xr-x 1 axppe 197609    0 Apr  6 07:56 ChatGPT/
+-rw-r--r-- 1 axppe 197609 5526 Jan  9 15:27 Linear-model-with-one-dimensional-input.py
+drwxr-xr-x 1 axppe 197609    0 Jan  9 15:27 Udemy/
+-rw-r--r-- 1 axppe 197609  405 Jan  9 15:27 openBrowser.py
+-rw-r--r-- 1 axppe 197609  382 Jan  9 15:27 requirements.txt
+-rw-r--r-- 1 axppe 197609  157 Jan  9 15:27 teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git branch -vv
+* master    d848b91 [origin/master: ahead 1, behind 10] add ChatGPT py
+  mod_axppe 32b75ee First commit (create HTML/sample.html)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git branch -a
+* master
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git checkout -b master remotes/origin/HEAD
+fatal: a branch named 'master' already exists
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ git checkout -b master320406 remotes/origin/HEAD
+Switched to a new branch 'master320406'
+branch 'master320406' set up to track 'origin/master'.
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master320406)
+$ git branch -a
+  master
+* master320406
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master320406)
+$ ls
+Linear-model-with-one-dimensional-input.py  VIrtualBox/  openBrowser.py    teraterm.py
+Udemy/                                      chatbot/     requirements.txt
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master320406)
+$ cd
+
+axppe@Ayane3 MINGW64 ~
+$ ls
+ AppData/
+'Application Data'@
+ Contacts/
+ Cookies@
+ Desktop/
+ Documents/
+ Downloads/
+ Favorites/
+ Git_workspace/
+ Intel/
+ Links/
+'Local Settings'@
+ Music/
+'My Documents'@
+ NTUSER.DAT
+ NTUSER.DAT{e03b55da-70be-11ed-8610-a1f09ac36429}.TM.blf
+ NTUSER.DAT{e03b55da-70be-11ed-8610-a1f09ac36429}.TMContainer00000000000000000001.regtrans-ms
+ NTUSER.DAT{e03b55da-70be-11ed-8610-a1f09ac36429}.TMContainer00000000000000000002.regtrans-ms
+ NetHood@
+ OneDrive/
+'OneDrive - sunflame.net'/
+ Pictures/
+ PrintHood@
+ Recent@
+'Saved Games'/
+ Searches/
+ SendTo@
+ Templates@
+ Videos/
+'VirtualBox VMs'/
+ anaconda3/
+ ansel/
+ chat_log.txt
+ chatgpt_image.py
+ chatgpt_image.txt
+ ntuser.dat.LOG1
+ ntuser.dat.LOG2
+ ntuser.ini
+ python/
+'python (2).txt'
+ python.py
+ python.txt
+'スタート メニュー'@
+
+axppe@Ayane3 MINGW64 ~
+$ cd Git_workspace/
+ayane/  daichi/
+
+axppe@Ayane3 MINGW64 ~
+$ cd Git_workspace/daichi/WindowsRepository/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ ls
+Git/  HTML/  LinuC/  Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git branch -a
+  master
+* master320406
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git diff master master320406
+diff --git a/HTML/snappers/about.html b/HTML/snappers/about.html
+new file mode 100644
+index 0000000..7800c5b
+--- /dev/null
++++ b/HTML/snappers/about.html
+@@ -0,0 +1,76 @@
++<!DOCTYPE html>
++<html>
++<head>
++<meta charset="UTF-8">
++<title>About｜風景写真家「SNAPPERS」</title>
++<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
++<link href="css/style.css" rel="stylesheet">
++</head>
++<body id="about">
++
++  <!-- header始まり -->
++  <header>
++    <div class="logo">
++      <a href="index.html"><img src="images/logo.png" alt="SNAPPERS"></a>
++    </div>
++    <nav>
++      <ul class="global-nav">
++        <li><a href="portfolio.html">Portfolio</a></li>
++        <li><a href="about.html">About</a></li>
++        <li><a href="contact.html">Contact</a></li>
++      </ul>
++    </nav>
++  </header>
++  <!-- header終わり -->
++
++  <!-- wrap始まり -->
++  <div id="wrap">
++    <div class="content">
++      <div class="main-center">
++        <h1>About</h1>
++        <p>SNAPPERS代表、山田太郎のプロフィールや経歴の紹介ページです。</p>
++        <section class="profile clearfix">
++          <div class="profile-txt">
++            <h2 class="icon">Profile</h2>
++            <p><span>SNAPPERS 代表：山田 太郎</span><br>アナログ、デジタルを問わず、トイカメラやポラロイ
+ド、ビデオカメラに至るまで、あらゆるカメラに夢中になって遊んでいるうちに自然とカメラマンとしての道を志すようになる。<br>大学卒業後、有名カメラマンのアシスタントを経て渡米。世界各国を放浪しながら撮影をする中で、現在のアウトドアカメラマンとしてのスタイルを確立する。2016年に帰国し、「SNAPPERS」を設立。<br>現在は、雑誌の表紙やカタログの撮影を中心に、映像作品などにもカメラマンとして参加するなど幅広く活躍している。</p>
++          </div>
++          <img src="images/about-profile.png" alt="山田太郎プロフィール画像" class="profile-image">
++        </section>
++        <section class="career">
++          <h2 class="icon">Career and Job history</h2>
++          <table>
++            <tr>
++              <th>1994年3月</th>
++              <td>丸三角芸術大学写真科 卒業　服部写真研究所に入社、服部英明氏に師事</td>
++            </tr>
++            <tr>
++              <th>2002年3月</th>
++              <td>服部写真研究所を退社し渡米、世界各国を放浪しながら撮影を続ける</td>
++            </tr>
++            <tr>
++              <th>2012年8月</th>
++              <td>イタリア・ミラノで開催されたコンクールにて、審査員特別賞受賞</td>
++            </tr>
++            <tr>
++              <th>2016年1月</th>
++              <td>帰国し「SNAPPERS」を設立</td>
++            </tr>
++            <tr>
++              <th>2016年4月</th>
++              <td>Aichi Musiumにて初の写真展「Snap!Snap!」を開催</td>
++            </tr>
++          </table>
++        </section>
++      </div>
++    </div>
++  </div>
++  <!-- wrap終わり -->
++
++  <!-- footer始まり -->
++  <footer>
++    <small>(C)2023 Motoi-studio.</small>
++  </footer>
++  <!-- footer終わり -->
++
++</body>
++</html>
+\ No newline at end of file
+diff --git a/HTML/snappers/contact.html b/HTML/snappers/contact.html
+new file mode 100644
+index 0000000..3e7482a
+--- /dev/null
++++ b/HTML/snappers/contact.html
+@@ -0,0 +1,100 @@
++<!DOCTYPE html>
++<html>
++<head>
++<meta charset="UTF-8">
++<title>Contact｜風景写真家「SNAPPERS」</title>
++<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
++<link href="css/style.css" rel="stylesheet">
++</head>
++<body id="contact">
++
++  <!-- header始まり -->
++  <header>
++    <div class="logo">
++      <a href="index.html"><img src="images/logo.png" alt="SNAPPERS"></a>
++    </div>
++    <nav>
++      <ul class="global-nav">
++        <li><a href="portfolio.html">Portfolio</a></li>
++        <li><a href="about.html">About</a></li>
++        <li><a href="contact.html">Contact</a></li>
++      </ul>
++    </nav>
++  </header>
++  <!-- header終わり -->
++
++  <!-- wrap始まり -->
++  <div id="wrap">
++    <div class="content">
++      <div class="main-center">
++        <h1>Contact</h1>
++        <p>SNAPPERSへのアクセス方法、お問い合わせ、撮影のご依頼フォームのページです。お気軽にお問い合わせください。</p>
++        <section class="access clearfix">
++          <h2 class="icon">Access</h2>
++          <table>
++            <tr>
++              <th>所在地住所</th>
++              <td>〒123-4567 静岡県伊東市伊豆高原○△☆-12</td>
++            </tr>
++            <tr>
++              <th>電話番号</th>
++              <td>012-3456-7890</td>
++            </tr>
++            <tr>
++              <th>電車でのアクセス</th>
++              <td>伊豆急行「伊豆高原」駅より徒歩15分</td>
++            </tr>
++            <tr>
++              <th>お車でのアクセス</th>
++              <td>伊豆山I.Cより国道135号線経由で50分</td>
++            </tr>
++          </table>
++          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.1425016216936!2d139.1061616154649!3d34.87776778122144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019dcd319ce2d9f%3A0xbc111be9ad0e0569!2z5LyK6LGG6auY5Y6f!5e0!3m2!1sja!2sjp!4v1494779533095" width="460" height="220" frameborder="0" style="border:0" allowfullscreen></iframe>
++        </section>
++        <section>
++          <h2 class="icon">Contact form</h2>
++          <div class="form">
++            <form>
++              <dl>
++                <dt><span class="required">お名前</span></dt>
++                <dd><input type="text" name="name" class="name" required></dd>
++                <dt><span class="required">メールアドレス</span></dt>
++                <dd><input type="email" name="email" class="email" required></dd>
++                <dt>お電話番号</dt>
++                <dd><input type="tel" name="tel" class="tel"></dd>
++                <dt>お問合せ種別</dt>
++                <dd>
++                  <select name="type" class="type">
++                    <option value="撮影のご依頼">撮影のご依頼</option>
++                    <option value="講演・各種メディア出演のご依頼">講演・各種メディア出演のご依頼</option>
++                    <option value="その他お問い合わせ">その他お問い合わせ</option>
++                  </select>
++                </dd>
++                <dt>ご希望のご連絡方法</dt>
++                <dd>
++                  <input type="radio" name="contact" value="Eメール">Eメール
++                  <input type="radio" name="contact" value="お電話">お電話
++                </dd>
++                <dt>メッセージ</dt>
++                <dd><textarea name="message" class="message"></textarea></dd>
++              </dl>
++              <button type="submit">送信</button>
++            </form>
++            <div class="attention">
++              <p>※ 「<span class="required"></span>」の付いている項目は必須項目です。<br>※メッセージ送信
+後、48時間以内に担当者よりご連絡いたします。</p>
++            </div>
++          </div>
++        </section>
++      </div>
++    </div>
++  </div>
++  <!-- wrap終わり -->
++
++  <!-- footer始まり -->
++  <footer>
++    <small>(C)2023 Motoi-studio.</small>
++  </footer>
++  <!-- footer終わり -->
++
++</body>
++</html>
+\ No newline at end of file
+diff --git a/HTML/snappers/css/box.css b/HTML/snappers/css/box.css
+new file mode 100644
+index 0000000..00e6fd2
+--- /dev/null
++++ b/HTML/snappers/css/box.css
+@@ -0,0 +1,13 @@
++.box1{
++  width:100px;
++  height:100px;
++  background:gold;
++  border-radius:50px;
++  margin:auto
++  text-align:center
++}
++
++.text1{
++ text-align:center;
++ padding:30% 0;
++}
+diff --git a/HTML/snappers/css/style.css b/HTML/snappers/css/style.css
+new file mode 100644
+index 0000000..068c876
+--- /dev/null
++++ b/HTML/snappers/css/style.css
+@@ -0,0 +1,455 @@
++@charset "utf-8";
++
++body {
++  margin: 0;
++  padding: 0;
++  background-color: #cccccc;
++  color: #333333;
++  font-size: 15px;
++  line-height: 2;
++}
++
++p,h1,h2,h3,h4,h5,h6 {
++  margin-top: 0;
++}
++
++img {
++  vertical-align:bottom;
++}
++
++ul {
++  margin: 0;
++  padding: 0;
++}
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git diff master master320406
+diff --git a/HTML/snappers/about.html b/HTML/snappers/about.html
+new file mode 100644
+index 0000000..7800c5b
+--- /dev/null
++++ b/HTML/snappers/about.html
+@@ -0,0 +1,76 @@
++<!DOCTYPE html>
++<html>
++<head>
++<meta charset="UTF-8">
++<title>About｜風景写真家「SNAPPERS」</title>
++<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
++<link href="css/style.css" rel="stylesheet">
++</head>
++<body id="about">
++
++  <!-- header始まり -->
++  <header>
++    <div class="logo">
++      <a href="index.html"><img src="images/logo.png" alt="SNAPPERS"></a>
++    </div>
++    <nav>
++      <ul class="global-nav">
++        <li><a href="portfolio.html">Portfolio</a></li>
++        <li><a href="about.html">About</a></li>
++        <li><a href="contact.html">Contact</a></li>
++      </ul>
++    </nav>
++  </header>
++  <!-- header終わり -->
++
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git diff --name-only master master320406
+HTML/snappers/about.html
+HTML/snappers/contact.html
+HTML/snappers/css/box.css
+HTML/snappers/css/style.css
+HTML/snappers/css/style2.css
+HTML/snappers/css/style_bt.css
+HTML/snappers/images/about-profile.png
+HTML/snappers/images/bg-about.jpg
+HTML/snappers/images/bg-contact.jpg
+HTML/snappers/images/bg-index.jpg
+HTML/snappers/images/bg-photograph.jpg
+HTML/snappers/images/bg-portfolio-sp.jpg
+HTML/snappers/images/bg-portfolio.jpg
+HTML/snappers/images/bg-video.jpg
+HTML/snappers/images/logo.png
+HTML/snappers/images/photograph-beach-01.png
+HTML/snappers/images/photograph-beach-02.png
+HTML/snappers/images/photograph-beach-03.png
+HTML/snappers/images/photograph-beach-04.png
+HTML/snappers/images/photograph-beach-05.png
+HTML/snappers/images/photograph-beach-06.png
+HTML/snappers/images/photograph-city-01.png
+HTML/snappers/images/photograph-city-02.png
+HTML/snappers/images/photograph-city-03.png
+HTML/snappers/images/photograph-city-04.png
+HTML/snappers/images/photograph-city-05.png
+HTML/snappers/images/photograph-city-06.png
+HTML/snappers/images/photograph-forest-01.png
+HTML/snappers/images/photograph-forest-02.png
+HTML/snappers/images/photograph-forest-03.png
+HTML/snappers/images/photograph-forest-04.png
+HTML/snappers/images/photograph-forest-05.png
+HTML/snappers/images/photograph-forest-06.png
+HTML/snappers/images/portfolio-photo.jpg
+HTML/snappers/images/portfolio-video.jpg
+HTML/snappers/index.html
+HTML/snappers/photograph.html
+HTML/snappers/portfolio.html
+Python/ChatGPT/chatgpt_chat.py
+Python/ChatGPT/chatgpt_image.py
+Python/Udemy/section6/__init__.py.png
+Python/Udemy/section6/function.png
+Python/Udemy/section6/install_pakage.png
+Python/Udemy/section6/section6.md
+Python/VIrtualBox/VirtualBox.md
+Python/VIrtualBox/network-config.pptx
+Python/VIrtualBox/vbox_runningvmlist.py
+Python/VIrtualBox/vbox_startvm.py
+Python/VIrtualBox/vbox_startvm_background.py
+Python/VIrtualBox/vbox_stopvm.py
+Python/VIrtualBox/vbox_vmlist.py
+Python/chatbot/eto.py
+Python/chatbot/eto_input.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git diff --name-status master master320406
+A       HTML/snappers/about.html
+A       HTML/snappers/contact.html
+A       HTML/snappers/css/box.css
+A       HTML/snappers/css/style.css
+A       HTML/snappers/css/style2.css
+A       HTML/snappers/css/style_bt.css
+A       HTML/snappers/images/about-profile.png
+A       HTML/snappers/images/bg-about.jpg
+A       HTML/snappers/images/bg-contact.jpg
+A       HTML/snappers/images/bg-index.jpg
+A       HTML/snappers/images/bg-photograph.jpg
+A       HTML/snappers/images/bg-portfolio-sp.jpg
+A       HTML/snappers/images/bg-portfolio.jpg
+A       HTML/snappers/images/bg-video.jpg
+A       HTML/snappers/images/logo.png
+A       HTML/snappers/images/photograph-beach-01.png
+A       HTML/snappers/images/photograph-beach-02.png
+A       HTML/snappers/images/photograph-beach-03.png
+A       HTML/snappers/images/photograph-beach-04.png
+A       HTML/snappers/images/photograph-beach-05.png
+A       HTML/snappers/images/photograph-beach-06.png
+A       HTML/snappers/images/photograph-city-01.png
+A       HTML/snappers/images/photograph-city-02.png
+A       HTML/snappers/images/photograph-city-03.png
+A       HTML/snappers/images/photograph-city-04.png
+A       HTML/snappers/images/photograph-city-05.png
+A       HTML/snappers/images/photograph-city-06.png
+A       HTML/snappers/images/photograph-forest-01.png
+A       HTML/snappers/images/photograph-forest-02.png
+A       HTML/snappers/images/photograph-forest-03.png
+A       HTML/snappers/images/photograph-forest-04.png
+A       HTML/snappers/images/photograph-forest-05.png
+A       HTML/snappers/images/photograph-forest-06.png
+A       HTML/snappers/images/portfolio-photo.jpg
+A       HTML/snappers/images/portfolio-video.jpg
+A       HTML/snappers/index.html
+A       HTML/snappers/photograph.html
+A       HTML/snappers/portfolio.html
+D       Python/ChatGPT/chatgpt_chat.py
+D       Python/ChatGPT/chatgpt_image.py
+A       Python/Udemy/section6/__init__.py.png
+A       Python/Udemy/section6/function.png
+A       Python/Udemy/section6/install_pakage.png
+M       Python/Udemy/section6/section6.md
+A       Python/VIrtualBox/VirtualBox.md
+A       Python/VIrtualBox/network-config.pptx
+A       Python/VIrtualBox/vbox_runningvmlist.py
+A       Python/VIrtualBox/vbox_startvm.py
+A       Python/VIrtualBox/vbox_startvm_background.py
+A       Python/VIrtualBox/vbox_stopvm.py
+A       Python/VIrtualBox/vbox_vmlist.py
+A       Python/chatbot/eto.py
+A       Python/chatbot/eto_input.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git diff --name-status master320406..master
+D       HTML/snappers/about.html
+D       HTML/snappers/contact.html
+D       HTML/snappers/css/box.css
+D       HTML/snappers/css/style.css
+D       HTML/snappers/css/style2.css
+D       HTML/snappers/css/style_bt.css
+D       HTML/snappers/images/about-profile.png
+D       HTML/snappers/images/bg-about.jpg
+D       HTML/snappers/images/bg-contact.jpg
+D       HTML/snappers/images/bg-index.jpg
+D       HTML/snappers/images/bg-photograph.jpg
+D       HTML/snappers/images/bg-portfolio-sp.jpg
+D       HTML/snappers/images/bg-portfolio.jpg
+D       HTML/snappers/images/bg-video.jpg
+D       HTML/snappers/images/logo.png
+D       HTML/snappers/images/photograph-beach-01.png
+D       HTML/snappers/images/photograph-beach-02.png
+D       HTML/snappers/images/photograph-beach-03.png
+D       HTML/snappers/images/photograph-beach-04.png
+D       HTML/snappers/images/photograph-beach-05.png
+D       HTML/snappers/images/photograph-beach-06.png
+D       HTML/snappers/images/photograph-city-01.png
+D       HTML/snappers/images/photograph-city-02.png
+D       HTML/snappers/images/photograph-city-03.png
+D       HTML/snappers/images/photograph-city-04.png
+D       HTML/snappers/images/photograph-city-05.png
+D       HTML/snappers/images/photograph-city-06.png
+D       HTML/snappers/images/photograph-forest-01.png
+D       HTML/snappers/images/photograph-forest-02.png
+D       HTML/snappers/images/photograph-forest-03.png
+D       HTML/snappers/images/photograph-forest-04.png
+D       HTML/snappers/images/photograph-forest-05.png
+D       HTML/snappers/images/photograph-forest-06.png
+D       HTML/snappers/images/portfolio-photo.jpg
+D       HTML/snappers/images/portfolio-video.jpg
+D       HTML/snappers/index.html
+D       HTML/snappers/photograph.html
+D       HTML/snappers/portfolio.html
+A       Python/ChatGPT/chatgpt_chat.py
+A       Python/ChatGPT/chatgpt_image.py
+D       Python/Udemy/section6/__init__.py.png
+D       Python/Udemy/section6/function.png
+D       Python/Udemy/section6/install_pakage.png
+M       Python/Udemy/section6/section6.md
+D       Python/VIrtualBox/VirtualBox.md
+D       Python/VIrtualBox/network-config.pptx
+D       Python/VIrtualBox/vbox_runningvmlist.py
+D       Python/VIrtualBox/vbox_startvm.py
+D       Python/VIrtualBox/vbox_startvm_background.py
+D       Python/VIrtualBox/vbox_stopvm.py
+D       Python/VIrtualBox/vbox_vmlist.py
+D       Python/chatbot/eto.py
+D       Python/chatbot/eto_input.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master320406)
+$ git checkout master
+Switched to branch 'master'
+Your branch and 'origin/master' have diverged,
+and have 1 and 10 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git merge master320406
+Merge made by the 'ort' strategy.
+ HTML/snappers/about.html                      |  76 ++
+ HTML/snappers/contact.html                    | 100 +++
+ HTML/snappers/css/box.css                     |  13 +
+ HTML/snappers/css/style.css                   | 455 ++++++++++++
+ HTML/snappers/css/style2.css                  | 481 +++++++++++++
+ HTML/snappers/css/style_bt.css                |  91 +++
+ HTML/snappers/images/about-profile.png        | Bin 0 -> 226484 bytes
+ HTML/snappers/images/bg-about.jpg             | Bin 0 -> 739674 bytes
+ HTML/snappers/images/bg-contact.jpg           | Bin 0 -> 991539 bytes
+ HTML/snappers/images/bg-index.jpg             | Bin 0 -> 905226 bytes
+ HTML/snappers/images/bg-photograph.jpg        | Bin 0 -> 459276 bytes
+ HTML/snappers/images/bg-portfolio-sp.jpg      | Bin 0 -> 212768 bytes
+ HTML/snappers/images/bg-portfolio.jpg         | Bin 0 -> 860526 bytes
+ HTML/snappers/images/bg-video.jpg             | Bin 0 -> 590205 bytes
+ HTML/snappers/images/logo.png                 | Bin 0 -> 7340 bytes
+ HTML/snappers/images/photograph-beach-01.png  | Bin 0 -> 62948 bytes
+ HTML/snappers/images/photograph-beach-02.png  | Bin 0 -> 69240 bytes
+ HTML/snappers/images/photograph-beach-03.png  | Bin 0 -> 51435 bytes
+ HTML/snappers/images/photograph-beach-04.png  | Bin 0 -> 70308 bytes
+ HTML/snappers/images/photograph-beach-05.png  | Bin 0 -> 67139 bytes
+ HTML/snappers/images/photograph-beach-06.png  | Bin 0 -> 56596 bytes
+ HTML/snappers/images/photograph-city-01.png   | Bin 0 -> 70527 bytes
+ HTML/snappers/images/photograph-city-02.png   | Bin 0 -> 73581 bytes
+ HTML/snappers/images/photograph-city-03.png   | Bin 0 -> 53821 bytes
+ HTML/snappers/images/photograph-city-04.png   | Bin 0 -> 68750 bytes
+ HTML/snappers/images/photograph-city-05.png   | Bin 0 -> 75542 bytes
+ HTML/snappers/images/photograph-city-06.png   | Bin 0 -> 75683 bytes
+ HTML/snappers/images/photograph-forest-01.png | Bin 0 -> 60070 bytes
+ HTML/snappers/images/photograph-forest-02.png | Bin 0 -> 63273 bytes
+ HTML/snappers/images/photograph-forest-03.png | Bin 0 -> 89963 bytes
+ HTML/snappers/images/photograph-forest-04.png | Bin 0 -> 85311 bytes
+ HTML/snappers/images/photograph-forest-05.png | Bin 0 -> 85232 bytes
+ HTML/snappers/images/photograph-forest-06.png | Bin 0 -> 75431 bytes
+ HTML/snappers/images/portfolio-photo.jpg      | Bin 0 -> 94849 bytes
+ HTML/snappers/images/portfolio-video.jpg      | Bin 0 -> 112373 bytes
+ HTML/snappers/index.html                      |  45 ++
+ HTML/snappers/photograph.html                 |  94 +++
+ HTML/snappers/portfolio.html                  |  70 ++
+ Python/Udemy/section6/__init__.py.png         | Bin 0 -> 119041 bytes
+ Python/Udemy/section6/function.png            | Bin 0 -> 40323 bytes
+ Python/Udemy/section6/install_pakage.png      | Bin 0 -> 96024 bytes
+ Python/Udemy/section6/section6.md             | 346 +++++++++
+ Python/VIrtualBox/VirtualBox.md               | 991 ++++++++++++++++++++++++++
+ Python/VIrtualBox/network-config.pptx         | Bin 0 -> 36356 bytes
+ Python/VIrtualBox/vbox_runningvmlist.py       |   3 +
+ Python/VIrtualBox/vbox_startvm.py             |  11 +
+ Python/VIrtualBox/vbox_startvm_background.py  |  11 +
+ Python/VIrtualBox/vbox_stopvm.py              |  11 +
+ Python/VIrtualBox/vbox_vmlist.py              |   3 +
+ Python/chatbot/eto.py                         |   5 +
+ Python/chatbot/eto_input.py                   |   4 +
+ 51 files changed, 2810 insertions(+)
+ create mode 100644 HTML/snappers/about.html
+ create mode 100644 HTML/snappers/contact.html
+ create mode 100644 HTML/snappers/css/box.css
+ create mode 100644 HTML/snappers/css/style.css
+ create mode 100644 HTML/snappers/css/style2.css
+ create mode 100644 HTML/snappers/css/style_bt.css
+ create mode 100644 HTML/snappers/images/about-profile.png
+ create mode 100644 HTML/snappers/images/bg-about.jpg
+ create mode 100644 HTML/snappers/images/bg-contact.jpg
+ create mode 100644 HTML/snappers/images/bg-index.jpg
+ create mode 100644 HTML/snappers/images/bg-photograph.jpg
+ create mode 100644 HTML/snappers/images/bg-portfolio-sp.jpg
+ create mode 100644 HTML/snappers/images/bg-portfolio.jpg
+ create mode 100644 HTML/snappers/images/bg-video.jpg
+ create mode 100644 HTML/snappers/images/logo.png
+ create mode 100644 HTML/snappers/images/photograph-beach-01.png
+ create mode 100644 HTML/snappers/images/photograph-beach-02.png
+ create mode 100644 HTML/snappers/images/photograph-beach-03.png
+ create mode 100644 HTML/snappers/images/photograph-beach-04.png
+ create mode 100644 HTML/snappers/images/photograph-beach-05.png
+ create mode 100644 HTML/snappers/images/photograph-beach-06.png
+ create mode 100644 HTML/snappers/images/photograph-city-01.png
+ create mode 100644 HTML/snappers/images/photograph-city-02.png
+ create mode 100644 HTML/snappers/images/photograph-city-03.png
+ create mode 100644 HTML/snappers/images/photograph-city-04.png
+ create mode 100644 HTML/snappers/images/photograph-city-05.png
+ create mode 100644 HTML/snappers/images/photograph-city-06.png
+ create mode 100644 HTML/snappers/images/photograph-forest-01.png
+ create mode 100644 HTML/snappers/images/photograph-forest-02.png
+ create mode 100644 HTML/snappers/images/photograph-forest-03.png
+ create mode 100644 HTML/snappers/images/photograph-forest-04.png
+ create mode 100644 HTML/snappers/images/photograph-forest-05.png
+ create mode 100644 HTML/snappers/images/photograph-forest-06.png
+ create mode 100644 HTML/snappers/images/portfolio-photo.jpg
+ create mode 100644 HTML/snappers/images/portfolio-video.jpg
+ create mode 100644 HTML/snappers/index.html
+ create mode 100644 HTML/snappers/photograph.html
+ create mode 100644 HTML/snappers/portfolio.html
+ create mode 100644 Python/Udemy/section6/__init__.py.png
+ create mode 100644 Python/Udemy/section6/function.png
+ create mode 100644 Python/Udemy/section6/install_pakage.png
+ create mode 100644 Python/VIrtualBox/VirtualBox.md
+ create mode 100644 Python/VIrtualBox/network-config.pptx
+ create mode 100644 Python/VIrtualBox/vbox_runningvmlist.py
+ create mode 100644 Python/VIrtualBox/vbox_startvm.py
+ create mode 100644 Python/VIrtualBox/vbox_startvm_background.py
+ create mode 100644 Python/VIrtualBox/vbox_stopvm.py
+ create mode 100644 Python/VIrtualBox/vbox_vmlist.py
+ create mode 100644 Python/chatbot/eto.py
+ create mode 100644 Python/chatbot/eto_input.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ ls
+Git/  HTML/  LinuC/  Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ cd Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ ls
+ChatGPT/                                    Udemy/       chatbot/        requirements.txt
+Linear-model-with-one-dimensional-input.py  VIrtualBox/  openBrowser.py  teraterm.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ cd ChatGPT/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ ls
+chatgpt_chat.py  chatgpt_image.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python/ChatGPT (master)
+$ cd ..
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository/Python (master)
+$ cd ..
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ ls
+Git/  HTML/  LinuC/  Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ cd ..
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi
+$ cd WindowsRepository/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ LS
+Git  HTML  LinuC  Python
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ LS
+Git  HTML  LinuC  Python
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ ls
+Git/  HTML/  LinuC/  Python/
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git branch -a
+* master
+  master320406
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git diff master remotes/origin/HEAD
+diff --git a/Python/ChatGPT/chatgpt_chat.py b/Python/ChatGPT/chatgpt_chat.py
+deleted file mode 100644
+index 0ed8b3a..0000000
+--- a/Python/ChatGPT/chatgpt_chat.py
++++ /dev/null
+@@ -1,48 +0,0 @@
+-import os
+-import openai
+-import requests
+-
+-openai.api_key = "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"
+-
+-def chat_with_gpt(prompt):
+-    # ChatGPTのAPIエンドポイント
+-    #url = 'https://api.openai.com/v1/engines/davinci-codex/completions'
+-    url = 'https://api.openai.com/v1/chat/completions'
+-
+-    # APIにリクエストを送信
+-    response = openai.ChatCompletion.create(
+-        model = "gpt-3.5-turbo",
+-        # model = "gpt-4",
+-        messages = [
+-            {"role": "system", "content": "The user appears to be particularly interested in physical mathematics. In particular, they have a considerable k interest in physics. He is considering writing and solving physics problems in python."},
+-            {"role": "assistant", "content": "you are python teacher"},
+-            {"role": "user", "content": prompt},
+-        ]
+-        # temperature = 1.5,
+-        # top_p = 1.0,
+-        #frequency_penalty = 2.0,
+-        #presence_penalty = 2.0
+-    )
+-
+-    # レスポンスから応答テキストを取得
+-    response_text = response["choices"][0]["message"]["content"]
+-
+-    # ログファイルに入力と応答を書き込む
+-    log_file = open('chatgpt_chat.log', 'a')
+-    log_file.write(f'入力: \n{prompt}\n\n')
+-    # log_file.write(f'出力: {response_text}\n')
+-    log_file.write('出力: ' + '\n' + response_text.encode('utf-8').decode('utf-8') + '\n\n')
+-    log_file.close()
+-
+-    return response_text
+-
+-# 対話の開始
+-while True:
+-    # ユーザーからの入力を受け取る
+-    user_input = input('> ')
+-
+-    # ChatGPTによる応答生成の処理
+-    response = chat_with_gpt(user_input)
+-
+-    # ChatGPTからの応答を表示する
+-    print(response)
+diff --git a/Python/ChatGPT/chatgpt_image.py b/Python/ChatGPT/chatgpt_image.py
+deleted file mode 100644
+index 0c815a7..0000000
+--- a/Python/ChatGPT/chatgpt_image.py
++++ /dev/null
+@@ -1,59 +0,0 @@
+-import os
+-import openai
+-import requests
+-
+-openai.api_key = "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"
+-
+-def chat_with_gpt(prompt_img):
+-    # ChatGPTのAPIエンドポイント
+-    url = 'https://api.openai.com/v1/chat/images/generations'
+-
+-    response_img = openai.Image.create(
+-        prompt = prompt_img,
+-        n=5,
+-        size="1024x1024"
+-    )
+-
+-    # レスポンスから応答テキストを取得
+-    image_url = []
+-    n = 0
+-
+-    for i in range(10):
+-        try:
+-            image_url.append(response_img['data'][i]['url'])
+-            if isinstance(image_url[i], str):
+-                n = n + 1
+-                print('"url_' + str(n) + '"')
+-                print("")
+-                print(image_url[i])
+-                print("")
+-
+-                # ログファイルに入力と応答を書き込む
+-                log_file = open('image_url.log', 'a')
+-                log_file.write(f'URL: {image_url[i]}\n')
+-                log_file.write(f'\n')
+-                log_file.close()
+-
+-        except IndexError as ex:
+-            print("No such No." + str(i + 1) + " picture : {}".format(ex))
+-        else:
+-            print("")
+-
+-
+-
+-    print("")
+-    print(n, "pictures", "created")
+-
+-    return image_url
+-
+-# 対話の開始
+-while True:
+-    # ユーザーからの入力を受け取る
+-    user_input = input('> ')
+-
+-    # ChatGPTによる応答生成の処理
+-    response = chat_with_gpt(user_input)
+-
+-    # ChatGPTからの応答を表示する
+-    # print(response)
+-    print("")
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git diff --name-only master remotes/origin/HEAD
+Python/ChatGPT/chatgpt_chat.py
+Python/ChatGPT/chatgpt_image.py
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git commit -m "add ChatGPT"
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git push origin master
+Enter passphrase for key '/c/Users/axppe/.ssh/id_rsa':
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 24 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (9/9), 2.34 KiB | 2.34 MiB/s, done.
+Total 9 (delta 4), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (4/4), completed with 3 local objects.
+To github.com:d-moto/WindowsRepository.git
+   badeac1..9ffa12f  master -> master
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git barnch -a
+git: 'barnch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git branch -a
+* master
+  master320406
+  mod_axppe
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git branch -d master320406 mod_axppe
+Deleted branch master320406 (was badeac1).
+Deleted branch mod_axppe (was 32b75ee).
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git fetch --prune
+Enter passphrase for key '/c/Users/axppe/.ssh/id_rsa':
+From github.com:d-moto/WindowsRepository
+ - [deleted]         (none)     -> origin/mod_axppe
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+
+axppe@Ayane3 MINGW64 ~/Git_workspace/daichi/WindowsRepository (master)
+$
