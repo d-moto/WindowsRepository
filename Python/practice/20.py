@@ -44,4 +44,49 @@ x, y = point
 print(x)
 print(y)
 
-date = ()
+date = (2023, 5, 15)
+year, month, day = date
+print(year)
+print(month)
+print(day)
+
+measurement = (5.2, 3.8, 7.1)
+length, width, height = measurement
+print(length)
+print(width)
+print(height)
+
+data = ('John', 25, 'USA', 'john@example.com')
+name, age, country, email = data
+print(name)
+print(age)
+print(country)
+print(email)
+
+## No.23
+print('')
+print(' ## No.23 ##')
+print('')
+
+menu = ('pizza', 'pasta', 'salad')
+for i in menu:
+    print(i)
+
+colors = ('red', 'green', 'blue')
+print(len(colors))
+
+coordinates = (10, 20)
+x, y = coordinates
+print(x)
+print(y)
+
+person1 = ('John', 20, 'USA')
+person2 = ('Mary', 19, 'Japan')
+if person1[0] == person2[0]:
+    print('same name')
+else:
+    print('different name')
+
+dimensions = (10, 20, 30)
+w, h, d = dimensions
+print(w * h)
