@@ -167,7 +167,215 @@ tesla_car.auto_run()
 
 
 ## 82. メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
-## 83. プロパティーを使った属性の設定
+```python
+class Triangle(object):
+    def __init__(self):
+        print('INFO : excuted init')
+
+    def set_param(self, bottom, height):
+        self.bo = bottom
+        self.he = height
+        print('INFO : excuted set_param')
+        print(f'set param : {self.bo}, {self.he}')
+
+    def get_param(self):
+        print('INFO : excuted get_param')
+        print(f'bottom : {self.bo}')
+        print(f'height : {self.he}')
+
+    def cal_area(self):
+        print('INFO : excuted cal_area')
+        area = self.bo * self.he / 2
+        print(f'area : {area}')
+        return area
+
+    def get_info(self):
+        print('INFO : excuted get_info')
+        print(f'bottom : {self.bo}')
+        print(f'height : {self.he}')
+        # クラス内のメソッドから、同じクラス内のメソッドが呼び出せるみたい。
+        tmp_area = Triangle.cal_area(self)
+        print(f'area : {tmp_area}')
+
+    def __del__(self):
+        print('INFO : excuted del')
+
+## Triangleクラスの継承
+class TriangleColor(Triangle):
+    def __init__(self, color='black', bottom=12, height=12, pw='', flag=False):
+        self.co = color
+        self.pw = pw
+        self._flag = flag
+        print('INFO : call super init')
+        super().__init__()
+        print('INFO : excuted TriangleColor init')
+        print('INFO : call super set_param')
+        super().set_param(bottom, height)
+        print(f'color : {self.co}')
+        print('INFO : call super get_info')
+        super().get_info()
+    
+    @property
+    def flag(self):
+        return self._flag
+    
+    @flag.setter
+    def flag(self, is_enable):
+        if self.pw == 123:
+            self._flag = is_enable
+        else:
+            raise ValueError
+
+print('')
+tricol1 = TriangleColor('red')
+print('')
+tricol2 = TriangleColor()
+print('')
+tricol3 = TriangleColor(bottom=10, height=30)
+print('')
+tricol4 = TriangleColor(color='green', height=10)
+print('')
+
+# プロパティの確認
+tricol5 = TriangleColor()
+print(tricol5.flag)
+
+# プロパティの書き換え
+tricol6 = TriangleColor(pw=123)
+tricol6.flag = True
+print(tricol6.flag)
+
+# プロパティの書き換え失敗
+tricol7 = TriangleColor(pw=111)
+tricol7.flag = True
+print(tricol7.flag)
+```
+
+実行結果
+```
+(base) C:\Users\mokos\Git_work>C:/Users/mokos/anaconda3/python.exe c:/Users/mokos/Git_work/Python/Udemy/section07/section7-2.py
+
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 12
+color : red
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 12
+INFO : excuted cal_area
+area : 72.0
+area : 72.0
+
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 12
+color : black
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 12
+INFO : excuted cal_area
+area : 72.0
+area : 72.0
+
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 10, 30
+color : black
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 10
+height : 30
+INFO : excuted cal_area
+area : 150.0
+area : 150.0
+
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 10
+color : green
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 10
+INFO : excuted cal_area
+area : 60.0
+area : 60.0
+
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 12
+color : black
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 12
+INFO : excuted cal_area
+area : 72.0
+area : 72.0
+False
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 12
+color : black
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 12
+INFO : excuted cal_area
+area : 72.0
+area : 72.0
+True
+INFO : call super init
+INFO : excuted init
+INFO : excuted TriangleColor init
+INFO : call super set_param
+INFO : excuted set_param
+set param : 12, 12
+color : black
+INFO : call super get_info
+INFO : excuted get_info
+bottom : 12
+height : 12
+INFO : excuted cal_area
+area : 72.0
+area : 72.0
+Traceback (most recent call last):
+  File "c:\Users\mokos\Git_work\Python\Udemy\section07\section7-2.py", line 80, in <module>
+    tricol7.flag = True
+  File "c:\Users\mokos\Git_work\Python\Udemy\section07\section7-2.py", line 57, in flag
+    raise ValueError
+ValueError
+INFO : excuted del
+INFO : excuted del
+INFO : excuted del
+INFO : excuted del
+INFO : excuted del
+INFO : excuted del
+INFO : excuted del
+
+(base) C:\Users\mokos\Git_work>
+```
+
 ## 84. クラスを構造体として扱うときの注意点
 ## 85. ダックタイピング
 ## 86. 抽象クラス
