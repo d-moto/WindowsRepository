@@ -158,15 +158,374 @@ car = Car()
 car.run()
 
 toyota_car = ToyotaCar()
+toyota_car.run() # 継承元のメソッドrunを使用できる。
+
+tesla_car = TeslaCar()
+tesla_car.run() # 継承元のメソッドrunを使用できる。
+tesla_car.auto_run() # 自身のメソッドももちろん使用できる。
+```
+
+
+## 82. メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
+以下のコードは同じ関数名がいくつか定義されているが、自身のクラスのものが優先されて呼び出される。（メソッドのオーバーライド）
+```python
+class Car(object):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('toyota run')
+
+class TeslaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+car = Car()
+car.run()
+
+print("#################")
+toyota_car = ToyotaCar()
 toyota_car.run()
 
+print("#################")
 tesla_car = TeslaCar()
 tesla_car.run()
 tesla_car.auto_run()
 ```
 
+実行結果
+```python
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+run
+#################
+toyota run
+#################
+tesla run
+auto run
 
-## 82. メソッドのオーバーライドとsuperによる親のメソッドの呼び出し
+Process finished with exit code 0
+```
+
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self): # 同じ関数名が複数使用されている。
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('toyota run')
+
+class TeslaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+print("####################")
+normal_car = Car()
+print(normal_car.model)
+
+print("####################")
+toyota_car = ToyotaCar('Lexus')
+print(toyota_car.model) # メソッド、クラスともに、「.」で呼び出せる。
+toyota_car.run() # メソッド、クラスともに、「.」で呼び出せる。
+```
+実行結果
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+####################
+None
+####################
+Lexus
+toyota run
+
+Process finished with exit code 0
+```
+
+以下のコードは、CarクラスとToyotaCarクラスどちらにも`__init__`があるので、★の部分のコードは同じことを2度書くことになる。
+クラス継承した場合、Carの`__init__`をToyotaCarの`__init__`が上書きしてしまうので、同じことをもう一回書かないといけなくなる。
+これを避けるには、
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model # ★
+
+    def run(self): # 同じ関数名が複数使用されている。
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        self.model = model # ★
+        self.enable_auto_run = enable_auto_run
+
+    def run(self): # 同じ関数名が複数使用されている。
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+print("####################")
+normal_car = Car()
+print(normal_car.model)
+
+print("####################")
+toyota_car = ToyotaCar('Lexus')
+print(toyota_car.model) # メソッド、クラスともに、「.」で呼び出せる。
+toyota_car.run() # メソッド、クラスともに、「.」で呼び出せる。
+```
+↓
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model # ★
+
+    def run(self): # 同じ関数名が複数使用されている。
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self): # 同じ関数名が複数使用されている。
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        ## self.model = model # ★
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self.enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    def run(self): # 同じ関数名が複数使用されている。
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+print("####################")
+normal_car = Car()
+print(normal_car.model)
+
+print("####################")
+toyota_car = ToyotaCar('Lexus')
+print(toyota_car.model) # メソッド、クラスともに、「.」で呼び出せる。
+toyota_car.run() # メソッド、クラスともに、「.」で呼び出せる。
+```
+
+## 83. プロパティを使った属性の設定
+以下のコードは、TeslaCarクラスのオブジェクトにデフォルト引数で渡したenable_auto_run=Falseの値を出力している。
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):。
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self): 
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self.enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    def run(self): 
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar()
+print(tesla_car.enable_auto_run)
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+False
+
+Process finished with exit code 0
+```
+以下のようなコードで書き換えができてしまう。
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self.enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar()
+tesla_car.enable_auto_run = True # ★ enable_auto_runにTrueを代入している。
+print(tesla_car.enable_auto_run)
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+True
+
+Process finished with exit code 0
+```
+
+勝手にオブジェクトを生成されて、enable_auto_runの値を書き換えられたくない場合にプロパティを使用する。
+プロパティはクラス変数を定義する時に、その変数の頭にアンダースコアを付ける。
+`self.enable_auto_run = enable_auto_run` -> `self._enable_auto_run = enable_auto_run`
+※「_」付けたからと言って、プロパティなるわけではない。以下のようにアンスコを付けてもコードとしては動く。
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self._enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar()
+tesla_car._enable_auto_run = True # ★ enable_auto_runにTrueを代入している。
+print(tesla_car._enable_auto_run)
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+True
+
+Process finished with exit code 0
+```
+
+enable_auto_run(self)メソッドを作成して、returnでself._enable_auto_runを返してやる。
+enable_auto_run(self)メソッドの上には、デコレーターでプロパティであることを明示する。
+以下のコードはエラーで終了する。
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self._enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    # このように書くことで、読み込みはできるけど、書き込みはできないという状況になる。telsa_car.enable_auto_runで値の取得はできるが、telsa_car.enable_auto_run = 'something'のように書き込みはできなくなる。
+    # また、プロパティがつくと、呼び出す際に、()がいらない。`tesla_car.enable_auto_run()`ではなく、`tesla_car.enable_auto_run`で@property以下の関数が呼び出される。
+    @property # デコレーター
+    def enable_auto_run(self):
+        return self._enable_auto_run
+＠＠
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar()
+tesla_car.enable_auto_run = True # ★ enable_auto_runにTrueを代入している。
+print(tesla_car.enable_auto_run)
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+Traceback (most recent call last):
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 73, in <module>
+    tesla_car.enable_auto_run = True # ★ enable_auto_runにTrueを代入している。
+AttributeError: can't set attribute
+
+Process finished with exit code 1
+```
+
+書き換えを行いたいとき。
+以下のようなコードで実現できる。
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self._enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+
+    # このように書くことで、読み込みはできるけど、書き込みはできないという状況になる。telsa_car.enable_auto_runで値の取得はできるが、telsa_car.enable_auto_run = 'something'のように書き込みはできなくなる。
+    # また、プロパティがつくと、呼び出す際に、()がいらない。`tesla_car.enable_auto_run()`ではなく、`tesla_car.enable_auto_run`で@property以下の関数が呼び出される。
+    @property # デコレーター
+    def enable_auto_run(self):
+        return self._enable_auto_run
+
+    @enable_auto_run.setter # @propertyで指定した関数名(enable_auto_run).setterという命名規則がある。
+    def enable_auto_run(self, is_enable):
+        self._enable_auto_run = is_enable
+
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar()
+tesla_car.enable_auto_run = True # ★ @enable_auto_run.setterのis_enable変数にTrueを代入している。そのあとに、self._enable_auto_runにis_enableの値（True）が代入されている。
+print(tesla_car.enable_auto_run)
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+True
+
+Process finished with exit code 0
+```
+
+上記のようなコードを書く時、ある条件に合致した時だけ、プロパティを書き換える、というような書き方をすることが多い。
+```python
+```
+
+
+
+練習
 ```python
 class Triangle(object):
     def __init__(self):
@@ -377,6 +736,46 @@ INFO : excuted del
 ```
 
 ## 84. クラスを構造体として扱うときの注意点
+
+以下のように、クラスは構造体のように扱う事ができる。
+クラスでは定義していない変数`t.name`,`t.age=`を定義できてしまう。
+以下のコードでは、エラーが出る。
+```python
+class T(object):
+    
+    def __init__(self, proper='INIT PARAM'):
+        self.__proper = proper
+
+    @property
+    def proper(self):
+        return self.__proper
+
+t = T()
+t.name = 'Mike'
+t.age = 20
+print(t.name, t.age)
+print(t.proper)
+```
+```python
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+Mike 20
+Traceback (most recent call last):
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 12, in <module>
+    print(t.proper)
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 5, in proper
+    return self.__proper
+AttributeError: 'T' object has no attribute '_T__proper'
+
+Process finished with exit code 1
+```
+
+以下のコードだと、エラーが出ない。
+```python
+
+
+
+
+
 ## 85. ダックタイピング
 ## 86. 抽象クラス
 ## 87. 多重継承
