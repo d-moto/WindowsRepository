@@ -521,8 +521,155 @@ Process finished with exit code 0
 
 上記のようなコードを書く時、ある条件に合致した時だけ、プロパティを書き換える、というような書き方をすることが多い。
 ```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False, passwd='123'):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self._enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+        self.passwd = passwd # init関数で、passwdを設定する。
+
+    # このように書くことで、読み込みはできるけど、書き込みはできないという状況になる。telsa_car.enable_auto_runで値の取得はできるが、telsa_car.enable_auto_run = 'something'のように書き込みはできなくなる。
+    # また、プロパティがつくと、呼び出す際に、()がいらない。`tesla_car.enable_auto_run()`ではなく、`tesla_car.enable_auto_run`で@property以下の関数が呼び出される。
+    @property # デコレーター
+    def enable_auto_run(self):
+        return self._enable_auto_run
+
+    @enable_auto_run.setter
+    def enable_auto_run(self, is_enable):
+        if self.passwd == '456': # パスワードが456に一致した場合のみ、プロパティの書き換えを可能とする。
+            self._enable_auto_run = is_enable
+        else:
+            raise ValueError
+
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+# プロパティの書き換え成功。
+print('#################################')
+tesla_car = TeslaCar(passwd='456')
+tesla_car.enable_auto_run = True # ★ enable_auto_runにTrueを代入している。（enable_auto_run()が呼ばれ、is_enableにTrueを代入しようとする。
+print(tesla_car.enable_auto_run)
+
+# プロパティの書き換え失敗。
+print('#################################')
+tesla_car = TeslaCar()
+tesla_car.enable_auto_run = True # ★ enable_auto_runにTrueを代入している。（enable_auto_run()が呼ばれ、is_enableにTrueを代入しようとする。
+print(tesla_car.enable_auto_run)
 ```
 
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False, passwd='123'):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self._enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+        self.passwd = passwd # init関数で、passwdを設定する。
+
+    # このように書くことで、読み込みはできるけど、書き込みはできないという状況になる。telsa_car.enable_auto_runで値の取得はできるが、telsa_car.enable_auto_run = 'something'のように書き込みはできなくなる。
+    # また、プロパティがつくと、呼び出す際に、()がいらない。`tesla_car.enable_auto_run()`ではなく、`tesla_car.enable_auto_run`で@property以下の関数が呼び出される。
+    @property # デコレーター
+    def enable_auto_run(self):
+        return self._enable_auto_run
+
+    @enable_auto_run.setter
+    def enable_auto_run(self, is_enable):
+        if self.passwd == '456': # パスワードが456に一致した場合のみ、プロパティの書き換えを可能とする。
+            self._enable_auto_run = is_enable
+        else:
+            raise ValueError
+
+    def run(self):
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar(passwd='456')
+print(tesla_car._enable_auto_run) # TeslaCarクラスのself._enable_auto_runを直接参照している。
+```
+↑TeslaCarクラスのself._enable_auto_runを直接参照している。
+これを完全に隠す場合。self.__enable_auto_runという具合に、アンスコを2つ書く。
+`print(tesla_car.__enable_auto_run)`ではエラーが出るようになる。
+↓
+```python
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+class ToyotaCar(Car):
+    def run(self):
+        print('toyota run')
+
+class TeslaCar(Car):
+    def __init__(self, model ='Model S', enable_auto_run=False, passwd='123'):
+        super().__init__(model) # `super().__init__(model)`と書くことで、Carの`__init__`を呼び出せる。ToyotaCarの`__init__`の中で、Carの`__init__`を呼び出すことが出きる。
+        self.__enable_auto_run = enable_auto_run # 呼び出してから、TeslaCarだけの`__init__`で実行したい記述を書く。
+        self.passwd = passwd # init関数で、passwdを設定する。
+
+    # このように書くことで、読み込みはできるけど、書き込みはできないという状況になる。telsa_car.enable_auto_runで値の取得はできるが、telsa_car.enable_auto_run = 'something'のように書き込みはできなくなる。
+    # また、プロパティがつくと、呼び出す際に、()がいらない。`tesla_car.enable_auto_run()`ではなく、`tesla_car.enable_auto_run`で@property以下の関数が呼び出される。
+    @property # デコレーター
+    def enable_auto_run(self):
+        return self._enable_auto_run
+
+    @enable_auto_run.setter
+    def enable_auto_run(self, is_enable):
+        if self.passwd == '456': # パスワードが456に一致した場合のみ、プロパティの書き換えを可能とする。
+            self._enable_auto_run = is_enable
+        else:
+            raise ValueError
+
+    def run(self):
+        print(self.__enable_auto_run) # `__enable_auto_run`はクラス外からはアクセスできないが、クラスないなら、アクセスできる。
+        print('tesla run')
+
+    def auto_run(self):
+        print('auto run')
+
+tesla_car = TeslaCar(passwd='456')
+print(tesla_car.__enable_auto_run) 
+```
+```
+C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+Traceback (most recent call last):
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 83, in <module>
+    print(tesla_car.__enable_auto_run)
+AttributeError: 'TeslaCar' object has no attribute '__enable_auto_run'
+
+Process finished with exit code 1C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
+Traceback (most recent call last):
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 83, in <module>
+    print(tesla_car.__enable_auto_run)
+AttributeError: 'TeslaCar' object has no attribute '__enable_auto_run'
+
+Process finished with exit code 1
+```
 
 
 練習
@@ -739,7 +886,17 @@ INFO : excuted del
 
 以下のように、クラスは構造体のように扱う事ができる。
 クラスでは定義していない変数`t.name`,`t.age=`を定義できてしまう。
-以下のコードでは、エラーが出る。
+```python
+class T(object):
+    pass
+
+t = T()
+t.name = 'Mike'
+t.age = 20
+print(t.name)
+```
+
+プロパティを書き換えることができてしまう。
 ```python
 class T(object):
     
@@ -754,29 +911,64 @@ t = T()
 t.name = 'Mike'
 t.age = 20
 print(t.name, t.age)
+t.__proper = 'XXXXXXXXXXXXX' # 新しく、__properを作成してしまう。
+print(t.__proper)
 print(t.proper)
 ```
 ```python
 C:\Users\mokos\anaconda3\python.exe C:\Users\mokos\PycharmProjects\python_programming\lesson.py 
 Mike 20
-Traceback (most recent call last):
-  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 12, in <module>
-    print(t.proper)
-  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 5, in proper
-    return self.__proper
-AttributeError: 'T' object has no attribute '_T__proper'
+XXXXXXXXXXXXX
+INIT PARAM
 
-Process finished with exit code 1
+Process finished with exit code 0
 ```
 
-以下のコードだと、エラーが出ない。
-```python
-
-
-
-
-
 ## 85. ダックタイピング
+
+```python
+class Person(object):
+    def __init__(self, age=1):
+        self.age = age
+
+    def drive(self):
+        if self.age >= 18:
+            print('drive ok')
+        else:
+            raise Exception('No drive')
+
+class Baby(Person):
+    def __init__(self, age=1):
+        if age < 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+
+class Adult(Person):
+    def __init__(self, age=18):
+        if age >= 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+
+baby = Baby()
+adult = Adult()
+
+class Car(object):
+    def __init__(self, model=None):
+        self.model = model
+
+    def run(self):
+        print('run')
+
+    def ride(self, person):
+        person.drive()
+
+car = Car()
+car.ride(adult)
+car.ride(baby)
+```
+
 ## 86. 抽象クラス
 ## 87. 多重継承
 ## 88. クラス変数
