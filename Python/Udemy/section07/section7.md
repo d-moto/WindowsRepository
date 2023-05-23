@@ -970,6 +970,121 @@ car.ride(baby)
 ```
 
 ## 86. 抽象クラス
+抽象クラスは、`import abc`でインポートして使用する。
+抽象クラスの作成をする。抽象クラスを継承したクラスに定義させたいメソッドに`@abc.abstractmethod`を書く。
+```python
+import abc
+class Person(metaclass=abc.ABCMeta):
+    def __init__(self, age=1):
+        self.age = age
+
+    @abc.abstractmethod
+    def drive(self):
+        pass
+```
+Personクラスを継承する、BabyとAdultを定義する。
+BabyとAdultクラスには、driveメソッドを定義しなければならない。
+
+```python
+class Baby(Person):
+    def __init__(self, age=1):
+        if age < 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+    
+    def drive(self):
+        raise Exception('No drive')
+
+class Adult(Person):
+    def __init__(self, age=18):
+        if age >= 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+    
+    def drive(self):
+        print('ok')
+```
+
+BabyオブジェクトとAdultオブジェクトを生成する。
+```python
+baby = Baby()
+adult = Adult()
+```
+
+抽象クラスのPersonを継承したBabyクラスとAdultクラス。
+```python
+import abc
+class Person(metaclass=abc.ABCMeta):
+    def __init__(self, age=1):
+        self.age = age
+
+    @abc.abstractmethod
+    def drive(self):
+        pass
+
+class Baby(Person):
+    def __init__(self, age=1):
+        if age < 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+    
+    def drive(self):
+        raise Exception('No drive')
+
+class Adult(Person):
+    def __init__(self, age=18):
+        if age >= 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+    
+    def drive(self):
+        print('ok')
+
+baby = Baby()
+adult = Adult()
+```
+
+Babyクラスもしくは、Adultクラスの中で、driveメソッドを定義しないとエラーとなる。
+```python
+Traceback (most recent call last):
+  File "C:\Users\mokos\PycharmProjects\python_programming\lesson.py", line 175, in <module>
+    baby = Baby()
+TypeError: Can't instantiate abstract class Baby with abstract method drive
+```
+```python
+import abc
+class Person(metaclass=abc.ABCMeta):
+    def __init__(self, age=1):
+        self.age = age
+
+    @abc.abstractmethod
+    def drive(self):
+        pass
+
+class Baby(Person):
+    def __init__(self, age=1):
+        if age < 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+
+class Adult(Person):
+    def __init__(self, age=18):
+        if age >= 18:
+            super().__init__(age)
+        else:
+            raise ValueError
+    
+    def drive(self):
+        print('ok')
+
+baby = Baby()
+adult = Adult()
+```
 ## 87. 多重継承
 ## 88. クラス変数
 ## 89. クラスメソッドとスタティックメソッド
