@@ -1,0 +1,47 @@
+Question:
+function parse_argument()
+
+Answer:
+Name: parse_argument
+
+Function signature: def parse_argument() -> argparse.Namespace:
+
+File path: src2doc.py
+
+Key functionality and specification:
+- Parses arguments passed to this tool.
+
+Input: None
+
+Output:
+- argparse.Namespace: argument store
+
+Process step by step:
+1. Parses arguments passed to this tool using argparse.
+2. Returns the argument store.
+
+Code:
+```
+def parse_argument() -> argparse.Namespace:
+    # """
+    # Parses arguments passed to this tool.
+    #
+    # Args: None
+    #
+    # Returns:
+    #     argparse.Namespace: argument store
+    # """
+    parser = argparse.ArgumentParser(description='From sources to readable docs')
+    parser.add_argument('-d', '--dirname', type=str, help='drepository directory')
+    parser.add_argument('-f', '--filename', type=str, help='source file')
+    parser.add_argument('-q', '--question', type=str, help='question file')
+
+    args = parser.parse_args()
+
+    return args
+```
+
+Mauve:
+0.0040720962619612555
+
+
