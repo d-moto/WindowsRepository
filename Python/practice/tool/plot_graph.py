@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
+from tkinter import ttk
 
 def plot_graph():
     function_type = function_var.get()
@@ -30,36 +31,39 @@ def plot_graph():
 
     canvas = FigureCanvasTkAgg(fig, master=root)
     canvas.draw()
-    canvas.get_tk_widget().grid(row=5, column=0, columnspan=4)
+    canvas.get_tk_widget().grid(row=7, column=0, columnspan=4, pady=10)
 
 root = tk.Tk()
 
-function_label = tk.Label(root, text="Select function:")
-function_label.grid(row=0, column=0)
+style = ttk.Style()
+style.theme_use('clam')
+
+function_label = ttk.Label(root, text="Select function:")
+function_label.grid(row=0, column=0, pady=10)
 function_var = tk.StringVar(root)
 function_var.set('Quadratic')  # default value
 function_option = tk.OptionMenu(root, function_var, 'Quadratic', 'Sine', 'Fractional')
-function_option.grid(row=0, column=1)
+function_option.grid(row=0, column=1, pady=10)
 
-a_label = tk.Label(root, text="Enter a:")
-a_label.grid(row=1, column=0)
-a_entry = tk.Entry(root)
-a_entry.grid(row=1, column=1)
+a_label = ttk.Label(root, text="Enter a:")
+a_label.grid(row=1, column=0, pady=10)
+a_entry = ttk.Entry(root)
+a_entry.grid(row=1, column=1, pady=10)
 
-b_label = tk.Label(root, text="Enter b:")
-b_label.grid(row=2, column=0)
-b_entry = tk.Entry(root)
-b_entry.grid(row=2, column=1)
+b_label = ttk.Label(root, text="Enter b:")
+b_label.grid(row=2, column=0, pady=10)
+b_entry = ttk.Entry(root)
+b_entry.grid(row=2, column=1, pady=10)
 
-c_label = tk.Label(root, text="Enter c:")
-c_label.grid(row=3, column=0)
-c_entry = tk.Entry(root)
-c_entry.grid(row=3, column=1)
+c_label = ttk.Label(root, text="Enter c:")
+c_label.grid(row=3, column=0, pady=10)
+c_entry = ttk.Entry(root)
+c_entry.grid(row=3, column=1, pady=10)
 
-plot_button = tk.Button(root, text="Plot", command=plot_graph)
-plot_button.grid(row=4, column=0, columnspan=2)
+plot_button = ttk.Button(root, text="Plot", command=plot_graph)
+plot_button.grid(row=4, column=0, columnspan=2, pady=10)
 
-close_button = tk.Button(root, text="Close", command=root.quit)
-close_button.grid(row=6, column=0, columnspan=2)
+close_button = ttk.Button(root, text="Close", command=root.quit)
+close_button.grid(row=5, column=0, columnspan=2, pady=10)
 
 root.mainloop()
