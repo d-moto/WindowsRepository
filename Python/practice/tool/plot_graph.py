@@ -17,6 +17,9 @@ def plot_graph():
     elif function_type == 'Sine':
         y = a*np.sin(b*x + c)
         title = 'y = {}sin({}x + {})'.format(a, b, c)
+    elif function_type == 'Fractional':
+        y = a / (b*x + c)
+        title = 'y = {} / ({}x + {})'.format(a, b, c)
 
     fig = plt.figure()
     plt.plot(x, y)
@@ -35,7 +38,7 @@ function_label = tk.Label(root, text="Select function:")
 function_label.grid(row=0, column=0)
 function_var = tk.StringVar(root)
 function_var.set('Quadratic')  # default value
-function_option = tk.OptionMenu(root, function_var, 'Quadratic', 'Sine')
+function_option = tk.OptionMenu(root, function_var, 'Quadratic', 'Sine', 'Fractional')
 function_option.grid(row=0, column=1)
 
 a_label = tk.Label(root, text="Enter a:")
