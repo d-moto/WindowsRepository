@@ -42,4 +42,7 @@ c_entry.grid(row=2, column=1)
 plot_button = tk.Button(root, text="Plot", command=plot_graph)
 plot_button.grid(row=3, column=0, columnspan=2)
 
+close_button = tk.Button(root, text="Close", command=root.quit)
+close_button.grid(row=5, column=0, columnspan=2)
+
 root.mainloop()
