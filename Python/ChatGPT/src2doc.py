@@ -292,8 +292,8 @@ def generate_documents(llm, memory, prompt: ChatPromptTemplate, questions: list)
             llm=llm,
             prompt=prompt,
             memory=memory,
-            # verbose=True
-            verbose=False
+            verbose=True
+            # verbose=False
         )
 
         answer = chain.run(input=question)
