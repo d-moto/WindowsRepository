@@ -69,4 +69,10 @@ c_label.grid(row=3, column=0, pady=10)
 c_entry = ttk.Entry(root)
 c_entry.grid(row=3, column=1, pady=10)
 
-plot_button = ttk.Button(root, text="Plot", command=plot_graph
+plot_button = ttk.Button(root, text="Plot", command=plot_graph)
+plot_button.grid(row=4, column=0, columnspan=2, pady=10)
+
+close_button = ttk.Button(root, text="Close", command=root.quit)
+close_button.grid(row=5, column=0, columnspan=2, pady=10)
+
+root.mainloop()
