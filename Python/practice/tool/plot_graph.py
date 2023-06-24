@@ -34,7 +34,7 @@ class GUIApp:
         label = ttk.Label(self.root, text=text)
         label.grid(row=row, column=0, pady=10)
         entry = ttk.Entry(self.root)
-        entry.grid(row=row, column=1, pady=10)
+        entry.grid(row=row, column=1, pady=10, padx=(0, 20))
         return label, entry
 
     def plot_graph(self):
