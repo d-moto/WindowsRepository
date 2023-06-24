@@ -21,6 +21,15 @@ def plot_graph():
     elif function_type == 'Fractional':
         y = a / (b*x + c)
         title = 'y = {} / ({}x + {})'.format(a, b, c)
+    elif function_type == 'Exponential':
+        y = a * np.exp(b*x) + c
+        title = 'y = {}exp({}x) + {}'.format(a, b, c)
+    elif function_type == 'Logarithmic':
+        y = a * np.log(b*x) + c
+        title = 'y = {}log({}x) + {}'.format(a, b, c)
+    elif function_type == 'Composite':
+        y = a * np.log(np.exp(b*x) + c)
+        title = 'y = {}log(exp({}x) + {})'.format(a, b, c)
 
     fig = plt.figure()
     plt.plot(x, y)
@@ -42,7 +51,7 @@ function_label = ttk.Label(root, text="Select function:")
 function_label.grid(row=0, column=0, pady=10)
 function_var = tk.StringVar(root)
 function_var.set('Quadratic')  # default value
-function_option = tk.OptionMenu(root, function_var, 'Quadratic', 'Sine', 'Fractional')
+function_option = tk.OptionMenu(root, function_var, 'Quadratic', 'Sine', 'Fractional', 'Exponential', 'Logarithmic', 'Composite')
 function_option.grid(row=0, column=1, pady=10)
 
 a_label = ttk.Label(root, text="Enter a:")
@@ -60,10 +69,4 @@ c_label.grid(row=3, column=0, pady=10)
 c_entry = ttk.Entry(root)
 c_entry.grid(row=3, column=1, pady=10)
 
-plot_button = ttk.Button(root, text="Plot", command=plot_graph)
-plot_button.grid(row=4, column=0, columnspan=2, pady=10)
-
-close_button = ttk.Button(root, text="Close", command=root.quit)
-close_button.grid(row=5, column=0, columnspan=2, pady=10)
-
-root.mainloop()
+plot_button = ttk.Button(root, text="Plot", command=plot_graph
