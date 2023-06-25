@@ -13,3 +13,12 @@
 # git checkoout <branch name>
 ```
 
+## ブランチをmasterブランチにマージ
+※tool-devブランチをmasterブランチに取り込む場合。
+
+```shell
+# git checkout master
+```
+```shell
+# git merge tool-dev
+```
