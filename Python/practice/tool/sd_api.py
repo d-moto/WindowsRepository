@@ -7,14 +7,46 @@ import time
 
 url = "http://127.0.0.1:7860"
 
-prompt = "(RAW photo, masterpiece, 8k, best quality),\
-          huge breasts, breasts cleavage,\
-          looking at viewer, 18 years old,\
-          extremely cute girl, (faint smile:1.1),\
-          short bob, brown hair, (hands behind head:1.2), model,\
-          extremely detailed baby face, extremely detailed, skin, extremely detailed legs,\
-          armpits, Santa Claus costume,\
-          outside,"
+# prompt var
+quality = "best quality, masterpiece, ultra high res, (photorealistic:1.4), RAW photo"
+quality2 = "extremely cute girl, extremely detailed face, extremely detailed skin, extremely detailed legs"
+cloth = "JK, school uniform, teenager uniform"
+age = "18 years old"
+face = "detailed brown eyes, small face"
+# chest = "huge breasts, breasts cleavage,"
+chest = "medium breasts"
+angle = "looking at viewer"
+hair = "short bob, (blonde hair:1.3)"
+place = "fashion magazine, magazine title, cover page, English, full body"
+makeup = "(lipstick:1.1)"
+addition = "earing, necklace"
+
+loop = 3
+seed = -1
+enable_hr = False
+# enable_hr = True
+
+start_time = time.time() # スクリプトの開始時間
+
+prompt = f"{quality}, {quality2}, {age}, {cloth}, {face}, {hair}, {place}, {chest}, {angle}, {makeup}, {addition}"
+
+# prompt = f"(RAW photo, masterpiece, 8k, best quality),\
+        #   huge breasts, breasts cleavage,\
+        #   looking at viewer, 18 years old,\
+        #   extremely cute girl, (faint smile:1.1),\
+        #   short bob, brown hair, (hands behind head:1.2), model,\
+        #   extremely detailed baby face, extremely detailed, skin, extremely detailed legs,\
+        #   armpits, {cloth},\
+        #   outside,"
+
+# prompt = f"(RAW photo, masterpiece, 8k, best quality),\
+#           huge breasts, breasts cleavage,\
+#           looking at viewer, 18 years old,\
+#           extremely cute girl, (faint smile:1.1),\
+#           short bob, brown hair, model,\
+#           extremely detailed baby face, extremely detailed skin, extremely detailed legs,\
+#           dance, {cloth}, \
+#           outside,"
 
 negative_prompt = "illustration,\
                    3d,\
@@ -34,10 +66,6 @@ negative_prompt = "illustration,\
                    (extra fingers, extra arms, extra legs, extra digit, fewer digits:1.5),\
                    text, signature, missing limb, missing fingers,"
 
-loop = 1
-seed = 100
-start_time = time.time() # スクリプトの開始時間
-
 # スクリプトの実行回数の記録
 try:
     with open("C:/Users/mokos/Stable_Diffusion/sd.webui/webui/outputs/api_output/script_counter.txt", "r") as file:
@@ -53,9 +81,10 @@ for c in range(loop):
 
     payload = {
         "sd_model_checkpoint": "BRAV5finalfp16.safetensors",
-        "enable_hr": False,
-        "denoising_strength": 0.4,
-        "hr_scale": 2,
+        # "enable_hr": True,
+        "enable_hr": enable_hr,
+        "denoising_strength": 0.3,
+        "hr_scale": 2.05,
         "hr_upscaler": "LDSR",
         "prompt": prompt,
         "steps": 40,
@@ -82,8 +111,13 @@ for c in range(loop):
         pnginfo.add_text("parameters", response2.json().get("info"))
         image.save(f'C:/Users/mokos/Stable_Diffusion/sd.webui/webui/outputs/api_output/{counter}-{c + 1}.png', pnginfo=pnginfo)
 
-        # seed値に1を加えてループを終了
-        seed = c + 1 
+        # seed値に1を加えてループを終了(seed = -1 の場合はスルー)
+        if seed == -1:
+            seed = -1
+        else:
+            seed = seed + 1 
+
+    print(f"image created : {c + 1}")
 
 end_time = time.time() # 終了時間の記録
 execution_time = end_time - start_time # 実行時間計算
