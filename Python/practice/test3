@@ -1,0 +1,49 @@
+digraph {
+	0 [label=Module]
+	1 [label=Assign]
+	0 -> 1
+	2 [label=Name]
+	1 -> 2
+	3 [label=Store]
+	2 -> 3
+	4 [label=Constant]
+	1 -> 4
+	5 [label=Assign]
+	0 -> 5
+	6 [label=Name]
+	5 -> 6
+	7 [label=Store]
+	6 -> 7
+	8 [label=Constant]
+	5 -> 8
+	9 [label=Assign]
+	0 -> 9
+	10 [label=Name]
+	9 -> 10
+	11 [label=Store]
+	10 -> 11
+	12 [label=BinOp]
+	9 -> 12
+	13 [label=Name]
+	12 -> 13
+	14 [label=Load]
+	13 -> 14
+	15 [label=Add]
+	12 -> 15
+	16 [label=Name]
+	12 -> 16
+	17 [label=Load]
+	16 -> 17
+	18 [label=Expr]
+	0 -> 18
+	19 [label=Call]
+	18 -> 19
+	20 [label=Name]
+	19 -> 20
+	21 [label=Load]
+	20 -> 21
+	22 [label=Name]
+	19 -> 22
+	23 [label=Load]
+	22 -> 23
+}

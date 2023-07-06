@@ -1,0 +1,11 @@
+digraph {
+	0 [label=Module]
+	1 [label=Assign]
+	0 -> 1
+	2 [label=Name]
+	1 -> 2
+	3 [label=Store]
+	2 -> 3
+	4 [label=Constant]
+	1 -> 4
+}
