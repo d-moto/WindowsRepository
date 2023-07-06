@@ -3,7 +3,8 @@ import openai
 import requests
 
 #openai.api_key = "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"
-openai.api_key = "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"
+#openai.api_key = "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"
+openai.api_key = "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"
 
 
 def chat_with_gpt(prompt):
