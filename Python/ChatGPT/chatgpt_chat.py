@@ -4,7 +4,8 @@ import requests
 
 #openai.api_key = "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"
 #openai.api_key = "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"
-openai.api_key = "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"
+#openai.api_key = "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"
+openai.api_key = "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"
 
 
 def chat_with_gpt(prompt):
@@ -14,8 +15,8 @@ def chat_with_gpt(prompt):
 
     # APIにリクエストを送信
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
-        # model = "gpt-4",
+        # model = "gpt-3.5-turbo",
+        model = "gpt-4",
         messages = [
             {"role": "system", "content": "The user appears to be particularly interested in physical mathematics. In particular, they have a considerable k interest in physics. He is considering writing and solving physics problems in python."},
             {"role": "assistant", "content": "you are python teacher"},
