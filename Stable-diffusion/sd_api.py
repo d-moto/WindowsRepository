@@ -14,7 +14,7 @@ quality1 = "best quality, masterpiece, ultra high res, (photorealistic:1.4), RAW
 quality2 = "extremely cute girl, extremely detailed face, extremely detailed skin, extremely detailed legs"
 quality3 = "extremely cute 1 girl, extremely detailed cute face, extremely detailed skin, extremly detailed legs, extremely detailed hip, extremely detailed back, extremely detailed eyes"
 quality4 = "extremely detailed eyes"
-quality5 = "extremely cute 1 girl, extremely detailed cute face, extremely detailed eyes"
+quality5 = "extremely cute 1 girl, extremely detailed cute face, extremely detailed eyes, extremely detailed skin, extremely detailed small nose"
 
 ## number of person and sexual
 person1 = "1 girl"
@@ -34,6 +34,7 @@ express1 = "seductive smile"
 chest1 = "huge breasts, cleavage"
 chest2 = "midium breasts"
 chest3 = "cleavage"
+chest4 = "big breasts, cleavage"
 
 ## camera angle
 angle1 = "looking at viewer"
@@ -111,10 +112,21 @@ panty4 = "bikini"
 ## pose infomation
 pose1 = "skirt lift, showing panties, thong"
 pose2 = "butt sticking out, close up hip, thong"
+pose3 = "armpits"
 
 ## clothes
 cloth1 = "tank top, shoulder"
-cloth2 = "bikini"
+cloth2 = "bikini, sexy bikini"
+cloth3 = "Santa Claus, shoulder"
+cloth4 = "sailer uniform, sailer school uniform"
+cloth5 = "school swim suit, school swim"
+cloth6 = "sexy bra, lace bra, black bra"
+
+## situation
+situation1 = "wet, sweat, sheet of spray, wet clothes"
+
+## lighting
+light1 = "sun set, sunset lighting"
 
 ## additinal infomation
 addition = "earing, necklace, cute cheek, seductive smile"
@@ -138,9 +150,10 @@ test15 = "swept bangs, panties under pantyhose, ass, backshot"
 test16 = "thong, ass, backshot"
 
 override_settings = {}
-override_settings["sd_model_checkpoint"] = "BRAV5finalfp16.safetensors"
+#override_settings["sd_model_checkpoint"] = "BRAV5finalfp16.safetensors"
 #override_settings["sd_model_checkpoint"] = "chilloutmix_NiPrunedFp32Fix"
 #override_settings["sd_model_checkpoint"] = "beautifulRealistic_brav5"
+override_settings["sd_model_checkpoint"] = "beautifulRealistic_v60"
 #override_settings["sd_vae"] = "vae-ft-mse-840000-ema-pruned"
 #override_settings["sd_vae"] = "v2-1_768-ema-pruned"
 
@@ -148,16 +161,16 @@ override_settings["sd_model_checkpoint"] = "BRAV5finalfp16.safetensors"
 loop = 2
 seed = -1
 enable_hr = False
-enable_hr = True
+#enable_hr = True
 
 #prompt = f"{quality}, {quality2}, {age}, {cloth}, {face}, {hair}, {place}, {chest}, {angle}, {makeup}, {addition}, {addition2}"
 # prompt = f"{quality1}, {person1}, {quality3}, {angle1}, {age1}, {chest2}, {addition2}, {hair1}, {pose2}, {place4}, {style1}"
 # prompt = f"{quality1}, {person1}, {quality3}, {angle3}, {age1}, {chest2}, {addition2}, {hair1}, {pose2}, {place4}, {style1}"
 # prompt = f"{quality1}, {test16}, {place4}"
 # prompt = f"{quality1}, {person1}, {hair1}, {hip1}, {panty1}, {place4}"
-prompt = f"{quality1}, {quality5}, {angle11}, {person1}, {hairlength7}, {cloth1}, {chest1}, {place5}"
+prompt = f"{quality1}, {quality5}, {angle11}, {person1}, {style1}, {age1}, {face1}, {hairlength7}, {chest4}, {cloth4}, ({pose3}:1.3), {place5}, {situation1}, {light1}"
 
-negative_prompt = "illustration,3d,sepia,painting,cartoons,sketch,(worst quality:2),((monochrome)),((grayscale:1.2)),(backlight:1.2),analog,analog photo,(bad hands, bad fingers, bad arms, bad legs, bad knees, bad navel:1.5),Shank Hair,(nipples:1.2), (muscle:1.1),(extra fingers, extra arms, extra legs, extra digit, fewer digits:1.5),(text:1.3), signature, missing limb, missing fingers,"
+negative_prompt = "illustration,3d,sepia,painting,cartoons,sketch,(worst quality:2),((monochrome)),((grayscale:1.2)),(backlight:1.2),analog,analog photo,(bad hands, bad fingers, bad arms, bad legs, bad knees, bad navel:1.5),Shank Hair,(nipples:1.2), (muscle:1.1),(extra fingers, extra arms, extra legs, extra digit, fewer digits:1.5),(text:1.3), signature, missing limb, missing fingers, nipples, 2 persons"
 
 def counter_file_check(counter=0):
     # スクリプトの実行回数の記録

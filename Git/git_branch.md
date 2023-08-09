@@ -49,6 +49,28 @@ $ git init
 ```
 ※この時、`.git`ファイルが作成される。
 
+# ローカルレポジトリでの操作
+## workingでの変更を取り消す
+ファイルを変更したが、やっぱり直前のコミット状態まで戻したい時に、`git checkout`コマンドでワークツリーの変更を取り消せる。
+厳密にいうと、`git checkout`コマンドは直前のステージの状態に戻る。
+```shell
+$ git diff
+diff --git a/tmp.md b/tmp.md
+index 0839846..4c9e200 100644
+--- a/tmp.md
++++ b/tmp.md
+@@ -1,2 +1,5 @@
+ line 1
+-line 2
+\ No newline at end of file
++line 2
++
++This file is tmp.md on working tree.
++From now, this lines will be deleted.
+
+$ git checkout -- tmp.md
+```
+
 # ブランチの操作
 ## ブランチを切る。
 ```shell
