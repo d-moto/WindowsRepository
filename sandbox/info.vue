@@ -1,27 +1,11 @@
 <template>
     <div>
-        <!--{{Syoudo}}-->
-        <!--{{Next_Time}}-->
-
         <!--Infomation文字-->
         <div style="width:1000px;">
             <p style="font: bold 35px sans-serif; color: gray; margin-top: 10px; ">Information</p>
         </div>
-        <!--{{State_of_window}}
-    {{State_rist}}-->
-        <!--
-        {{ AlarmONDisplayList}}
-
-    ++++++++++++++++{{Weather}}
-            -->
-
-
         <div style="text-align: -webkit-center; padding: 0px;width:1000px;">
-            <!--info4カード書式統一用div-->
-            <!--<div style="width: 400px; height: 150px; background-color: aquamarine; overflow: scroll; ">
-                {{listMessage}}
-            </div>-->
-            <!--住所確認ボタン-->
+            <!--info4カード書式統一用div-->>
             <div style=" margin-left: 825px; margin-top:-55px; z-index: 998; position:relative;">
                 <button type="button" class="btn btn-sm shadow-none ps-3 pe-3 " style="border-width: 4px; border: 1px solid lightgray; border-radius: 3px; background-color: whitesmoke; color: dimgrey; width: 100px; height: 75px; "
                         @click="openModal('Address')" @tap="openModal('Address')">

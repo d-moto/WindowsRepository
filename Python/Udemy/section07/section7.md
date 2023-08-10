@@ -1086,6 +1086,266 @@ baby = Baby()
 adult = Adult()
 ```
 ## 87. 多重継承
+PersonクラスとCarクラスで定義されている関数を使用できるPersonCarRobotクラスが定義されている。（多重継承）
+```python
+class Person(object):
+    def talk(self):
+        print('talk')
+    
+    def run(self):
+        print('person run')
+
+class Car(object):
+    def run(self):
+        print('run')
+
+class PersonCarRobot(Person, Car):
+    def fly(self):
+        print('fly')
+
+person_car_robot = PersonCarRobot()
+person_car_robot.talk()
+person_car_robot.run()
+person_car_robot.fly()
+```
+
+```text
+C:\Users\mokos\AppData\Local\Programs\Python\Python311\python.exe C:\Users\mokos\Git_work\Python\Udemy\section07\python88.py 
+talk
+person run //class PersonCarRobot(Person, Car)でPersonクラスを先に継承しているので、Personクラスのrun関数が呼び出されて、Carクラスのrun関数は呼び出されない。
+fly
+
+Process finished with exit code 0
+```
+
 ## 88. クラス変数
+kindはPersonクラスのオブジェクトをいくつ生成しても常に同じになる。
+このとき、クラス変数というものが使用できる
+```python
+class Person(object):
+    
+    def __init__(self, name):
+        self.kind = 'human'
+        self.name = name
+
+    def who_are_you(self):
+        print(self.name, self.kind)
+
+a = Person('A')
+a.who_are_you()
+b = Person('B')
+b.who_are_you()
+```
+humanはA,Bどちらも同じ。
+```text
+C:\Users\mokos\AppData\Local\Programs\Python\Python311\python.exe C:\Users\mokos\Git_work\Python\Udemy\section07\python88.py 
+A human
+B human
+
+Process finished with exit code 0
+```
+以下のように書き換えることができる。
+```python
+class Person(object):
+    
+    kind = 'human' # クラス変数。オブジェクト内で共有される。
+
+    def __init__(self, name):
+        # self.kind = 'human'
+        self.name = name
+
+    def who_are_you(self):
+        print(self.name, self.kind)
+
+a = Person('A')
+a.who_are_you()
+b = Person('B')
+b.who_are_you()
+
+
+class T(object):
+
+    words = []
+
+    def add_word(self, word):
+        self.words.append(word)
+
+c = T()
+c.add_word('add 1')
+c.add_word('add 2')
+
+d = T()
+d.add_word('add 3')
+d.add_word('add 4')
+
+print(c.words)
+```
+
+注意！クラス変数はオブジェクト内で共有されるので、リストなどを定義するとあるクラスの操作が他のクラスのクラス変数に影響を及ぼす。
+c, dという2つのオブジェクトを生成しているが、クラス変数wordsには、add 1 ~ add 4まですべてが含まれてしまう。
+
+```python
+class T(object):
+
+    words = []
+
+    def add_word(self, word):
+        self.words.append(word)
+
+c = T()
+c.add_word('add 1')
+c.add_word('add 2')
+
+d = T()
+d.add_word('add 3')
+d.add_word('add 4')
+
+print(c.words)
+```
+```text
+['add 1', 'add 2', 'add 3', 'add 4']
+```
+以下のように書き換える
+```python
+class T(object):
+
+    def __init__(self):
+        self.words = [] # イニシャライズで定義する。
+
+    def add_word(self, word):
+        self.words.append(word)
+
+c = T()
+c.add_word('add 1')
+c.add_word('add 2')
+
+d = T()
+d.add_word('add 3')
+d.add_word('add 4')
+
+print(c.words)
+print(d.words)
+```
+オブジェクトごとにwordsリストが定義される
+```text
+['add 1', 'add 2']
+['add 3', 'add 4']
+```
+
 ## 89. クラスメソッドとスタティックメソッド
+
+まずはクラスメソッドの説明
+a = Person()はオブジェクトを生成している
+b = Personはまだ、オブジェクトを生成していない。
+```python
+class Person(object):
+
+    kind = 'human'
+
+    def __init__(self):
+        self.x = 100
+
+    def what_is_your_kind(self):
+        return self.kind
+
+
+a = Person()
+print(a)
+print(a.x)
+print(a.kind)
+print(a.what_is_your_kind())
+b = Person
+print(b)
+# print(b.x) # errorとなる。__init__が実行されていない。
+print(b.kind) # クラス変数にはアクセスできる。
+# print(b.what_is_your_kind()) # オブジェクトを生成していないので、エラーとなる。
+```
+
+オブジェクトを生成していない状態で、what_is_your_kind関数を実行したい時はどうするか。
+`@classmethod`を書く。
+
+```python
+class Person(object):
+
+    kind = 'human'
+
+    def __init__(self):
+        self.x = 100
+
+    @classmethod # 引数などはselfではなく、clsとなる。（オブジェクトを生成していない状態で使用したいから。）clsはオブジェクトの関数ではなく、クラスの関数ですよ、という意味。
+    def what_is_your_kind(cls):
+        return cls.kind
+
+
+a = Person()
+print(a.what_is_your_kind())
+
+b = Person
+print(b.what_is_your_kind())
+
+print(Person.kind)
+print(Person.what_is_your_kind())
+```
+
+次にスタティックメソッドの説明
+```python
+class Person(object):
+
+    kind = 'human'
+
+    def __init__(self):
+        self.x = 100
+
+    @classmethod
+    def what_is_your_kind(cls):
+        return cls.kind
+
+    @staticmethod # 引数にはselfなどはいらない。クラス、オブジェクトのメソッドとして機能しない。（クラスの外に書いても良い。ただ、コードの可読性を考えると中にかけると便利という話）
+    def about():
+        print('about human')
+
+
+a = Person()
+print(a.what_is_your_kind())
+
+b = Person
+print(b.what_is_your_kind())
+
+print(Person.kind)
+print(Person.what_is_your_kind())
+
+Person.about() # クラスから直接呼び出せる。
+```
+
+
 ## 90. 特殊メソッド
+```python
+class Word(object):
+
+    def __init__(self, text):
+        self.text = text
+
+    def __str__(self):
+        return 'Word!!!'
+
+    def __len__(self):
+        return len(self.text)
+
+    def __add__(self, word):
+        return self.text.lower() + word.text.lower()
+
+    def __eq__(self, word):
+        return self.text.lower() == word.text.lower()
+
+
+w = Word('test')
+print(w)
+print(len(w))
+
+w2 = Word('######')
+
+print(w + w2)
+
+print(w == w2)
+```
+
