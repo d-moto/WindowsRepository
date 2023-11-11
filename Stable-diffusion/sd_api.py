@@ -10,7 +10,7 @@ url = "http://127.0.0.1:7860"
 
 # prompt var
 ## photo quality
-quality1 = "best quality, masterpiece, ultra high res, (photorealistic:1.4), RAW photo"
+quality1 = "best quality, masterpiece, ultra high res, (photorealistic:1.4), RAW photo, 8k, high resolution"
 quality2 = "extremely cute girl, extremely detailed face, extremely detailed skin, extremely detailed legs"
 quality3 = "extremely cute 1 girl, extremely detailed cute face, extremely detailed skin, extremly detailed legs, extremely detailed hip, extremely detailed back, extremely detailed eyes"
 quality4 = "extremely detailed eyes"
@@ -113,6 +113,7 @@ panty4 = "bikini"
 pose1 = "skirt lift, showing panties, thong"
 pose2 = "butt sticking out, close up hip, thong"
 pose3 = "armpits"
+pose4 = "cross legs"
 
 ## clothes
 cloth1 = "tank top, shoulder"
@@ -121,6 +122,7 @@ cloth3 = "Santa Claus, shoulder"
 cloth4 = "sailer uniform, sailer school uniform"
 cloth5 = "school swim suit, school swim"
 cloth6 = "sexy bra, lace bra, black bra"
+cloth7 = "nice elegant dress"
 
 ## situation
 situation1 = "wet, sweat, sheet of spray, wet clothes"
@@ -158,17 +160,17 @@ override_settings["sd_model_checkpoint"] = "beautifulRealistic_v60"
 #override_settings["sd_vae"] = "v2-1_768-ema-pruned"
 
 # loop and seed settings
-loop = 2
+loop = 20
 seed = -1
-enable_hr = False
-#enable_hr = True
+#enable_hr = False
+enable_hr = True
 
 #prompt = f"{quality}, {quality2}, {age}, {cloth}, {face}, {hair}, {place}, {chest}, {angle}, {makeup}, {addition}, {addition2}"
 # prompt = f"{quality1}, {person1}, {quality3}, {angle1}, {age1}, {chest2}, {addition2}, {hair1}, {pose2}, {place4}, {style1}"
 # prompt = f"{quality1}, {person1}, {quality3}, {angle3}, {age1}, {chest2}, {addition2}, {hair1}, {pose2}, {place4}, {style1}"
 # prompt = f"{quality1}, {test16}, {place4}"
 # prompt = f"{quality1}, {person1}, {hair1}, {hip1}, {panty1}, {place4}"
-prompt = f"{quality1}, {quality5}, {angle11}, {person1}, {style1}, {age1}, {face1}, {hairlength7}, {chest4}, {cloth4}, ({pose3}:1.3), {place5}, {situation1}, {light1}"
+prompt = f"{quality1}, {quality5}, {angle11}, {person1}, {style1}, {age1}, {face1}, {hairlength7}, {chest1}, {cloth6}, ({pose4}:1.1), {place5}, {light1}"
 
 negative_prompt = "illustration,3d,sepia,painting,cartoons,sketch,(worst quality:2),((monochrome)),((grayscale:1.2)),(backlight:1.2),analog,analog photo,(bad hands, bad fingers, bad arms, bad legs, bad knees, bad navel:1.5),Shank Hair,(nipples:1.2), (muscle:1.1),(extra fingers, extra arms, extra legs, extra digit, fewer digits:1.5),(text:1.3), signature, missing limb, missing fingers, nipples, 2 persons"
 
@@ -248,7 +250,7 @@ execution_time = end_time - start_time # 実行時間計算
 
 # print(f"start_time : {start_time} s")
 # print(f"end_time : {end_time} s")
-print(f"Execution_time : {execution_time} s")
+print(f"Execution time : {execution_time} s")
 
 m, s = divmod(execution_time, 60)
 h, m = divmod(m, 60)

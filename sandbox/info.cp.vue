@@ -1193,7 +1193,6 @@
                                 case "R101":
                                     
                                     MT_Count101 += value;
-
                                     if (MT_Count101 < 1) {
                                         State_of_roll_curtein101.value.open = false;
                                         State_of_roll_curtein101.value.close = true;
@@ -1202,13 +1201,16 @@
                                         State_of_roll_curtein101.value.close = false;
                                     }
 
-                                    if (name !== "6" && name !== "7") {
-                                        if (MT_CountS0 >= 1) {
-                                            State_of_roll_curteinS.value.open = true;
-                                            State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                        } else {
-                                            State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                            State_of_roll_curteinS.value.close = true;
+                                    if (name !== "6") {
+                                        if (name !== "7") {
+                                            if (MT_CountS0 >= 1) {
+                                                State_of_roll_curteinS.value.open = true;
+                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                            } else {
+                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                State_of_roll_curteinS.value.close = true;
+                                            }
+                                            break;
                                         }
                                     }
 
@@ -1231,13 +1233,16 @@
                                         State_of_roll_curtein102.value.close = false;
                                     }
 
-                                    if (name !== "6" && name !== "7") {
-                                        if (MT_CountS0 >= 1) {
-                                            State_of_roll_curteinS.value.open = true;
-                                            State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                        } else {
-                                            State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                            State_of_roll_curteinS.value.close = true;
+                                    if (name !== "6") {
+                                        if (name !== "7") {
+                                            if (MT_CountS0 >= 1) {
+                                                State_of_roll_curteinS.value.open = true;
+                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                            } else {
+                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                State_of_roll_curteinS.value.close = true;
+                                            }
+                                            break;
                                         }
                                     }
 
@@ -1261,13 +1266,16 @@
                                             State_of_roll_curtein103_1.value.close = false;
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                            State_of_roll_curteinS.value.open = true;
-                                            State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                            State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                            State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
                                         }
 
@@ -1276,8 +1284,11 @@
                                         State_of_roll_curtein102.value.open = false;
                                         State_of_roll_curtein102.value.close = false;
                                         break;
+                                    }
 
-                                    } else if (name == "4") {
+                                 case"R103":
+                                    if (name == "4") {
+                                        
                                         MT_Count102 += value;
                                         if (MT_Count102 < 1) {
                                             State_of_roll_curtein103_2.value.open = false;
@@ -1287,13 +1298,16 @@
                                             State_of_roll_curtein103_2.value.close = false;
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                            State_of_roll_curteinS.value.open = true;
-                                            State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                            State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                            State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
                                         }
 
@@ -1354,21 +1368,25 @@
                                             State_of_roll_curtein201_1.value.open = false;
                                             State_of_roll_curtein201_1.value.close = false;
                                             State_of_roll_curtein201_1.value.half_open = true;
+
                                         } else if (MT_Count201 > 1) {
                                             State_of_roll_curtein201_1.value.open = true;
                                             State_of_roll_curtein201_1.value.close = false;
                                             State_of_roll_curtein201_1.value.half_open = false;
+
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                                State_of_roll_curteinS.value.open = true;
-                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                                State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
 
                                         State_of_roll_curtein202.value.open = false;
@@ -1402,15 +1420,17 @@
                                             State_of_roll_curtein201_2.value.half_open = false;
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                                State_of_roll_curteinS.value.open = true;
-                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                                State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
 
                                         State_of_roll_curtein202.value.open = false;
@@ -1450,15 +1470,19 @@
                                         }
                                     }
 
-                                    if (name !== "6" && name !== "7") {
-                                        if (MT_CountS0 >= 1) {
-                                            State_of_roll_curteinS.value.open = true;
-                                            State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                        } else {
-                                            State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                            State_of_roll_curteinS.value.close = true;
+                                    if (name !== "6") {
+                                        if (name !== "7") {
+                                            if (MT_CountS0 >= 1) {
+                                                State_of_roll_curteinS.value.open = true;
+                                                State_of_roll_curteinS.value.close = false;
+
+                                            } else {
+                                                State_of_roll_curteinS.value.open = false;
+                                                State_of_roll_curteinS.value.close = true;
+
+                                            }
+                                            break;
                                         }
-                                        break;
                                     }
 
                                     State_of_roll_curtein201_1.value.open = false;
@@ -1493,15 +1517,17 @@
                                             State_of_roll_curtein203_1.value.half_open = false;
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                                State_of_roll_curteinS.value.open = true;
-                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                                State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
 
                                         State_of_roll_curtein201_1.value.open = false;
@@ -1514,8 +1540,9 @@
                                         State_of_roll_curtein202.value.half_open = false;
                                         State_of_roll_curtein202.value.close = false;
                                         break;
-                                        
-                                    } else if (name == "5") {
+                                    }
+
+                                    if (name == "5") {
                                         
                                         MT_Count205 += value;
                                         if (MT_Count205 < 1) {
@@ -1532,15 +1559,17 @@
                                             State_of_roll_curtein203_2.value.half_open = false;
                                         }
 
-                                        if (name !== "6" && name !== "7") {
-                                            if (MT_CountS0 >= 1) {
-                                                State_of_roll_curteinS.value.open = true;
-                                                State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
-                                            } else {
-                                                State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
-                                                State_of_roll_curteinS.value.close = true;
+                                        if (name !== "6") {
+                                            if (name !== "7") {
+                                                if (MT_CountS0 >= 1) {
+                                                    State_of_roll_curteinS.value.open = true;
+                                                    State_of_roll_curteinS.value.close = false; // 追加：1以上の場合はcloseをfalseに
+                                                } else {
+                                                    State_of_roll_curteinS.value.open = false; // 追加：1未満の場合はopenをfalseにする
+                                                    State_of_roll_curteinS.value.close = true;
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
 
                                         State_of_roll_curtein201_1.value.open = false;
