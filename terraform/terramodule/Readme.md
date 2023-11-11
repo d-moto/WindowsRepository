@@ -1,26 +1,26 @@
-## Terraform module‚Æ‚Í
+## Terraform moduleï¿½Æ‚ï¿½
 
-- ƒ‚ƒWƒ…[ƒ‹‚Æ‚Í“¯ˆêƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚éTerraform\¬ƒtƒ@ƒCƒ‹ˆêŽ®
-- •¡”‚Ìƒ‚ƒWƒ…[ƒ‹‚Å\¬‚·‚é‚±‚Æ‚ª‚Å‚«‚é
-- ƒ‹[ƒgƒ‚ƒWƒ…[ƒ‹‚©‚çŽqƒ‚ƒWƒ…[ƒ‹‚ðŒÄ‚Ño‚µ‚ÄŽg‚¤‚±‚Æ‚ª‚Å‚«‚éB
+- ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Æ‚Í“ï¿½ï¿½ï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Terraformï¿½\ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½êŽ®
+- ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å\ï¿½ï¿½ï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½
+- ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ÄŽgï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½B
 
-## Terraform Module‚ÌŽg‚¢•û
+## Terraform Moduleï¿½ÌŽgï¿½ï¿½ï¿½ï¿½
 
-## Azure‰¼‘zƒ}ƒVƒ“‚ðƒ‚ƒWƒ…[ƒ‹‰»‚µ‚Ä‚Ý‚é
+## Azureï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚Ý‚ï¿½
 
-ƒŠƒ\[ƒXƒZƒNƒVƒ‡ƒ“‚Å•ª‚¯‚é
+ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Zï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½
 
-- ƒŠƒ\[ƒXƒOƒ‹[ƒv
-- ‰¼‘zƒlƒbƒgƒ[ƒNEƒTƒuƒlƒbƒg
-- ‰¼‘zƒ}ƒVƒ“Eƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX
+- ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½v
+- ï¿½ï¿½ï¿½zï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½Nï¿½Eï¿½Tï¿½uï¿½lï¿½bï¿½g
+- ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½ï¿½Eï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½Nï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-‚±‚ê‚ç‚ð3‚Â‚Ìƒ‚ƒWƒ…[ƒ‹‚É•ª‰ð‚µ‚ÄŠeƒŠƒ\[ƒX‚²‚Æ‚ÉƒfƒBƒŒƒNƒgƒŠ‚ð•ª‚¯‚éB
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½Â‚Ìƒï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄŠeï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½Æ‚Éƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ð•ª‚ï¿½ï¿½ï¿½B
 
-- ƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
-- ƒ‚ƒWƒ…[ƒ‹ŠÖ˜A
-  - ƒŠƒ\[ƒXƒOƒ‹[ƒv
-  - ‰¼‘zƒ}ƒVƒ“
-  - ‰¼‘zƒlƒbƒgƒ[ƒN
+- ï¿½ï¿½ï¿½[ï¿½gï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
+- ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ö˜A
+  - ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½v
+  - ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½
+  - ï¿½ï¿½ï¿½zï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½N
   
 ```
 mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (dev-terra)
@@ -64,9 +64,54 @@ mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (
 $
 ```
 
-¦‰¼‘zƒ}ƒVƒ“2‘äì¬Žž‚ÌƒfƒBƒŒƒNƒgƒŠ\¬‚É‚È‚è‚Ü‚·Bƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ‚ÉVM-01.tfAVM-02.tf‚Ì2‚Â‚ ‚é‚Ì‚Í‚»‚Ìˆ×‚Å‚·B
+ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½2ï¿½ï¿½ì¬ï¿½ï¿½ï¿½Ìƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½É‚È‚ï¿½Ü‚ï¿½ï¿½Bï¿½ï¿½ï¿½[ï¿½gï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½VM-01.tfï¿½AVM-02.tfï¿½ï¿½2ï¿½Â‚ï¿½ï¿½ï¿½Ì‚Í‚ï¿½ï¿½Ìˆ×‚Å‚ï¿½ï¿½B
 
-## module‰»‚Ìi‚ß•û
+## moduleï¿½ï¿½ï¿½Ìiï¿½ß•ï¿½
 
-- ƒ‹[ƒgƒ‚ƒWƒ…[ƒ‹‚É‚ ‚Á‚½Avm.tf‚ÌƒŠƒ\[ƒXƒOƒ‹[ƒv•”•ª‚ðrg.tf‚Æ‚µ‚Ä•ªŠ„
+- ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Avm.tfï¿½Ìƒï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rg.tfï¿½Æ‚ï¿½ï¿½Ä•ï¿½ï¿½ï¿½
+
+
+
+$ tree .
+Folder PATH listing for volume Windows
+Volume serial number is C201-CCFE
+C:\USERS\MOKOS\GITTMP\WINDOWSREPOSITORY\TERRAFORM\TERRAMODULE
+|   .terraform.lock.hcl
+|   provider.tf
+|   Readme.md
+|   rg1.tf
+|   terraform.tfstate
+|   terraform.xlsx
+|   variable.tf
+|
++---.terraform
+|   +---modules
+|   |       modules.json
+|   |
+|   \---providers
+|       \---registry.terraform.io
+|           \---hashicorp
+|               \---azurerm
+|                   +---3.78.0
+|                   |   \---windows_amd64
+|                   |           terraform-provider-azurerm_v3.78.0_x5.exe
+|                   |
+|                   \---3.80.0
+|                       \---windows_amd64
+|                               terraform-provider-azurerm_v3.80.0_x5.exe
+|
+\---modules
+    +---rg
+    |       output.tf
+    |       rg.tf
+    |       variable.tf
+    |
+    +---vm
+    |       variable.tf
+    |       vm.tf
+    |
+    \---vnet
+            output.tf
+            variable.tf
+            vnet.tf
 

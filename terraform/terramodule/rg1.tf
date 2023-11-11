@@ -1,6 +1,12 @@
-module "rg" {
+module "rg1" {
   source      = "./modules/rg"
-  rg-name     = "terraform-rg"
-  rg-location = "eastus2"
+  rg-name     = "myRG1"
+  rg-location = "japaneast"
+}
+
+module "rg2" {
+  source = "./modules/rg"
+  rg-name = "myRG2"
+  rg-location = "japaneast"
 }
 
