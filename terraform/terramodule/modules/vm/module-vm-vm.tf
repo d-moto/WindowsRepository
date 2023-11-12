@@ -5,12 +5,15 @@ resource "azurerm_linux_virtual_machine" "terraform-linux-virtual-machine" {
   size                = "${var.vm_size}"
   admin_username      = "${var.vm_adminuser}"
   network_interface_ids = [
-    var.network_interface_id,
+    var.network_interface_eth0_id,
+    var.network_interface_eth1_id,
+    var.network_interface_eth2_id,
+    var.network_interface_eth3_id,
   ]
 
   admin_ssh_key {
     username   = "${var.vm_adminuser}"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file("~/.ssh/id_rsa_azure_nopass.pub")
   }
     os_disk {
     caching              = "ReadWrite"
@@ -18,9 +21,9 @@ resource "azurerm_linux_virtual_machine" "terraform-linux-virtual-machine" {
   }
 
   source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
-    version   = "latest"
+    publisher = "${var.vm_publisher}"
+    offer     = "${var.vm_offer}"
+    sku       = "${var.vm_sku}"
+    version   = "${var.vm_version}"
   }
 }
