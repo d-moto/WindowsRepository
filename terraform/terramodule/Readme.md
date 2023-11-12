@@ -1,40 +1,117 @@
-## Terraform module‚Æ‚Í
+## Terraform moduleï¿½Æ‚ï¿½
 
-- ƒ‚ƒWƒ…[ƒ‹‚Æ‚Í“¯ˆêƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚éTerraform\¬ƒtƒ@ƒCƒ‹ˆê®
-- •¡”‚Ìƒ‚ƒWƒ…[ƒ‹‚Å\¬‚·‚é‚±‚Æ‚ª‚Å‚«‚é
-- ƒ‹[ƒgƒ‚ƒWƒ…[ƒ‹‚©‚çqƒ‚ƒWƒ…[ƒ‹‚ğŒÄ‚Ño‚µ‚Äg‚¤‚±‚Æ‚ª‚Å‚«‚éB
+- ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Æ‚Í“ï¿½ï¿½ï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Terraformï¿½\ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ê®
+- ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Å\ï¿½ï¿½ï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½
+- ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½Ägï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½B
 
-## Terraform Module‚Ìg‚¢•û
+## Terraform Moduleï¿½Ìgï¿½ï¿½ï¿½ï¿½
 
-## Azure‰¼‘zƒ}ƒVƒ“‚ğƒ‚ƒWƒ…[ƒ‹‰»‚µ‚Ä‚İ‚é
+## Azureï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚İ‚ï¿½
 
-ƒŠƒ\[ƒXƒZƒNƒVƒ‡ƒ“‚Å•ª‚¯‚é
+ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Zï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½
 
-- ƒŠƒ\[ƒXƒOƒ‹[ƒv
-- ‰¼‘zƒlƒbƒgƒ[ƒNEƒTƒuƒlƒbƒg
-- ‰¼‘zƒ}ƒVƒ“Eƒlƒbƒgƒ[ƒNƒCƒ“ƒ^[ƒtƒF[ƒX
+- ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½v
+- ï¿½ï¿½ï¿½zï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½Nï¿½Eï¿½Tï¿½uï¿½lï¿½bï¿½g
+- ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½ï¿½Eï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½Nï¿½Cï¿½ï¿½ï¿½^ï¿½[ï¿½tï¿½Fï¿½[ï¿½X
 
-‚±‚ê‚ç‚ğ3‚Â‚Ìƒ‚ƒWƒ…[ƒ‹‚É•ª‰ğ‚µ‚ÄŠeƒŠƒ\[ƒX‚²‚Æ‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğ•ª‚¯‚éB
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½Â‚Ìƒï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½É•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄŠeï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½ï¿½ï¿½Æ‚Éƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ğ•ª‚ï¿½ï¿½ï¿½B
 
-- ƒ‹[ƒgƒfƒBƒŒƒNƒgƒŠ
-- ƒ‚ƒWƒ…[ƒ‹ŠÖ˜A
-  - ƒŠƒ\[ƒXƒOƒ‹[ƒv
-  - ‰¼‘zƒ}ƒVƒ“
-  - ‰¼‘zƒlƒbƒgƒ[ƒN
+- ï¿½ï¿½ï¿½[ï¿½gï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½
+- ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ö˜A
+  - ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½v
+  - ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½
+  - ï¿½ï¿½ï¿½zï¿½lï¿½bï¿½gï¿½ï¿½ï¿½[ï¿½N
   
+```
+mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (dev-terra)
+$ ls -lR
+.:
+total 22
+-rw-r--r-- 1 mokos 197609  953 Nov 11 13:00 Readme.md
+-rw-r--r-- 1 mokos 197609    0 Nov 11 13:26 VM-01.tf
+-rw-r--r-- 1 mokos 197609    0 Nov 11 13:26 VM-02.tf
+-rw-r--r-- 1 mokos 197609 1887 Nov 11 13:12 VM.tf
+-rw-r--r-- 1 mokos 197609  232 Nov 11 13:12 main.tf
+drwxr-xr-x 1 mokos 197609    0 Nov 11 13:16 modules/
+-rw-r--r-- 1 mokos 197609  601 Nov 11 13:12 provider.tf
+-rw-r--r-- 1 mokos 197609 8889 Nov 11 13:12 terraform.xlsx
+-rw-r--r-- 1 mokos 197609    0 Nov 11 13:12 variable.tf
 
-- terraform
-          |
-          +---main.tf
-          +---provider.tf
-          +---VM-01.tf
-          +---VM-02.tf
-          |
-          |-----module
-                   |
-                   +--rg
-                   |   |
-                   |   |--output.tf
-                   |   |--rg.tf
-                   |   |--variable.tf
-                   |   
+./modules:
+total 0
+drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 rg/
+drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 vm/
+drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 vnet/
+
+./modules/rg:
+total 0
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 output.tf
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 rg.tf
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
+
+./modules/vm:
+total 0
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 VM.tf
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
+
+./modules/vnet:
+total 0
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 output.tf
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
+-rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 vnet.tf
+
+mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (dev-terra)
+$
+```
+
+ï¿½ï¿½ï¿½ï¿½ï¿½zï¿½}ï¿½Vï¿½ï¿½2ï¿½ï¿½ì¬ï¿½ï¿½ï¿½Ìƒfï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½É‚È‚ï¿½Ü‚ï¿½ï¿½Bï¿½ï¿½ï¿½[ï¿½gï¿½fï¿½Bï¿½ï¿½ï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½VM-01.tfï¿½AVM-02.tfï¿½ï¿½2ï¿½Â‚ï¿½ï¿½ï¿½Ì‚Í‚ï¿½ï¿½Ìˆ×‚Å‚ï¿½ï¿½B
+
+## moduleï¿½ï¿½ï¿½Ìiï¿½ß•ï¿½
+
+- ï¿½ï¿½ï¿½[ï¿½gï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Avm.tfï¿½Ìƒï¿½ï¿½\ï¿½[ï¿½Xï¿½Oï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½rg.tfï¿½Æ‚ï¿½ï¿½Ä•ï¿½ï¿½ï¿½
+
+
+
+$ tree .
+Folder PATH listing for volume Windows
+Volume serial number is C201-CCFE
+C:\USERS\MOKOS\GITTMP\WINDOWSREPOSITORY\TERRAFORM\TERRAMODULE
+|   .terraform.lock.hcl
+|   provider.tf
+|   Readme.md
+|   rg1.tf
+|   terraform.tfstate
+|   terraform.xlsx
+|   variable.tf
+|
++---.terraform
+|   +---modules
+|   |       modules.json
+|   |
+|   \---providers
+|       \---registry.terraform.io
+|           \---hashicorp
+|               \---azurerm
+|                   +---3.78.0
+|                   |   \---windows_amd64
+|                   |           terraform-provider-azurerm_v3.78.0_x5.exe
+|                   |
+|                   \---3.80.0
+|                       \---windows_amd64
+|                               terraform-provider-azurerm_v3.80.0_x5.exe
+|
+\---modules
+    +---rg
+    |       output.tf
+    |       rg.tf
+    |       variable.tf
+    |
+    +---vm
+    |       variable.tf
+    |       vm.tf
+    |
+    \---vnet
+            output.tf
+            variable.tf
+            vnet.tf
+
