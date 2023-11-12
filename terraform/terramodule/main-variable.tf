@@ -32,3 +32,16 @@ variable "network_interface_name1" {
 variable "private_ip_address1" {
   default = "172.10.10.100"
 }
+
+## Linux Virtual Machine
+variable "vm_name1" {
+  default = "myVM"
+}
+
+variable "vm_size1" {
+  default = "Standard_F2"
+}
+
+variable "vm_adminuser1" {
+  default = "adminuser"
+}
