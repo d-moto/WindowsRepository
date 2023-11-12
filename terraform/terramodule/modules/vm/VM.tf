@@ -1,14 +1,4 @@
-resource "azurerm_network_interface" "terraform-test-nif" {
 
-  name                = var.nic-name
-  location            = var.rg-location
-  resource_group_name = var.rg-name
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = var.subnet_id
-    private_ip_address_allocation = "Dynamic"
-  }
-}
 resource "azurerm_windows_virtual_machine" "terraform-test-vm" {
   name                = var.vm-name
   resource_group_name = var.rg-name
