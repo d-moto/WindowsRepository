@@ -7,9 +7,9 @@ variable "vnet_name" {}
 variable "vnet_address_space" {}
 
 ## Subnet Name
-variable "subnet_name" {}
-variable "subnet_address_prefixes" {}
+# variable "subnet_name" {}
+# variable "subnet_address_prefixes" {}
 
-## Network Interface
-variable "network_interface_name" {}
-variable "private_ip_address" {}
+# ## Network Interface
+# variable "network_interface_name" {}
+# variable "private_ip_address" {}

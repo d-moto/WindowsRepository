@@ -20,6 +20,7 @@ variable "vnet_address_space1" {
 variable "subnet_name1" {
   default = "mySubnet1"
 }
+
 variable "subnet_address_prefixes1" {
   default = "172.10.10.0/24"
 }

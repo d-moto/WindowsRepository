@@ -1,7 +1,7 @@
-output "terraform-test-rg-name" {
+output "terraform-rg-name" {
     value = azurerm_resource_group.terraform-rg.name
 }
 
-output "terraform-test-rg-location" {
+output "terraform-rg-location" {
     value = azurerm_resource_group.terraform-rg.location  
 }
