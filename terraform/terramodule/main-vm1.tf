@@ -9,8 +9,9 @@ module "vm1" {
   vm_sku               = "${var.vm_sku1}"
   vm_version           = "${var.vm_version1}"
   vm_adminuser         = "${var.vm_adminuser1}"
-  network_interface_eth0_id = module.nic1.terraform-nic-eth0_id
-  network_interface_eth1_id = module.nic1.terraform-nic-eth1_id
-  network_interface_eth2_id = module.nic1.terraform-nic-eth2_id
-  network_interface_eth3_id = module.nic1.terraform-nic-eth3_id
+  # network_interface_eth0_id = module.nic1.terraform-nic-eth0_id
+  # network_interface_eth1_id = module.nic1.terraform-nic-eth1_id
+  # network_interface_eth2_id = module.nic1.terraform-nic-eth2_id
+  # network_interface_eth3_id = module.nic1.terraform-nic-eth3_id
+  vm_network_interface_ids = module.nic1.terraform-nic-ids
 }

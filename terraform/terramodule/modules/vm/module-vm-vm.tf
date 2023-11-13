@@ -1,15 +1,17 @@
 resource "azurerm_linux_virtual_machine" "terraform-linux-virtual-machine" {
+  #count = length(var.vm_network_interface_ids)
   name                = "${var.vm_name}"
   resource_group_name = "${var.rg_name}"
   location            = "${var.rg_location}"
   size                = "${var.vm_size}"
   admin_username      = "${var.vm_adminuser}"
-  network_interface_ids = [
-    var.network_interface_eth0_id,
-    var.network_interface_eth1_id,
-    var.network_interface_eth2_id,
-    var.network_interface_eth3_id,
-  ]
+  # network_interface_ids = [
+  #   # var.network_interface_eth0_id,
+  #   # var.network_interface_eth1_id,
+  #   # var.network_interface_eth2_id,
+  #   # var.network_interface_eth3_id,
+  # ]
+  network_interface_ids = var.vm_network_interface_ids
 
   admin_ssh_key {
     username   = "${var.vm_adminuser}"
