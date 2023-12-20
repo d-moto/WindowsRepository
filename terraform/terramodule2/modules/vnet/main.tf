@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
 }
 
-## variable
+## define variable
 variable "vnet_name" {
   description = "The name of the virtual network"
 }
@@ -22,3 +22,9 @@ variable "location" {
 variable "resource_group_name" {
   description = "The name of the resource group in which to create the virtual network."
 }
+
+## define output
+output "vnet_name" {
+  value = azurerm_virtual_network.vnet.name
+}
+

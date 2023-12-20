@@ -7,6 +7,7 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = [var.subnet_prefixes[count.index]]
 }
 
+## define varialbe
 variable "subnet_names" {
   description = "The names of the subnets"
   type        = list(string)
@@ -23,4 +24,9 @@ variable "resource_group_name" {
 
 variable "vnet_name" {
   description = "The name of the virtual network"
+}
+
+## define output
+output "subnet_ids" {
+  value = azurerm_subnet.subnet.*.id
 }
