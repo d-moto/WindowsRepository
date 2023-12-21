@@ -7,6 +7,12 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = [var.subnet_prefixes[count.index]]
 }
 
+# resource "azurerm_subnet_network_security_group_association" "nsg_association" {
+#   count                     = length(var.subnet_ids)
+#   subnet_id                 = var.subnet_ids[count.index]
+#   network_security_group_id = var.nsg_ids[count.index]
+# }
+
 ## define varialbe
 variable "subnet_names" {
   description = "The names of the subnets"
@@ -26,7 +32,18 @@ variable "vnet_name" {
   description = "The name of the virtual network"
 }
 
+# variable "subnet_ids" {
+#   description = "List of subnet IDs to attach the NSG"
+#   type        = list(string)
+# }
+
+# variable "nsg_ids" {
+#   description = "The ID of the network security group to associate"
+#   type        = list(string)
+# }
+
 ## define output
 output "subnet_ids" {
   value = azurerm_subnet.subnet.*.id
 }
+

@@ -4,13 +4,15 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "${var.vm_name}-${count.index + 1}"
   resource_group_name = var.resource_group_name
   location            = var.location
-  size                = "Standard_DS1_v2"
+  size                = "Standard_D3_v2"
   admin_username      = "adminuser"
-  network_interface_ids = [var.network_interface_ids[count.index]]
+  network_interface_ids = var.network_interface_ids[count.index]
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+
   source_image_reference {
     publisher = "RedHat"
     offer     = "RHEL"
@@ -32,6 +34,11 @@ variable "instance_count" {
   type        = number
 }
 
+variable "network_interface_ids" {
+  description = "Nested list of network interface IDs for each VM"
+  type        = list(list(string))
+}
+
 variable "vm_name" {
   description = "Base name of the virtual machine"
 }
@@ -42,11 +49,6 @@ variable "resource_group_name" {
 
 variable "location" {
   description = "Azure region for the virtual machine"
-}
-
-variable "network_interface_ids" {
-  description = "List of network interface IDs"
-  type        = list(string)
 }
 
 variable "ssh_public_key" {
