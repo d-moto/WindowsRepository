@@ -30,7 +30,7 @@ variable "vnet_name" {
 }
 
 variable "address_space" {
-    default = "172.30.0.0/16"
+  default = "172.30.0.0/16"
 }
 
 ## ★
@@ -83,49 +83,112 @@ variable "subnet_prefixes_ansible" {
 
 ## ★
 ## call network interface module
-# module "network_interface" {
-#   source              = "./modules/network_interface"
-#   nic_name            = "myNic"
-#   subnet_ids          = module.subnets.subnet_ids
-#   resource_group_name = module.resource_group.resource_group_name
-#   location            = module.resource_group.location
-#   private_ip_addresses  = var.private_ip_addresses
-# }
+module "network_interface" {
+  source   = "./modules/network_interface"
+  nic_name = var.nic_name
+  subnet_ids = [
+    module.subnets_node.subnet_ids[0],
+    module.subnets_node.subnet_ids[1],
+    module.subnets_node.subnet_ids[2],
+    module.subnets_node.subnet_ids[3],
+    module.subnets_node.subnet_ids[0],
+    module.subnets_node.subnet_ids[1],
+    module.subnets_node.subnet_ids[2],
+    module.subnets_node.subnet_ids[3],
+  module.subnets_ansible.subnet_ids[0]]
+  nic_counts           = [2, 2, 2, 2, 1]
+  resource_group_name  = module.resource_group.resource_group_name
+  location             = module.resource_group.location
+  private_ip_addresses = var.private_ip_addresses
+}
 
 ## variable
+variable "nic_name" {
+  default = [
+    "node1-eth0",
+    "node1-eth1",
+    "node1-eth2",
+    "node1-eth3",
+    "node2-eth0",
+    "node2-eth1",
+    "node2-eth2",
+    "node2-eth3",
+    "ansible-eth0"
+
+  ]
+}
 variable "private_ip_addresses" {
   default = [
-    "172.30.10.10", 
-    "172.30.20.10", 
-    "172.30.30.10", 
-    "172.30.40.10", 
-    "172.30.10.20", 
-    "172.30.20.20", 
-    "172.30.30.20", 
+    "172.30.10.10",
+    "172.30.20.10",
+    "172.30.30.10",
+    "172.30.40.10",
+    "172.30.10.20",
+    "172.30.20.20",
+    "172.30.30.20",
     "172.30.40.20",
     "172.30.50.10"
   ]
 }
 
 ## ★
-## call vm module
-# module "vm" {
-#   source              = "./modules/vm"
-#   instance_count      = 2  # 1または2に変更可能
-#   vm_name             = var.vm_name_node
-#   resource_group_name = module.resource_group.resource_group_name
-#   location            = module.resource_group.location
-#   ssh_public_key      = "/home/alma1/Git-win/WindowsRepository/terraform/terramodule2/id_rsa.pub"  # SSH公開キーのパスを指定
-#   network_interface_ids = [
-#     slice(module.network_interface.network_interface_ids, 0, 4),
-#     slice(module.network_interface.network_interface_ids, 4, 8)
-#   ]
-# }
+## call vm module for node
+module "vm_node" {
+  source              = "./modules/vm"
+  instance_count      = 2 # 1または2に変更可能
+  vm_name             = var.vm_name_node
+  vm_size             = var.vm_size_node
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  ssh_public_key      = "/home/alma1/Git-win/WindowsRepository/terraform/terramodule2/id_rsa.pub" # SSH公開キーのパスを指定
+  network_interface_ids = [
+    slice(module.network_interface.network_interface_ids, 0, 4),
+    slice(module.network_interface.network_interface_ids, 4, 8)
+  ]
+}
 
-# ## variable
-# variable "vm_name_node" {
-#   default = "cluster1"
-# }
+## variable
+variable "vm_name_node" {
+  default = [
+    "cluster1",
+    "cluster2"
+  ]
+}
+
+variable "vm_size_node" {
+  default = [
+    "Standard_D3_v2",
+    "Standard_D3_v2"
+  ]
+}
+
+## ★
+## call vm module for ansible
+module "vm_ansible" {
+  source              = "./modules/vm"
+  instance_count      = 1 # 1または2に変更可能
+  vm_name             = var.vm_name_ansible
+  vm_size             = var.vm_size_ansible
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  ssh_public_key      = "/home/alma1/Git-win/WindowsRepository/terraform/terramodule2/id_rsa.pub" # SSH公開キーのパスを指定
+  network_interface_ids = [
+    slice(module.network_interface.network_interface_ids, 8, 9)
+  ]
+}
+
+## variable
+variable "vm_name_ansible" {
+  default = [
+    "ansible"
+  ]
+}
+
+variable "vm_size_ansible" {
+  default = [
+    "Standard_D1_v2"
+  ]
+}
 
 
 

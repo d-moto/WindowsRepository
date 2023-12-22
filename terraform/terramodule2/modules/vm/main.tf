@@ -1,10 +1,10 @@
 ## define VM
 resource "azurerm_linux_virtual_machine" "vm" {
   count               = var.instance_count
-  name                = "${var.vm_name}-${count.index + 1}"
+  name                = var.vm_name[count.index]
   resource_group_name = var.resource_group_name
   location            = var.location
-  size                = "Standard_D3_v2"
+  size                = var.vm_size[count.index]#"Standard_D3_v2"
   admin_username      = "adminuser"
   network_interface_ids = var.network_interface_ids[count.index]
 
@@ -41,6 +41,12 @@ variable "network_interface_ids" {
 
 variable "vm_name" {
   description = "Base name of the virtual machine"
+  type = list(string)
+}
+
+variable "vm_size" {
+  description = "VM size"
+  type = list(string)
 }
 
 variable "resource_group_name" {

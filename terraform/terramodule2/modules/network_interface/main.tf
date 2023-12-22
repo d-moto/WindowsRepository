@@ -1,12 +1,12 @@
 ## define NETWORK INTERFACE
 resource "azurerm_network_interface" "nic" {
   count               = sum(var.nic_counts)
-  name                = "${var.nic_name}"
+  name                = var.nic_name[count.index]
   location            = var.location
   resource_group_name = var.resource_group_name
 
   ip_configuration {
-    name                          = "ipconfig${var.nic_name}"
+    name                          = "ipconfig${var.nic_name[count.index]}"
     subnet_id                     = var.subnet_ids[count.index % length(var.subnet_ids)]
     private_ip_address_allocation = "Static"
     private_ip_address            = var.private_ip_addresses[count.index]
@@ -16,6 +16,7 @@ resource "azurerm_network_interface" "nic" {
 ## define variable
 variable "nic_name" {
   description = "Base name for the network interfaces"
+  type        = list(string)
 }
 
 variable "subnet_ids" {
@@ -34,6 +35,11 @@ variable "location" {
 variable "private_ip_addresses" {
   description = "List of private IP addresses for each network interface"
   type        = list(string)
+}
+
+variable "nic_counts" {
+  description = "List of counts of network interfaces to create for each subnet"
+  type        = list(number)
 }
 
 ## define output
