@@ -1,4 +1,6 @@
-## call resource group module
+##########################################################################################
+## Call resource group module
+##########################################################################################
 module "resource_group" {
   source              = "./modules/resource_group"
   resource_group_name = var.resource_group_name
@@ -6,7 +8,7 @@ module "resource_group" {
 }
 
 ## ★
-## variable
+## Resource Group variable
 variable "resource_group_name" {
   default = "moduleRG"
 }
@@ -14,7 +16,9 @@ variable "location" {
   default = "japaneast"
 }
 
-## call vnet module
+##########################################################################################
+## Call vnet module
+##########################################################################################
 module "vnet" {
   source              = "./modules/vnet"
   resource_group_name = module.resource_group.resource_group_name
@@ -24,7 +28,7 @@ module "vnet" {
 }
 
 ## ★
-## variable
+## vnet variable
 variable "vnet_name" {
   default = "moduleVnet"
 }
@@ -33,8 +37,9 @@ variable "address_space" {
   default = "172.30.0.0/16"
 }
 
-## ★
-## call subnet module
+##########################################################################################
+## Call subnet module
+##########################################################################################
 module "subnets_node" {
   source              = "./modules/subnet"
   resource_group_name = module.resource_group.resource_group_name
@@ -45,6 +50,8 @@ module "subnets_node" {
   # nsg_ids             = module.nsg.nsg_ids
 }
 
+## ★
+## subnet variable
 variable "subnet_names_node" {
   description = "List of subnet names"
   type        = list(string)
@@ -57,8 +64,9 @@ variable "subnet_prefixes_node" {
   default     = ["172.30.10.0/24", "172.30.20.0/24", "172.30.30.0/24", "172.30.40.0/24"]
 }
 
-## ★
-## call subnet module
+##########################################################################################
+## Call subnet module
+##########################################################################################
 module "subnets_ansible" {
   source              = "./modules/subnet"
   resource_group_name = module.resource_group.resource_group_name
@@ -69,6 +77,8 @@ module "subnets_ansible" {
   # nsg_ids             = module.nsg.nsg_ids
 }
 
+## ★
+## subnet variable
 variable "subnet_names_ansible" {
   description = "List of subnet names"
   type        = list(string)
@@ -81,8 +91,36 @@ variable "subnet_prefixes_ansible" {
   default     = ["172.30.50.0/24"]
 }
 
+##########################################################################################
+## Call subnet module for Azure Bastion
+##########################################################################################
+module "subnets_bastion" {
+  source              = "./modules/subnet"
+  resource_group_name = module.resource_group.resource_group_name
+  vnet_name           = module.vnet.vnet_name
+  subnet_names        = var.subnet_names_bastion
+  subnet_prefixes     = var.subnet_prefixes_bastion
+  # subnet_ids          = module.subnets.subnet_ids
+  # nsg_ids             = module.nsg.nsg_ids
+}
+
 ## ★
-## call network interface module
+## subnet variable for Azure Bastion
+variable "subnet_names_bastion" {
+  description = "List of subnet names"
+  type        = list(string)
+  default     = ["AzureBastionSubnet"]
+}
+
+variable "subnet_prefixes_bastion" {
+  description = "List of subnet address prefixes"
+  type        = list(string)
+  default     = ["172.30.1.0/24"]
+}
+
+##########################################################################################
+## Call network interface module
+##########################################################################################
 module "network_interface" {
   source   = "./modules/network_interface"
   nic_name = var.nic_name
@@ -102,7 +140,8 @@ module "network_interface" {
   private_ip_addresses = var.private_ip_addresses
 }
 
-## variable
+## ★
+## network interface variable
 variable "nic_name" {
   default = [
     "node1-eth0",
@@ -131,8 +170,9 @@ variable "private_ip_addresses" {
   ]
 }
 
-## ★
-## call vm module for node
+##########################################################################################
+## Call vm module for node
+##########################################################################################
 module "vm_node" {
   source              = "./modules/vm"
   instance_count      = 2 # 1または2に変更可能
@@ -145,9 +185,11 @@ module "vm_node" {
     slice(module.network_interface.network_interface_ids, 0, 4),
     slice(module.network_interface.network_interface_ids, 4, 8)
   ]
+  # user_data = var.user_data_node
 }
 
-## variable
+## ★
+## vm variable
 variable "vm_name_node" {
   default = [
     "cluster1",
@@ -162,8 +204,17 @@ variable "vm_size_node" {
   ]
 }
 
-## ★
-## call vm module for ansible
+# variable "user_data_node" {
+#   default = <<-EOT
+#   #!/bin/bash
+#   system list-unit-files > /home/adminuser/systemctl_list-unit-files.txt
+#   yum -y install policycoreutils-python-utils
+#   EOT
+# }
+
+##########################################################################################
+## Call vm module for ansible
+##########################################################################################
 module "vm_ansible" {
   source              = "./modules/vm"
   instance_count      = 1 # 1または2に変更可能
@@ -175,6 +226,7 @@ module "vm_ansible" {
   network_interface_ids = [
     slice(module.network_interface.network_interface_ids, 8, 9)
   ]
+  # user_data = var.user_data_ansible
 }
 
 ## variable
@@ -190,6 +242,14 @@ variable "vm_size_ansible" {
   ]
 }
 
+# variable "user_data_ansible" {
+#   default = <<-EOT
+#   #!/bin/bash
+#   system list-unit-files > /home/adminuser/systemctl_list-unit-files.txt
+#   yum -y install policycoreutils-python-utils
+#   EOT
+# }
+
 
 
 # ## call network security group module
@@ -200,6 +260,7 @@ variable "vm_size_ansible" {
 #   location            = module.resource_group.location
 # }
 
+## ★
 ## variable
 variable "instance_count" {
   description = "Number of VM instances to create"
@@ -210,5 +271,14 @@ variable "vm_name" {
   description = "Base name of the virtual machine"
   default     = "myRHELVM"
 }
+
+## Linux login with SSH
+# az network bastion ssh --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SubID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/Ubuntu" --auth-type password --user hiyama
+
+## Linux scp
+# az network bastion tunnel --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SubID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/ubuntu" --resource-port "22" --port "60001"
+
+
+
 
 

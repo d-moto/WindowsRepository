@@ -1,4 +1,6 @@
-## define SUBNET
+##########################################################################################
+## Define SUBNET
+##########################################################################################
 resource "azurerm_subnet" "subnet" {
   count                = length(var.subnet_names)
   name                 = var.subnet_names[count.index]
@@ -13,7 +15,9 @@ resource "azurerm_subnet" "subnet" {
 #   network_security_group_id = var.nsg_ids[count.index]
 # }
 
-## define varialbe
+##########################################################################################
+## Define varialbe
+##########################################################################################
 variable "subnet_names" {
   description = "The names of the subnets"
   type        = list(string)
@@ -42,7 +46,9 @@ variable "vnet_name" {
 #   type        = list(string)
 # }
 
-## define output
+##########################################################################################
+## Define output
+##########################################################################################
 output "subnet_ids" {
   value = azurerm_subnet.subnet.*.id
 }

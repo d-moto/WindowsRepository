@@ -1,12 +1,16 @@
-## define VM
+##########################################################################################
+## Define VM
+##########################################################################################
 resource "azurerm_linux_virtual_machine" "vm" {
-  count               = var.instance_count
-  name                = var.vm_name[count.index]
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  size                = var.vm_size[count.index]#"Standard_D3_v2"
-  admin_username      = "adminuser"
-  network_interface_ids = var.network_interface_ids[count.index]
+  count                           = var.instance_count
+  name                            = var.vm_name[count.index]
+  resource_group_name             = var.resource_group_name
+  location                        = var.location
+  size                            = var.vm_size[count.index] #"Standard_D3_v2"
+  admin_username                  = "adminuser"
+  admin_password                  = "adminuser00!"
+  network_interface_ids           = var.network_interface_ids[count.index]
+  disable_password_authentication = false
 
   os_disk {
     caching              = "ReadWrite"
@@ -20,15 +24,30 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
 
-    admin_ssh_key {
+  admin_ssh_key {
     username   = "adminuser"
     public_key = file(var.ssh_public_key)
   }
 
-  disable_password_authentication = true
+  #user_data = (base64encode(var.user_data))
+  #user_data = (base64encode(replace(var.user_data, "systemctl_list-unit-files.txt", "systemctl_list-unit-files_${each.value}.txt")))
+  user_data = (
+    base64encode(
+      #replace(var.user_data, ".txt", "${var.vm_name[count.index]}.txt")
+      <<-EOT
+      #!/bin/bash
+      systemctl list-unit-files > /home/adminuser/systemctl_list-unit-files-${var.vm_name[count.index]}.txt
+      yum -y install policycoreutils-python-utils
+      yum -y install traceroute
+      timedatectl set-timezone Asia/Tokyo
+      EOT
+    )
+  )
 }
 
-## define variable
+##########################################################################################
+## Define variable
+##########################################################################################
 variable "instance_count" {
   description = "Number of instances to create"
   type        = number
@@ -41,12 +60,12 @@ variable "network_interface_ids" {
 
 variable "vm_name" {
   description = "Base name of the virtual machine"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "vm_size" {
   description = "VM size"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "resource_group_name" {
@@ -60,3 +79,7 @@ variable "location" {
 variable "ssh_public_key" {
   description = "Path to the public key to be used for SSH access to the VM"
 }
+
+# variable "user_data" {
+#   description = "User date script"
+# }

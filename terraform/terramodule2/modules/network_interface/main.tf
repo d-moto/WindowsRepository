@@ -1,4 +1,6 @@
-## define NETWORK INTERFACE
+##########################################################################################
+## Define NETWORK INTERFACE
+##########################################################################################
 resource "azurerm_network_interface" "nic" {
   count               = sum(var.nic_counts)
   name                = var.nic_name[count.index]
@@ -13,7 +15,9 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-## define variable
+###########################################################################################
+## Define variable
+###########################################################################################
 variable "nic_name" {
   description = "Base name for the network interfaces"
   type        = list(string)
@@ -42,7 +46,9 @@ variable "nic_counts" {
   type        = list(number)
 }
 
-## define output
+############################################################################################
+## Define output
+############################################################################################
 output "network_interface_ids" {
   value = azurerm_network_interface.nic.*.id
 }
