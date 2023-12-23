@@ -28,6 +28,21 @@ resource "azurerm_network_security_group" "nsg-adm" {
     destination_address_prefixes = [var.private_ip_addresses[4]]
   }
 
+  security_rule {
+    name                         = "allow_http"
+    priority                     = 103
+    direction                    = "Inbound"
+    access                       = "Allow"
+    protocol                     = "Tcp"
+    source_port_range            = "*"
+    destination_port_range       = "61011"
+    source_address_prefix       = "*"
+    destination_address_prefixes = [
+      var.private_ip_addresses[0],
+      var.private_ip_addresses[4]
+    ]
+  }
+
   ## OUTBOUND
   security_rule {
     name                         = "allow_between_vm_out"

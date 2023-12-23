@@ -119,6 +119,33 @@ variable "subnet_prefixes_bastion" {
 }
 
 ##########################################################################################
+## Call subnet module for windows
+##########################################################################################
+module "subnets_win" {
+  source              = "./modules/subnet"
+  resource_group_name = module.resource_group.resource_group_name
+  vnet_name           = module.vnet.vnet_name
+  subnet_names        = var.subnet_names_win
+  subnet_prefixes     = var.subnet_prefixes_win
+  # subnet_ids          = module.subnets.subnet_ids
+  # nsg_ids             = module.nsg.nsg_ids
+}
+
+## ★
+## subnet variable
+variable "subnet_names_win" {
+  description = "List of subnet names"
+  type        = list(string)
+  default     = ["subnet-win-eth0"]
+}
+
+variable "subnet_prefixes_win" {
+  description = "List of subnet address prefixes"
+  type        = list(string)
+  default     = ["172.30.100.0/24"]
+}
+
+##########################################################################################
 ## Call network interface module
 ##########################################################################################
 module "network_interface" {
@@ -133,8 +160,10 @@ module "network_interface" {
     module.subnets_node.subnet_ids[1],
     module.subnets_node.subnet_ids[2],
     module.subnets_node.subnet_ids[3],
-  module.subnets_ansible.subnet_ids[0]]
-  nic_counts           = [2, 2, 2, 2, 1]
+    module.subnets_ansible.subnet_ids[0],
+    module.subnets_win.subnet_ids[0]
+    ]
+  nic_counts           = [2, 2, 2, 2, 1, 1]
   resource_group_name  = module.resource_group.resource_group_name
   location             = module.resource_group.location
   private_ip_addresses = var.private_ip_addresses
@@ -152,7 +181,8 @@ variable "nic_name" {
     "node2-eth1",
     "node2-eth2",
     "node2-eth3",
-    "ansible-eth0"
+    "ansible-eth0",
+    "win-eth0"
 
   ]
 }
@@ -166,7 +196,8 @@ variable "private_ip_addresses" {
     "172.30.20.20",
     "172.30.30.20",
     "172.30.40.20",
-    "172.30.50.10"
+    "172.30.50.10",
+    "172.30.100.10"
   ]
 }
 
@@ -185,7 +216,6 @@ module "vm_node" {
     slice(module.network_interface.network_interface_ids, 0, 4),
     slice(module.network_interface.network_interface_ids, 4, 8)
   ]
-  # user_data = var.user_data_node
 }
 
 ## ★
@@ -203,14 +233,6 @@ variable "vm_size_node" {
     "Standard_D3_v2"
   ]
 }
-
-# variable "user_data_node" {
-#   default = <<-EOT
-#   #!/bin/bash
-#   system list-unit-files > /home/adminuser/systemctl_list-unit-files.txt
-#   yum -y install policycoreutils-python-utils
-#   EOT
-# }
 
 ##########################################################################################
 ## Call vm module for ansible
@@ -242,24 +264,6 @@ variable "vm_size_ansible" {
   ]
 }
 
-# variable "user_data_ansible" {
-#   default = <<-EOT
-#   #!/bin/bash
-#   system list-unit-files > /home/adminuser/systemctl_list-unit-files.txt
-#   yum -y install policycoreutils-python-utils
-#   EOT
-# }
-
-
-
-# ## call network security group module
-# module "nsg" {
-#   source              = "./modules/nsg"
-#   nsg_names           = ["nsg1", "nsg2", "nsg3", "nsg4"]
-#   resource_group_name = module.resource_group.resource_group_name
-#   location            = module.resource_group.location
-# }
-
 ## ★
 ## variable
 variable "instance_count" {
@@ -272,13 +276,48 @@ variable "vm_name" {
   default     = "myRHELVM"
 }
 
+##########################################################################################
+## Call vm module for win
+##########################################################################################
+module "vm_win" {
+  source              = "./modules/vm-win"
+  instance_count      = 1 # 1または2に変更可能
+  vm_name             = var.vm_name_win
+  vm_size             = var.vm_size_win
+  resource_group_name = module.resource_group.resource_group_name
+  location            = module.resource_group.location
+  ssh_public_key      = "/home/alma1/Git-win/WindowsRepository/terraform/terramodule2/id_rsa.pub" # SSH公開キーのパスを指定
+  network_interface_ids = [
+    slice(module.network_interface.network_interface_ids, 9, 10),
+  ]
+}
+
+## ★
+## vm variable
+variable "vm_name_win" {
+  default = [
+    "windows1"
+  ]
+}
+
+variable "vm_size_win" {
+  default = [
+    "Standard_D2as_v4"
+  ]
+}
+
 ## Linux login with SSH
 # az network bastion ssh --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SubID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/Ubuntu" --auth-type password --user hiyama
 
 ## Linux scp
 # az network bastion tunnel --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SubID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/ubuntu" --resource-port "22" --port "60001"
 
+## Windows login with RDP
+# az network bastion rdp --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SubID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/Windows"
 
+## Windows SCP
+# az network bastion tunnel --name "Bastion" --resource-group "Bastion" --target-resource-id "/subscriptions/<SUbID>/resourceGroups/Bastion/providers/Microsoft.Compute/virtualMachines/Windows" --resource-port "22" --port "60002"
 
+## 
 
 
