@@ -4,9 +4,4 @@ module "rg1" {
   rg-location = "japaneast"
 }
 
-module "rg2" {
-  source = "./modules/rg"
-  rg-name = "myRG2"
-  rg-location = "japaneast"
-}
 
