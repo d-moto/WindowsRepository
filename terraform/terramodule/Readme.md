@@ -23,45 +23,68 @@
   - ���z�l�b�g���[�N
   
 ```
-mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (dev-terra)
-$ ls -lR
-.:
-total 22
--rw-r--r-- 1 mokos 197609  953 Nov 11 13:00 Readme.md
--rw-r--r-- 1 mokos 197609    0 Nov 11 13:26 VM-01.tf
--rw-r--r-- 1 mokos 197609    0 Nov 11 13:26 VM-02.tf
--rw-r--r-- 1 mokos 197609 1887 Nov 11 13:12 VM.tf
--rw-r--r-- 1 mokos 197609  232 Nov 11 13:12 main.tf
-drwxr-xr-x 1 mokos 197609    0 Nov 11 13:16 modules/
--rw-r--r-- 1 mokos 197609  601 Nov 11 13:12 provider.tf
--rw-r--r-- 1 mokos 197609 8889 Nov 11 13:12 terraform.xlsx
--rw-r--r-- 1 mokos 197609    0 Nov 11 13:12 variable.tf
+PS C:\Users\mokos\03Git_work\git-master\WindowsRepository\terraform\terramodule> tree /f /a 
+フォルダー パスの一覧:  ボリューム Windows
+ボリューム シリアル番号は C201-CCFE です
+C:.
+|   .terraform.lock.hcl
+|   main-nic1.tf
+|   main-provider.tf
+|   main-rg1.tf
+|   main-subnet1.tf
+|   main-variable.tf
+|   main-vm1.tf
+|   main-vnet1.tf
+|   Readme.md
+|   terraform.tfstate
+|   terraform.tfstate.backup
+|
++---.terraform
+|   +---modules
+|   |       modules.json
+|   |
+|   \---providers
+|       \---registry.terraform.io
+|           \---hashicorp
+|               \---azurerm
+|                   +---3.78.0
+|                   |   \---windows_amd64
+|                   |           terraform-provider-azurerm_v3.78.0_x5.exe
+|                   |
+|                   \---3.80.0
+|                       \---windows_amd64
+|                               terraform-provider-azurerm_v3.80.0_x5.exe
+|
++---docs
+|       terraform.xlsx
+|
+\---modules
+    +---nic
+    |       module-nic-nic.tf
+    |       module-nic-output.tf
+    |       module-nic-variable.tf
+    |
+    +---rg
+    |       module-rg-output.tf
+    |       module-rg-rg.tf
+    |       module-rg-variable.tf
+    |
+    +---subnet
+    |       module-subnet-output.tf
+    |       module-subnet-subnet.tf
+    |       module-subnet-variable.tf
+    |
+    +---vm
+    |       module-vm-output.tf
+    |       module-vm-variable.tf
+    |       module-vm-vm.tf
+    |
+    \---vnet
+            module-vnet-output.tf
+            module-vnet-variable.tf
+            module-vnet-vnet.tf
 
-./modules:
-total 0
-drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 rg/
-drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 vm/
-drwxr-xr-x 1 mokos 197609 0 Nov 11 13:16 vnet/
-
-./modules/rg:
-total 0
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 output.tf
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 rg.tf
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
-
-./modules/vm:
-total 0
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 VM.tf
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
-
-./modules/vnet:
-total 0
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 output.tf
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 variable.tf
--rw-r--r-- 1 mokos 197609 0 Nov 11 13:12 vnet.tf
-
-mokos@DESKTOP-NOUPOER MINGW64 ~/gittmp/WindowsRepository/terraform/terramodule (dev-terra)
-$
+PS C:\Users\mokos\03Git_work\git-master\WindowsRepository\terraform\terramodule> 
 ```
 
 �����z�}�V��2��쐬���̃f�B���N�g���\���ɂȂ�܂��B���[�g�f�B���N�g����VM-01.tf�AVM-02.tf��2����̂͂��ׂ̈ł��B
