@@ -1,1 +1,4 @@
-.idea
+# created by virtualenv automatically
+*
+!PythonScripts/
+!PythonScripts/**
