@@ -21,7 +21,7 @@ try:
     while True:
         status = get_system_status()
         print(f"CPU Usage: {status['CPU Usage']}, Memory Usage: {status['Memory Usage']}, Disk Usage: {status['Disk Usage']}")
-        time.sleep(5)  # Update every 5 seconds
+        time.sleep(2)  # Update every 5 seconds
 except KeyboardInterrupt:
     print("Monitoring stopped.")
 
