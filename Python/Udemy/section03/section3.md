@@ -2,62 +2,59 @@
 
 ## 8. 変数宣言
 
-</br>
-
 - **変数宣言**
-</br>
-pythonでは、int,srtなど変数の宣言時に指定する必要はない。  
-変数のタイプはtype()関数で確認できる。  
+
+  pythonでは、int,srtなど変数の宣言時に指定する必要はない。  
+  変数のタイプは`type()`関数で確認できる。
+
   ```python
   num = 1
   name = 'Mike'
-  is_ok = True
-
+  is_ok = True 
   print(num, type(num))
   print(name, type(name))
   print(is_ok, type(is_ok))
   ```
-  ↓ 実行結果
-  ```python
+  ```text
   1 <class 'int'>
   Mike <class 'str'>
   True <class 'bool'>
   ```
 
 - **型の上書きと型変換**
-</br>
-以下のようにすると、変数の上書きと、型変換ができる
+  
+  以下のようにすると、変数の上書きと、型変換ができる
   - 型の上書き
-  ```python
-  # 型の上書き
-  num = 1
-  name = 'Mike'
-
-  num = name
-
-  print(num, type(num))
-  ```
-  ↓ 実行結果
-  ```python
-  Mike <class 'str'>
-  ```
+    ```
+    # 型の上書き
+    num = 1
+    name = 'Mike'
+    
+    num = name
+    
+    print(num, type(num))
+    ```
+    ```text
+    Mike <class 'str'>
+    ```
+    
   - 型の変換
-  ```python
-  # 型の変換
-  name = '1'
-
-  new_num = int(name)
-
-  print(new_num, type(new_num))
-  ```
-  ↓ 実行結果
-  ```python
-  1 <class 'int'>
-  ```
-
-- **型の宣言**  
-一応Python3.9から型の宣言ができる
-  ```
+    ```python
+    # 型の変換
+    name = '1'
+    
+    new_num = int(name)
+    
+    print(new_num, type(new_num))
+    ```
+    ```text
+    1 <class 'int'>
+    ```
+    
+- **型の宣言**
+  
+  一応Python3.9から型の宣言ができる
+  ```text
   <var name>: <type> = <value>
   ```
   ```python
@@ -67,13 +64,10 @@ pythonでは、int,srtなど変数の宣言時に指定する必要はない。
   ただ基本的に使用しない。
 
 - **変数の命名**  
-Pythonでは、変数の先頭に数字は使用できない。
-また、予約語も変数の名前には使用できない。
-
-</br>
+  Pythonでは、変数の先頭に数字は使用できない。  
+  また、予約語も変数の名前には使用できない。
 
 ## 9. printで出力
-</br>
 
 - sep : 引数と引数の間の文字を設定する。（デフォルトではスペース）
 - end : プリントの末尾の設定をする。（デフォルトでは改行[\n]）
@@ -83,8 +77,7 @@ print('2', 'Hi', 'Mike')
 print('3', 'Hi', 'Mike', sep=',')
 print('4', 'Hi', 'Mike', sep=',', end='.\n')
 ```
-↓ 実行結果
-```python
+```text
 1 Hi
 2 Hi Mike
 3,Hi,Mike
@@ -92,7 +85,6 @@ print('4', 'Hi', 'Mike', sep=',', end='.\n')
 ```
 
 ## 10. 数値
-</br>
 
 ### 数値の扱い
 
@@ -114,7 +106,6 @@ pie = 3.14159265358979
 print(pie)
 print(round(pie, 2))
 ```
-↓ 実行結果
 ```
 4
 3
@@ -132,7 +123,7 @@ print(round(pie, 2))
 3.14
 ```
 
-```python
+```shell
 >>> 2 + 2 
 4
 >>> 5 - 2 
@@ -197,6 +188,7 @@ print(y)
 
 ### ドキュメントの表示
 ```python
+import math
 print(help(math))
 ```
 
@@ -257,13 +249,13 @@ line4""")
 print("######################")
 
 # 文字列の演算もできる。
-print('Hi.' * 3 + 'Mike'.)
+print('Hi.' * 3 + 'Mike')
 print('Py' + 'thon')
 print('Py''thon')
 
 # 以下のような書き方はエラーとなる
-str = 'Py'
-print(str 'thon')
+# stri = 'Py'
+# print(stri 'thon')
 ## いいえ、print(str 'thon')は構文エラーを引き起こしますが、それはPythonインタプリタによってキャッチされます。
 
 # 変数に代入した文字列が含まれるときは+を使用する。
@@ -765,7 +757,7 @@ for i in s:
 ```
 
 ## 14. 文字列の代入
-```python
+```shell
 >>> 'a is {}'.format('a')
 'a is a'
 >>> 'a is {}'.format('test')
@@ -804,7 +796,7 @@ True
 
 ## 15. f-strings
 
-```python
+```shell
 >>> a = 'a'
 >>> print(f'a is {a}')
 a is a
