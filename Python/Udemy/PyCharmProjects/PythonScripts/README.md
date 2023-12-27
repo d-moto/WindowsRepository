@@ -189,6 +189,6 @@ zipp                    3.15.0
 ```
 
 - パッケージのインストール
-```commandline
+```
 (mainenv) PS C:\Users\mokos\python\env\mainenv\Scripts> pip install psutil
 ```
