@@ -313,6 +313,9 @@ print(n)
 
 ## 13. 文字のメソッド
 
+<details>
+<summary>Help on class str in module builtins</summary>
+
 ```
 Help on class str in module builtins:
 
@@ -727,6 +730,7 @@ None
 
 Process finished with exit code 0
 ```
+</details>
 
 ```python
 s = 'My name is Mike. Hi Mike.'
