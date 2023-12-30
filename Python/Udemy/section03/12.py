@@ -1,4 +1,5 @@
 import sys
+import time
 
 word = 'Python'
 print(word)
@@ -47,9 +48,14 @@ for i in range(len(s)):
 
 
 print(sys.executable)
-print(help(sys))
+# print(help(sys))
 print(sys.copyright)
 print(sys.version)
 print(sys.path)
 
-
+dic = {1: 1, 2: 2, 'yes': True}
+print(dic)
+print(dic[1])
+print(dic['yes'])
+time.sleep(100)
+input("Enter....")
